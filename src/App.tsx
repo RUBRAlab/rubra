@@ -292,7 +292,7 @@ export default function App() {
                 {item}
               </a>
             ))}
-            <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" onClick={() => setMobileMenuOpen(false)} className="bg-stone-900 text-stone-50 px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-800 transition-colors mt-4">
+            <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="bg-stone-900 text-stone-50 px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-800 transition-colors mt-4">
               Agendar diagnóstico
             </a>
           </div>
@@ -317,11 +317,11 @@ export default function App() {
                   Acompañamos a líderes, equipos y organizaciones a atravesar cambios de forma simple, humana y consciente — para que las decisiones correctas dejen de postergarse.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
-                  <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-800 transition-all hover:shadow-lg hover:shadow-green-900/20 flex items-center gap-2 group">
+                  <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-800 transition-all hover:shadow-lg hover:shadow-green-900/20 flex items-center gap-2 group">
                     Agendar reunion
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a href="mailto:hola@rubra.ar" className="px-8 py-4 rounded-full font-medium border border-stone-300 text-stone-900 hover:bg-stone-100 transition-colors">
+                  <a href="#contacto" className="px-8 py-4 rounded-full font-medium border border-stone-300 text-stone-900 hover:bg-stone-100 transition-colors">
                     Hacer consulta
                   </a>
                 </div>
@@ -512,7 +512,7 @@ export default function App() {
 
             <div className="grid md:grid-cols-5 gap-12 lg:gap-24">
               <div className="md:col-span-3">
-                <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); alert("Mensaje recibido. Te contactamos pronto."); }}>
+                <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); const name = (document.getElementById("name") as HTMLInputElement).value; const company = (document.getElementById("company") as HTMLInputElement).value; const process = (document.getElementById("process") as HTMLTextAreaElement).value; window.location.href = `mailto:hola@rubra.ar?subject=Consulta de ${name}&body=Nombre: ${name}%0AEmpresa: ${company}%0AProceso: ${process}`; (e.target as HTMLFormElement).reset(); }}>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="name" className="text-xs font-semibold tracking-widest text-stone-500 uppercase">Nombre completo</label>
                     <input 
@@ -555,7 +555,7 @@ export default function App() {
                 <p className="text-stone-600 leading-relaxed mb-8">
                   Una sesión de 30 minutos para mapear los cuellos de botella de tu operación y diseñar un plan de acción concreto.
                 </p>
-                <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" className="inline-block text-center border border-green-700 text-green-800 px-8 py-4 rounded font-medium hover:bg-green-50 transition-colors">
+                <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="inline-block text-center border border-green-700 text-green-800 px-8 py-4 rounded font-medium hover:bg-green-50 transition-colors">
                   Reservar sesión →
                 </a>
               </div>
