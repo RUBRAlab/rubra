@@ -310,11 +310,11 @@ export default function App() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] font-display font-semibold tracking-tight text-stone-900 mb-6">
-                  Facilitamos transformaciones, <br />
-                  <span className="font-serif italic text-stone-500 font-normal">creando las condiciones</span> <br />para que sucedan.
+                  El futuro no es técnico, <br />
+                  <span className="font-serif italic text-stone-500 font-normal">es humano.</span>
                 </h1>
                 <p className="text-lg md:text-xl text-green-700 max-w-xl mb-10 leading-relaxed">
-                  Acompañamos a líderes, equipos y organizaciones a atravesar cambios de forma simple, humana y consciente — para que las decisiones correctas dejen de postergarse.
+                  Acompañamos a líderes, equipos y organizaciones a atravesar cambios de forma simple, humana y consciente, para que las decisiones correctas dejen de postergarse.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-800 transition-all hover:shadow-lg hover:shadow-green-900/20 flex items-center gap-2 group">
