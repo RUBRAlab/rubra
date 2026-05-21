@@ -509,7 +509,7 @@ export default function App() {
 
             <div className="grid md:grid-cols-5 gap-12 lg:gap-24">
               <div className="md:col-span-3">
-                <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); const name = (document.getElementById("name") as HTMLInputElement).value; const company = (document.getElementById("company") as HTMLInputElement).value; const process = (document.getElementById("process") as HTMLTextAreaElement).value; window.location.href = `mailto:hola@rubra.ar?subject=Consulta de ${name}&body=Nombre: ${name}%0AEmpresa: ${company}%0AProceso: ${process}`; (e.target as HTMLFormElement).reset(); }}>
+                <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); const name = (document.getElementById("name") as HTMLInputElement).value; const company = (document.getElementById("company") as HTMLInputElement).value; const process = (document.getElementById("process") as HTMLTextAreaElement).value; const subject = encodeURIComponent(`Consulta de ${name}`); const body = encodeURIComponent(`Nombre: ${name}\nEmpresa: ${company}\n\n${process}`); const a = document.createElement('a'); a.href = `mailto:hola@rubra.ar?subject=${subject}&body=${body}`; a.click(); (e.target as HTMLFormElement).reset(); }}>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="name" className="text-xs font-semibold tracking-widest text-stone-500 uppercase">Nombre completo</label>
                     <input 
