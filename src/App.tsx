@@ -355,7 +355,7 @@ export default function App() {
           >
             <p className="font-display text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed text-green-100">
               Creamos soluciones para organizaciones que saben que <span className="font-serif italic font-normal text-white">tienen que cambiar</span>.<br className="hidden md:block" />
-              Si sentís que algo tiene que transformarse pero no sabés por dónde empezar — <span className="font-serif italic font-normal text-white">este acompañamiento es para vos.</span>
+              Si sentís que algo tiene que transformarse pero no sabés por dónde empezar; <span className="font-serif italic font-normal text-white">este acompañamiento es para vos.</span>
             </p>
           </motion.div>
         </section>
@@ -414,7 +414,7 @@ export default function App() {
                 </div>
                 <h3 className="text-2xl font-display font-medium mb-4 text-stone-900">Implementación</h3>
                 <p className="text-stone-600 leading-relaxed">
-                  Ponemos en marcha las herramientas y acompañamos a tu equipo en el camino. <strong className="font-medium text-stone-900">No dejamos un manual y nos vamos</strong> — estamos hasta que el cambio funciona de verdad en el día a día, sin resistencia ni confusión.
+                  Ponemos en marcha las herramientas y acompañamos a tu equipo en el camino. <strong className="font-medium text-stone-900">No dejamos un manual y nos vamos</strong>; estamos hasta que el cambio funciona de verdad en el día a día, sin resistencia ni confusión.
                 </p>
               </motion.div>
 
@@ -491,7 +491,7 @@ export default function App() {
                 </div>
                 <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Stock & Logística</h3>
                 <p className="text-stone-400 leading-relaxed">
-                  Visibilidad real y proactiva. Sistemas que aprenden de tu demanda para que nunca falte —ni sobre— nada.
+                  Visibilidad real y proactiva. Sistemas que aprenden de tu demanda para que nunca falte (ni sobre) nada.
                 </p>
               </div>
             </div>
@@ -502,9 +502,6 @@ export default function App() {
           <div className="max-w-6xl mx-auto">
             <div className="mb-16 max-w-2xl">
               <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">El siguiente paso</p>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-stone-900 mb-6">
-                El futuro no es técnico,<br />es <span className="font-serif italic font-normal text-stone-500">humano.</span>
-              </h2>
               <p className="text-lg text-stone-600 leading-relaxed">
                 Si tu empresa está lista para dejar atrás los procesos manuales, hablemos. El primer paso es un diagnóstico de situación.
               </p>
