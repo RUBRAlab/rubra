@@ -4,6 +4,7 @@
  */
 
 import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import heroImage from './assets/images/regenerated_image_1778109505760.png';
 import { 
@@ -245,6 +246,7 @@ export default function App() {
           </motion.a>
 
           <div className="hidden md:flex items-center gap-8">
+            <Link to="/blog" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Blog</Link>
             {['Método', 'Servicios', 'Contacto'].map((item, i) => (
               <motion.a 
                 key={item}
