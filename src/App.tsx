@@ -6,7 +6,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
-import heroImage from './assets/images/regenerated_image_1778109505760.png';
+import heroImage from './assets/images/yo10.png';
 import { 
   ArrowRight, 
   Menu, 
