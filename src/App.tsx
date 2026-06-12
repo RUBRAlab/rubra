@@ -7,6 +7,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import heroImage from './assets/images/yo10.png';
+import { usePageMeta } from './hooks/usePageMeta';
 import { 
   ArrowRight, 
   Menu, 
@@ -182,6 +183,12 @@ export default function App() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  usePageMeta({
+    title: 'RUBRA | Transformación organizacional para empresas',
+    description: 'Acompañamos a líderes, equipos y organizaciones a transformarse de forma simple, humana y consciente. Diagnóstico, implementación y evolución de procesos en Argentina.',
+    path: '/',
+  });
 
   useEffect(() => {
     const handleScroll = () => {

@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { posts } from './posts'
 import { ArrowRight } from 'lucide-react'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 // Formatea "2026-06-06" → "6 de junio de 2026"
 const formatDate = (dateStr: string) => {
@@ -11,11 +11,11 @@ const formatDate = (dateStr: string) => {
 }
 
 export default function Blog() {
-  useEffect(() => {
-    document.title = 'Blog | RUBRA — Transformación organizacional'
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) meta.setAttribute('content', 'Artículos sobre transformación organizacional, automatización de procesos y gestión del cambio para empresas en Argentina.')
-  }, [])
+  usePageMeta({
+    title: 'Blog | RUBRA — Transformación organizacional',
+    description: 'Artículos sobre transformación organizacional, automatización de procesos y gestión del cambio para empresas en Argentina.',
+    path: '/blog',
+  })
 
   return (
     <div className="min-h-screen bg-stone-50">

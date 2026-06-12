@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { posts } from './posts'
 import { ArrowLeft } from 'lucide-react'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const formatDate = (dateStr: string) => {
   const [year, month, day] = dateStr.split('-').map(Number)
@@ -13,13 +13,11 @@ export default function Post() {
   const { slug } = useParams<{ slug: string }>()
   const post = posts.find(p => p.slug === slug)
 
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.title} | RUBRA`
-      const meta = document.querySelector('meta[name="description"]')
-      if (meta) meta.setAttribute('content', post.description)
-    }
-  }, [post])
+  usePageMeta({
+    title: post ? `${post.title} | RUBRA` : 'RUBRA | Transformación organizacional para empresas',
+    description: post ? post.description : 'Acompañamos a líderes, equipos y organizaciones a transformarse de forma simple, humana y consciente.',
+    path: post ? `/blog/${post.slug}` : '/blog',
+  })
 
   if (!post) return <Navigate to="/blog" replace />
 
