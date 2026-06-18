@@ -254,6 +254,7 @@ export default function App() {
 
           <div className="hidden md:flex items-center gap-8">
             <Link to="/blog" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Blog</Link>
+            <a href="https://rubra-crm.vercel.app/login" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Acceso equipo</a>
             {['Método', 'Servicios', 'Contacto'].map((item, i) => (
               <motion.a 
                 key={item}
@@ -301,6 +302,9 @@ export default function App() {
                 {item}
               </a>
             ))}
+            <a href="https://rubra-crm.vercel.app/login" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-display font-medium text-stone-900 border-b border-stone-200 pb-4">
+              Acceso equipo
+            </a>
             <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="bg-stone-900 text-stone-50 px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-800 transition-colors mt-4">
               Agendar diagnóstico
             </a>
