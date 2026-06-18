@@ -254,7 +254,6 @@ export default function App() {
 
           <div className="hidden md:flex items-center gap-8">
             <Link to="/blog" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Blog</Link>
-            <a href="https://crm.rubra.ar/login" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Acceso equipo</a>
             {['Método', 'Servicios', 'Contacto'].map((item, i) => (
               <motion.a 
                 key={item}
@@ -293,18 +292,22 @@ export default function App() {
         <div className="fixed inset-0 z-40 bg-stone-50 pt-24 px-6 md:hidden">
           <div className="flex flex-col gap-6">
             {['Método', 'Servicios', 'Contacto'].map((item) => (
-              <a 
+              <a
                 key={item}
-                href={`#${item.toLowerCase()}`} 
+                href={`#${item.toLowerCase()}`}
                 className="text-2xl font-display font-medium text-stone-900 border-b border-stone-200 pb-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <a href="https://crm.rubra.ar/login" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-display font-medium text-stone-900 border-b border-stone-200 pb-4">
-              Acceso equipo
-            </a>
+            <Link
+              to="/blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-2xl font-display font-medium text-stone-900 border-b border-stone-200 pb-4"
+            >
+              Blog
+            </Link>
             <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="bg-stone-900 text-stone-50 px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-800 transition-colors mt-4">
               Agendar diagnóstico
             </a>
@@ -585,6 +588,14 @@ export default function App() {
           </div>
           
           <div className="flex items-center gap-6 text-sm text-stone-500">
+            <a
+              href="https://crm.rubra.ar/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-stone-300 transition-colors"
+            >
+              Acceso equipo
+            </a>
           </div>
         </div>
       </footer>
