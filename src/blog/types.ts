@@ -1,3 +1,5 @@
+import type { FC } from "react"
+
 export interface BlogPost {
   slug: string
   title: string
@@ -5,5 +7,5 @@ export interface BlogPost {
   date: string           // formato YYYY-MM-DD
   category: string
   readTime: number       // minutos estimados de lectura
-  content: React.FC
+  content: FC
 }
