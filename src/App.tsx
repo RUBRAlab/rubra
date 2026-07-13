@@ -7,6 +7,18 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import heroImage from './assets/images/yo10.png';
+import logoBlueSky from './assets/images/clients/bluesky.png';
+import logoConcil from './assets/images/clients/concil.png';
+import logoDeportivoPradere from './assets/images/clients/deportivo-pradere.png';
+import logoHayZonda from './assets/images/clients/hayzonda.png';
+import logoJuliaH from './assets/images/clients/juliah.png';
+import logoLaEspanola from './assets/images/clients/la-espanola.png';
+import logoMG from './assets/images/clients/mg-estrategia.png';
+import logoPalomarMarin from './assets/images/clients/palomar-marin.png';
+import logoPeregrina from './assets/images/clients/peregrina.png';
+import logoPulsoWines from './assets/images/clients/pulso-wines.png';
+import logoDesquiciado from './assets/images/clients/desquiciado.png';
+import logoAcacia from './assets/images/clients/acacia.jpg';
 import { usePageMeta } from './hooks/usePageMeta';
 import { 
   ArrowRight, 
@@ -176,6 +188,21 @@ const AbstractBackground = () => {
     />
   );
 };
+
+const CLIENTS = [
+  { name: 'Blue Sky', logo: logoBlueSky, url: 'https://www.blueskysa.com.ar' },
+  { name: 'Concil', logo: logoConcil, url: 'https://www.concil.ar' },
+  { name: 'Deportivo Pradere', logo: logoDeportivoPradere, url: 'https://www.deportivopradere.com.ar' },
+  { name: 'Hay Zonda', logo: logoHayZonda, url: 'https://www.hayzonda.ar' },
+  { name: 'Julia H', logo: logoJuliaH, url: 'https://www.juliah.com.ar' },
+  { name: 'Pinturerías La Española', logo: logoLaEspanola, url: 'https://www.pintureriaslaespanola.com.ar' },
+  { name: 'MG Estrategia Pyme', logo: logoMG, url: 'https://www.mgestrategiapyme.com.ar' },
+  { name: 'Palomar Marín', logo: logoPalomarMarin, url: 'https://www.palomarmarin.com.ar' },
+  { name: 'Peregrina', logo: logoPeregrina, url: 'https://www.peregrina.com.ar' },
+  { name: 'Pulso Wines', logo: logoPulsoWines, url: 'https://www.pulsowines.com.ar' },
+  { name: 'Desquiciado', logo: logoDesquiciado, url: 'https://desquiciado.com' },
+  { name: 'Acacia Paisajismo', logo: logoAcacia, url: null },
+];
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -374,6 +401,42 @@ export default function App() {
               Si sentís que algo tiene que transformarse pero no sabés por dónde empezar; <span className="font-serif italic font-normal text-white">este acompañamiento es para vos.</span>
             </p>
           </motion.div>
+        </section>
+
+        {/* Clientes Section */}
+        <section className="py-20 px-6 md:px-12 bg-transparent relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-10 text-center">
+              Confían en nosotros
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 items-center justify-items-center">
+              {CLIENTS.map((client) => {
+                const img = (
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="max-h-12 md:max-h-14 max-w-[140px] object-contain grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                  />
+                );
+                return client.url ? (
+                  <a
+                    key={client.name}
+                    href={client.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center"
+                    title={client.name}
+                  >
+                    {img}
+                  </a>
+                ) : (
+                  <div key={client.name} className="group flex items-center justify-center" title={client.name}>
+                    {img}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </section>
 
         {/* Método Section */}
