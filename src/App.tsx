@@ -562,18 +562,18 @@ export default function App() {
         </section>
 
         {/* Método Section */}
-        <section className="py-24 px-6 md:px-12 bg-transparent relative z-10" id="metodo">
+        <section className="py-24 px-6 md:px-12 bg-[#35362f] relative z-10" id="metodo">
           <div className="max-w-7xl mx-auto">
             <div className="mb-20 max-w-2xl">
-              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Cómo trabajamos</p>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-stone-900">
-                Alcance cerrado.<br />Precio cerrado.<br /><span className="font-serif italic text-stone-500 font-normal">Sin sorpresas.</span>
+              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">Cómo trabajamos</p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white">
+                Alcance cerrado.<br />Precio cerrado.<br /><span className="font-serif italic text-green-300 font-normal">Sin sorpresas.</span>
               </h2>
             </div>
 
             <div className="relative">
               {/* Línea conectora, solo desktop */}
-              <div className="hidden md:block absolute top-10 left-[8.33%] right-[8.33%] h-px bg-stone-300" />
+              <div className="hidden md:block absolute top-10 left-[8.33%] right-[8.33%] h-px bg-stone-100/15" />
 
               <div className="grid md:grid-cols-3 gap-12 md:gap-8">
                 <motion.div
@@ -583,13 +583,13 @@ export default function App() {
                   className="relative"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-20 h-20 rounded-full bg-stone-900 flex items-center justify-center relative z-10 shrink-0">
-                      <span className="font-display text-2xl font-semibold text-stone-50">01</span>
+                    <div className="w-20 h-20 rounded-full bg-stone-100/10 border border-stone-100/20 flex items-center justify-center relative z-10 shrink-0">
+                      <span className="font-display text-2xl font-semibold text-white">01</span>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-2">3 a 5 días hábiles</p>
-                  <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">Alcance y precio</h3>
-                  <p className="text-stone-600 leading-relaxed">
+                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">3 a 5 días hábiles</p>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-white">Alcance y precio</h3>
+                  <p className="text-stone-300 leading-relaxed">
                     Antes de escribir una línea de código, definimos exactamente qué se construye,
                     en cuánto tiempo y a qué precio, desde USD 1.000. Ese número no cambia a mitad de camino.
                   </p>
@@ -603,13 +603,13 @@ export default function App() {
                   className="relative"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-20 h-20 rounded-full bg-stone-900 flex items-center justify-center relative z-10 shrink-0">
-                      <span className="font-display text-2xl font-semibold text-stone-50">02</span>
+                    <div className="w-20 h-20 rounded-full bg-stone-100/10 border border-stone-100/20 flex items-center justify-center relative z-10 shrink-0">
+                      <span className="font-display text-2xl font-semibold text-white">02</span>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-2">2 a 6 semanas según alcance</p>
-                  <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">Construcción</h3>
-                  <p className="text-stone-600 leading-relaxed">
+                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">2 a 6 semanas según alcance</p>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-white">Construcción</h3>
+                  <p className="text-stone-300 leading-relaxed">
                     Trabajamos por fases entregables, no por una sola entrega al final.
                     Vas viendo el avance real, no una presentación de lo que vamos a hacer.
                   </p>
@@ -623,13 +623,13 @@ export default function App() {
                   className="relative"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-20 h-20 rounded-full bg-green-700 flex items-center justify-center relative z-10 shrink-0">
-                      <span className="font-display text-2xl font-semibold text-stone-50">03</span>
+                    <div className="w-20 h-20 rounded-full bg-green-400 flex items-center justify-center relative z-10 shrink-0">
+                      <span className="font-display text-2xl font-semibold text-green-950">03</span>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-2">Entrega + soporte continuo</p>
-                  <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">En producción</h3>
-                  <p className="text-stone-600 leading-relaxed">
+                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">Entrega + soporte continuo</p>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-white">En producción</h3>
+                  <p className="text-stone-300 leading-relaxed">
                     Entregamos lo que se construyó, funcionando de verdad y en manos de tu equipo.
                     Seguimos disponibles para la siguiente fase cuando la necesites.
                   </p>
@@ -789,11 +789,11 @@ Software a medida.<br />Y automatización que trabaja sola.
         </section>
 
         {/* Contact Section */}
-        <section className="py-24 px-6 md:px-12 bg-transparent relative z-10" id="contacto">
+        <section className="py-24 px-6 md:px-12 bg-[#35362f] relative z-10" id="contacto">
           <div className="max-w-6xl mx-auto">
             <div className="mb-16 max-w-2xl">
-              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">El siguiente paso</p>
-              <p className="text-lg text-stone-600 leading-relaxed">
+              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">El siguiente paso</p>
+              <p className="text-lg text-stone-300 leading-relaxed">
                 Contanos qué necesitás construir o qué proceso te está consumiendo el día. El primer paso es un diagnóstico, sin costo y sin compromiso.
               </p>
             </div>
@@ -802,48 +802,48 @@ Software a medida.<br />Y automatización que trabaja sola.
               <div className="md:col-span-3">
                 <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); const name = (document.getElementById("name") as HTMLInputElement).value; const company = (document.getElementById("company") as HTMLInputElement).value; const process = (document.getElementById("process") as HTMLTextAreaElement).value; const subject = encodeURIComponent(`Consulta de ${name}`); const body = encodeURIComponent(`Nombre: ${name}\nEmpresa: ${company}\n\n${process}`); const a = document.createElement('a'); a.href = `mailto:hola@rubra.ar?subject=${subject}&body=${body}`; a.click(); (e.target as HTMLFormElement).reset(); }}>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-xs font-semibold tracking-widest text-stone-500 uppercase">Nombre completo</label>
+                    <label htmlFor="name" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">Nombre completo</label>
                     <input 
                       id="name"
                       type="text" 
                       placeholder="Ej. Juan Pérez"
                       required
-                      className="w-full bg-transparent border-0 border-b border-stone-300 py-3 text-stone-900 placeholder:text-stone-400 focus:ring-0 focus:border-green-600 transition-colors"
+                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-500 focus:ring-0 focus:border-green-400 transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="company" className="text-xs font-semibold tracking-widest text-stone-500 uppercase">Empresa / Industria</label>
+                    <label htmlFor="company" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">Empresa / Industria</label>
                     <input 
                       id="company"
                       type="text" 
                       placeholder="Ej. Logística Global"
                       required
-                      className="w-full bg-transparent border-0 border-b border-stone-300 py-3 text-stone-900 placeholder:text-stone-400 focus:ring-0 focus:border-green-600 transition-colors"
+                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-500 focus:ring-0 focus:border-green-400 transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
-                    <label htmlFor="process" className="text-xs font-semibold tracking-widest text-stone-500 uppercase">¿Qué proceso deseás profesionalizar?</label>
+                    <label htmlFor="process" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">¿Qué proceso deseás profesionalizar?</label>
                     <textarea 
                       id="process"
                       placeholder="Describí brevemente tu mayor cuello de botella..."
                       rows={3}
                       required
-                      className="w-full bg-transparent border-0 border-b border-stone-300 py-3 text-stone-900 placeholder:text-stone-400 focus:ring-0 focus:border-green-600 transition-colors resize-none"
+                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-500 focus:ring-0 focus:border-green-400 transition-colors resize-none"
                     ></textarea>
                   </div>
-                  <button type="submit" className="self-start bg-green-800 text-stone-50 px-8 py-4 rounded font-medium hover:bg-green-700 transition-colors">
+                  <button type="submit" className="self-start bg-green-400 text-green-950 px-8 py-4 rounded font-semibold hover:bg-green-300 transition-colors">
                     Enviar consulta
                   </button>
                 </form>
               </div>
 
-              <div className="md:col-span-2 flex flex-col justify-center border-t md:border-t-0 md:border-l border-stone-200 pt-12 md:pt-0 md:pl-12 lg:pl-16">
+              <div className="md:col-span-2 flex flex-col justify-center border-t md:border-t-0 md:border-l border-stone-100/15 pt-12 md:pt-0 md:pl-12 lg:pl-16">
                 <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">Sesión en vivo</p>
-                <h3 className="text-2xl font-display font-medium text-stone-900 mb-4">Diagnóstico gratuito</h3>
-                <p className="text-stone-600 leading-relaxed mb-8">
+                <h3 className="text-2xl font-display font-medium text-white mb-4">Diagnóstico gratuito</h3>
+                <p className="text-stone-300 leading-relaxed mb-8">
                   Una sesión de 30 minutos para mapear los cuellos de botella de tu operación y diseñar un plan de acción concreto.
                 </p>
-                <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="inline-block text-center border border-green-700 text-green-800 px-8 py-4 rounded font-medium hover:bg-green-50 transition-colors">
+                <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="inline-block text-center border border-green-400/40 text-green-300 px-8 py-4 rounded font-medium hover:bg-green-400/10 transition-colors">
                   Agendar reunión →
                 </a>
               </div>
@@ -853,7 +853,7 @@ Software a medida.<br />Y automatización que trabaja sola.
       </main>
 
       {/* Footer */}
-      <footer className="bg-stone-900/95 backdrop-blur-md text-stone-400 py-12 px-6 md:px-12 border-t border-stone-800 relative z-10 block">
+      <footer className="bg-[#35362f] text-stone-400 py-12 px-6 md:px-12 border-t border-stone-100/10 relative z-10 block">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
             <div className="flex items-center gap-2.5 mb-2">
