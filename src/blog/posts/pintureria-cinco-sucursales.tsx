@@ -48,7 +48,7 @@ const Content = () => (
     <h2>Cómo se trabajó</h2>
     <p>
       Con el método de siempre: alcance cerrado, precio cerrado, y el proyecto dividido en fases.
-      La Fase 1 —todo lo de arriba— se construyó, se puso en producción y se entregó funcionando.
+      La Fase 1, todo lo de arriba, se construyó, se puso en producción y se entregó funcionando.
       La Fase 2, con pagos online y envíos, ya está diseñada y se activa cuando el negocio
       la necesite.
     </p>
@@ -61,7 +61,7 @@ const Content = () => (
     <h2>El resultado</h2>
     <p>
       Hoy la tienda está en producción y el equipo administra su catálogo
-      —productos, precios, imágenes— de forma completamente autónoma.
+      (productos, precios, imágenes) de forma completamente autónoma.
     </p>
     <p>
       De vender solo por mostrador y WhatsApp, a tener el catálogo abierto las 24 horas

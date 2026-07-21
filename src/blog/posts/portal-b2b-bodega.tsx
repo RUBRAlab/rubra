@@ -39,8 +39,8 @@ const Content = () => (
         al transporte y sigue el estado del envío automáticamente, actualizándolo cada media hora.
       </li>
       <li>
-        <strong>El cliente se entera solo</strong>: cuando el pedido cambia de estado —en preparación,
-        despachado, en tránsito, entregado— le llega un email. Se terminaron los llamados
+        <strong>El cliente se entera solo</strong>: cuando el pedido cambia de estado (en preparación,
+        despachado, en tránsito, entregado) le llega un email. Se terminaron los llamados
         preguntando "¿dónde está mi pedido?".
       </li>
       <li>

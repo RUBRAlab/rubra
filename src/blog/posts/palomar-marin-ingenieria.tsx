@@ -31,8 +31,8 @@ const Content = () => (
         decorativa: el argumento principal.
       </li>
       <li>
-        <strong>Los servicios explicados</strong> —gestión integral, documentación técnica,
-        dirección de obra— en lenguaje de cliente, no de pliego.
+        <strong>Los servicios explicados</strong>: gestión integral, documentación técnica y
+        dirección de obra, en lenguaje de cliente, no de pliego.
       </li>
       <li>
         <strong>Testimonios de quienes ya construyeron con ellos</strong>, que es la única

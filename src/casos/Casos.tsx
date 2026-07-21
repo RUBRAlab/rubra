@@ -5,7 +5,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function Casos() {
   usePageMeta({
-    title: 'Casos | RUBRA lab — Software para pymes de Latinoamérica',
+    title: 'Casos | RUBRA lab: software para pymes de Latinoamérica',
     description:
       'Tiendas online, sistemas de gestión y portales B2B que construimos para pymes e instituciones. Casos reales, en producción.',
     path: '/casos',

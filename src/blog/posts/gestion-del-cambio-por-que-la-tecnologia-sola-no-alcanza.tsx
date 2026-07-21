@@ -3,7 +3,7 @@ import { BlogPost } from '../types'
 const Content = () => (
   <article>
     <p>
-      Hay un patrón que se repite. Una empresa invierte en una herramienta nueva — un CRM, un sistema de
+      Hay un patrón que se repite. Una empresa invierte en una herramienta nueva: un CRM, un sistema de
       gestión, un software de automatización. Los primeros meses todo parece bien. Y después, lentamente,
       el equipo vuelve al Excel.
     </p>
@@ -47,8 +47,8 @@ const Content = () => (
       me sirve esto a mí?</em>
     </p>
     <p>
-      Cuando las personas entienden cómo el cambio les facilita <em>su</em> trabajo —no el trabajo de la
-      empresa en abstracto, sino el de ellas en concreto—, la adopción cambia completamente.
+      Cuando las personas entienden cómo el cambio les facilita <em>su</em> trabajo (no el trabajo de la
+      empresa en abstracto, sino el de ellas en concreto), la adopción cambia completamente.
     </p>
     <p>
       "Ya no vas a tener que cargar esto a mano" es mucho más poderoso que "la empresa va a ser más eficiente."
@@ -89,7 +89,7 @@ const Content = () => (
     </p>
     <p>
       Por eso no entregamos un sistema y nos vamos. El software se diseña alrededor de cómo trabaja
-      el equipo —no al revés—, y se ajusta durante las primeras semanas de uso real, que es cuando
+      el equipo (no al revés), y se ajusta durante las primeras semanas de uso real, que es cuando
       aparecen las cosas que ninguna reunión previa anticipó.
     </p>
     <p>

@@ -75,7 +75,7 @@ export const post: BlogPost = {
   slug: 'concil-producto-propio',
   title: 'CONCIL: cómo construimos nuestro propio producto',
   description:
-    'La conciliación bancaria le consume horas todos los meses a cualquier estudio contable. Construimos un producto para eliminarla — y en el camino aprendimos cosas que hoy aplicamos en cada proyecto.',
+    'La conciliación bancaria le consume horas todos los meses a cualquier estudio contable. Construimos un producto para eliminarla, y en el camino aprendimos cosas que hoy aplicamos en cada proyecto.',
   date: '2026-07-21',
   category: 'Casos',
   readTime: 4,

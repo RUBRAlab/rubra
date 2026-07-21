@@ -59,7 +59,7 @@ const Content = () => (
     <p>
       Un CRM, un sistema de facturación, una planilla de stock, un chat de atención al cliente. Cada uno
       funciona bien por separado. El problema es que no se comunican, entonces alguien tiene que
-      conectarlos a mano — copiando, pegando, verificando.
+      conectarlos a mano: copiando, pegando, verificando.
     </p>
     <p>
       Ese "alguien" podría estar haciendo otra cosa.
@@ -68,8 +68,8 @@ const Content = () => (
     <h3>3. La persona que es el sistema</h3>
     <p>
       Cuando toda la información, los contactos, los criterios y las decisiones viven en la cabeza de
-      una persona, esa persona es el cuello de botella. No porque sea indispensable — aunque a veces
-      lo crea — sino porque el sistema no está diseñado para funcionar sin ella.
+      una persona, esa persona es el cuello de botella. No porque sea indispensable (aunque a veces
+      lo crea), sino porque el sistema no está diseñado para funcionar sin ella.
     </p>
     <p>
       La solución no es prescindir de esa persona. Es hacer que el conocimiento que tiene deje de
@@ -94,8 +94,8 @@ const Content = () => (
       Algo interesante ocurre cuando una empresa resuelve su cuello de botella principal.
     </p>
     <p>
-      No solo mejora la productividad. Mejora el ánimo del equipo — porque dejan de trabajar contra
-      la corriente. Mejora la experiencia del cliente — porque las cosas ocurren más rápido y con menos
+      No solo mejora la productividad. Mejora el ánimo del equipo, porque dejan de trabajar contra
+      la corriente. Mejora la experiencia del cliente, porque las cosas ocurren más rápido y con menos
       errores. Y aparece capacidad de crecimiento real.
     </p>
     <p>

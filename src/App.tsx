@@ -6,7 +6,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
-import heroImage from './assets/images/yo10.png';
+import heroImage from './assets/images/ruperto.png';
 import logoBlueSky from './assets/images/clients/bluesky.png';
 import logoConcil from './assets/images/clients/concil.png';
 import logoDeportivoPradere from './assets/images/clients/deportivo-pradere.png';
@@ -391,7 +391,7 @@ export default function App() {
                   que tu negocio <span className="font-serif italic text-stone-500 font-normal">necesita.</span>
                 </h1>
                 <p className="text-lg md:text-xl text-green-700 max-w-xl mb-10 leading-relaxed">
-                  Tiendas online, sistemas de gestión y automatización con IA para pymes de Latinoamérica. Alcance cerrado, precio cerrado, y en producción — no en una presentación.
+                  Tiendas online, sistemas de gestión y automatización con IA para pymes de Latinoamérica. Alcance cerrado, precio cerrado, y en producción, no en una presentación.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-800 transition-all hover:shadow-lg hover:shadow-green-900/20 flex items-center gap-2 group">
@@ -412,7 +412,7 @@ export default function App() {
               >
                 <img 
                   src={heroImage} 
-                  alt="Modern architecture" 
+                  alt="Ruperto Bravo, fundador de RUBRA lab" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -476,81 +476,74 @@ export default function App() {
         {/* Método Section */}
         <section className="py-24 px-6 md:px-12 bg-transparent relative z-10" id="metodo">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-stone-900">
-                Cómo trabajamos
+            <div className="mb-20 max-w-2xl">
+              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Cómo trabajamos</p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-stone-900">
+                Alcance cerrado.<br />Precio cerrado.<br /><span className="font-serif italic text-stone-500 font-normal">Sin sorpresas.</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white/70 backdrop-blur-md rounded-[2rem] p-8 md:p-10 border border-stone-200/50 hover:shadow-xl hover:shadow-stone-200/50 transition-shadow flex flex-col items-start"
-              >
-                <span className="font-mono text-sm font-semibold text-green-600 mb-8 border border-green-200 bg-green-50 px-2 py-1 rounded">01</span>
-                <div className="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mb-6 text-stone-900">
-                  <svg width="24" height="24" viewBox="0 0 34 34" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <circle cx="17" cy="17" r="11"/>
-                    <circle cx="17" cy="17" r="4.5"/>
-                    <line x1="17" y1="6" x2="17" y2="9"/>
-                    <line x1="17" y1="25" x2="17" y2="28"/>
-                    <line x1="6" y1="17" x2="9" y2="17"/>
-                    <line x1="25" y1="17" x2="28" y2="17"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-display font-medium mb-4 text-stone-900">Diagnóstico</h3>
-                <p className="text-stone-600 leading-relaxed">
-                  Antes de tocar nada, entendemos tu negocio. Nos sentamos con vos, mapeamos cómo trabaja tu equipo hoy y encontramos <strong className="font-medium text-stone-900">dónde se pierde tiempo, plata o energía</strong> sin que nadie lo note. De ahí sale un plan concreto, no genérico.
-                </p>
-              </motion.div>
+            <div className="relative">
+              {/* Línea conectora, solo desktop */}
+              <div className="hidden md:block absolute top-10 left-[8.33%] right-[8.33%] h-px bg-stone-300" />
 
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-white/70 backdrop-blur-md rounded-[2rem] p-8 md:p-10 border border-stone-200/50 hover:shadow-xl hover:shadow-stone-200/50 transition-shadow flex flex-col items-start"
-              >
-                <span className="font-mono text-sm font-semibold text-green-600 mb-8 border border-green-200 bg-green-50 px-2 py-1 rounded">02</span>
-                <div className="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mb-6 text-stone-900">
-                  <svg width="24" height="24" viewBox="0 0 34 34" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="6" y="11" width="8" height="10" rx="1"/>
-                    <rect x="19" y="11" width="8" height="10" rx="1"/>
-                    <path d="M14 16 L19 16"/>
-                    <path d="M10 6 L10 11"/>
-                    <path d="M23 6 L23 11"/>
-                    <path d="M10 21 L10 27"/>
-                    <path d="M23 21 L23 27"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-display font-medium mb-4 text-stone-900">Implementación</h3>
-                <p className="text-stone-600 leading-relaxed">
-                  Ponemos en marcha las herramientas y acompañamos a tu equipo en el camino. <strong className="font-medium text-stone-900">No dejamos un manual y nos vamos</strong>; estamos hasta que el cambio funciona de verdad en el día a día, sin resistencia ni confusión.
-                </p>
-              </motion.div>
+              <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-20 h-20 rounded-full bg-stone-900 flex items-center justify-center relative z-10 shrink-0">
+                      <span className="font-display text-2xl font-semibold text-stone-50">01</span>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">Alcance y precio</h3>
+                  <p className="text-stone-600 leading-relaxed">
+                    Antes de escribir una línea de código, definimos exactamente qué se construye,
+                    en cuánto tiempo y a qué precio. Ese número no cambia a mitad de camino.
+                  </p>
+                </motion.div>
 
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="bg-white/70 backdrop-blur-md rounded-[2rem] p-8 md:p-10 border border-stone-200/50 hover:shadow-xl hover:shadow-stone-200/50 transition-shadow flex flex-col items-start"
-              >
-                <span className="font-mono text-sm font-semibold text-green-600 mb-8 border border-green-200 bg-green-50 px-2 py-1 rounded">03</span>
-                <div className="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mb-6 text-stone-900">
-                  <svg width="24" height="24" viewBox="0 0 34 34" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M8 25 C8 25 12 15 17 15 C22 15 26 9 26 9" strokeLinecap="round"/>
-                    <path d="M22 9 L26 9 L26 13" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="17" cy="27" r="1.8" fill="currentColor" fillOpacity=".3" stroke="none"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-display font-medium mb-4 text-stone-900">Evolución</h3>
-                <p className="text-stone-600 leading-relaxed">
-                  El trabajo no termina con la entrega. Revisamos, ajustamos y mejoramos los sistemas junto a vos. <strong className="font-medium text-stone-900">Tu empresa sigue creciendo</strong> y nosotros nos aseguramos de que las herramientas crezcan con ella.
-                </p>
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.12 }}
+                  className="relative"
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-20 h-20 rounded-full bg-stone-900 flex items-center justify-center relative z-10 shrink-0">
+                      <span className="font-display text-2xl font-semibold text-stone-50">02</span>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">Construcción</h3>
+                  <p className="text-stone-600 leading-relaxed">
+                    Trabajamos por fases entregables, no por una sola entrega al final.
+                    Vas viendo el avance real, no una presentación de lo que vamos a hacer.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.24 }}
+                  className="relative"
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-20 h-20 rounded-full bg-green-700 flex items-center justify-center relative z-10 shrink-0">
+                      <span className="font-display text-2xl font-semibold text-stone-50">03</span>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">En producción</h3>
+                  <p className="text-stone-600 leading-relaxed">
+                    Entregamos lo que se construyó, funcionando de verdad y en manos de tu equipo.
+                    Seguimos disponibles para la siguiente fase cuando la necesites.
+                  </p>
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -641,7 +634,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                 </div>
                 <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Sistemas de gestión</h3>
                 <p className="text-stone-400 leading-relaxed">
-                  Clientes, cobranzas, stock, pedidos. El sistema que tu operación necesita, hecho a la medida de cómo trabajás — no al revés.
+                  Clientes, cobranzas, stock, pedidos. El sistema que tu operación necesita, hecho a la medida de cómo trabajás, no al revés.
                 </p>
               </div>
 

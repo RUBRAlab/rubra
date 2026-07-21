@@ -11,12 +11,12 @@ const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf-8')
 const routes = [
   {
     path: '/blog',
-    title: 'Blog | RUBRA lab — Automatización y procesos para pymes',
+    title: 'Blog | RUBRA lab: automatización y procesos para pymes',
     description: 'Artículos sobre automatización de procesos, cuellos de botella y gestión del cambio para pymes de Latinoamérica.',
   },
   {
     path: '/casos',
-    title: 'Casos | RUBRA lab — Software para pymes de Latinoamérica',
+    title: 'Casos | RUBRA lab: software para pymes de Latinoamérica',
     description: 'Tiendas online, sistemas de gestión y portales B2B que construimos para pymes e instituciones. Casos reales, en producción.',
   },
   {
@@ -37,7 +37,7 @@ const routes = [
   {
     path: '/casos/concil-producto-propio',
     title: 'CONCIL: cómo construimos nuestro propio producto | RUBRA',
-    description: 'La conciliación bancaria le consume horas todos los meses a cualquier estudio contable. Construimos un producto para eliminarla — y en el camino aprendimos cosas que hoy aplicamos en cada proyecto.',
+    description: 'La conciliación bancaria le consume horas todos los meses a cualquier estudio contable. Construimos un producto para eliminarla, y en el camino aprendimos cosas que hoy aplicamos en cada proyecto.',
   },
   {
     path: '/casos/portal-b2b-bodega',
@@ -67,7 +67,7 @@ const routes = [
   {
     path: '/blog/como-automatizar-procesos-sin-volverse-loco',
     title: 'Cómo automatizar procesos en tu empresa sin volverse loco | RUBRA',
-    description: 'Automatizar no es un proyecto enorme ni requiere robots. Es eliminar las tareas repetitivas que consumen el tiempo y la energía de tu equipo — y hay un único lugar correcto por donde empezar.',
+    description: 'Automatizar no es un proyecto enorme ni requiere robots. Es eliminar las tareas repetitivas que consumen el tiempo y la energía de tu equipo, y hay un único lugar correcto por donde empezar.',
   },
   {
     path: '/blog/senales-de-que-tu-empresa-necesita-automatizar',

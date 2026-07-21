@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Crawlers de asistentes de IA — permitidos explícitamente
+# Crawlers de asistentes de IA: permitidos explícitamente
 User-agent: GPTBot
 Allow: /
 

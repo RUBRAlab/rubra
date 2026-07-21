@@ -57,7 +57,7 @@ const Content = () => (
     </p>
     <p>
       Las empresas que mejor usan la tecnología no tienen menos personas. Tienen personas haciendo cosas
-      que importan — resolver problemas, atender clientes, tomar decisiones — en lugar de cargar datos en
+      que importan (resolver problemas, atender clientes, tomar decisiones) en lugar de cargar datos en
       un formulario que podría cargarse solo.
     </p>
     <p>
@@ -74,7 +74,7 @@ const Content = () => (
       más errores genera. Automatizarlo bien, ver el resultado, y recién ahí ir por el siguiente.
     </p>
     <p>
-      El primer resultado convence a todos — al dueño, al equipo, al contador que era escéptico.
+      El primer resultado convence a todos: al dueño, al equipo, al contador que era escéptico.
     </p>
 
     <h2>Lo que se recupera no es tiempo. Es energía.</h2>
@@ -89,7 +89,7 @@ const Content = () => (
     <p>
       Automatizar es una decisión de negocio antes que una decisión técnica: primero se define cómo querés
       que trabaje tu empresa, y después se construye el sistema que lo hace posible. Ese es exactamente
-      nuestro trabajo — podés ver <a href="/casos">cómo lo resolvimos en otros negocios</a>.
+      nuestro trabajo. Podés ver <a href="/casos">cómo lo resolvimos en otros negocios</a>.
     </p>
   </article>
 )
@@ -97,7 +97,7 @@ const Content = () => (
 export const post: BlogPost = {
   slug: 'como-automatizar-procesos-sin-volverse-loco',
   title: 'Cómo automatizar procesos en tu empresa sin volverse loco',
-  description: 'Automatizar no es un proyecto enorme ni requiere robots. Es eliminar las tareas repetitivas que consumen el tiempo y la energía de tu equipo — y hay un único lugar correcto por donde empezar.',
+  description: 'Automatizar no es un proyecto enorme ni requiere robots. Es eliminar las tareas repetitivas que consumen el tiempo y la energía de tu equipo, y hay un único lugar correcto por donde empezar.',
   date: '2026-06-06',
   category: 'Automatización',
   readTime: 4,
