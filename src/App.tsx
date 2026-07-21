@@ -744,7 +744,7 @@ export default function App() {
         </section>
 
         {/* Servicios Section */}
-        <section className="py-24 px-6 md:px-12 bg-stone-900/95 backdrop-blur-md text-stone-50" id="servicios">
+        <section className="py-24 px-6 md:px-12 bg-[#35362f] text-stone-50" id="servicios">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
               <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">Qué construimos</p>
@@ -753,36 +753,36 @@ Software a medida.<br />Y automatización que trabaja sola.
               </h2>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-px bg-stone-800 rounded-[2rem] overflow-hidden border border-stone-800">
-              <div className="bg-stone-900 p-8 md:p-12 hover:bg-stone-800/80 transition-colors">
-                <div className="w-12 h-12 rounded bg-stone-800 border border-stone-700 flex items-center justify-center text-green-400 mb-8">
+            <div className="grid md:grid-cols-3 gap-px bg-stone-100/15 rounded-[2rem] overflow-hidden border border-stone-100/15">
+              <div className="bg-[#35362f] p-8 md:p-12 hover:bg-stone-100/5 transition-colors">
+                <div className="w-12 h-12 rounded bg-stone-100/10 border border-stone-100/20 flex items-center justify-center text-green-400 mb-8">
                   <svg width="24" height="24" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <rect x="2" y="3" width="14" height="11" rx="1"/>
                     <line x1="5" y1="7" x2="13" y2="7"/>
                     <line x1="5" y1="10" x2="10" y2="10"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Tiendas online</h3>
+                <h3 className="text-2xl font-display font-medium text-white mb-4">Tiendas online</h3>
                 <p className="text-stone-300 leading-relaxed">
                   Ecommerce y portales de venta mayorista con catálogo, pedidos y pagos. Tu equipo carga productos y precios sin llamar a nadie.
                 </p>
               </div>
 
-              <div className="bg-stone-900 p-8 md:p-12 hover:bg-stone-800/80 transition-colors">
-                <div className="w-12 h-12 rounded bg-stone-800 border border-stone-700 flex items-center justify-center text-green-400 mb-8">
+              <div className="bg-[#35362f] p-8 md:p-12 hover:bg-stone-100/5 transition-colors">
+                <div className="w-12 h-12 rounded bg-stone-100/10 border border-stone-100/20 flex items-center justify-center text-green-400 mb-8">
                   <svg width="24" height="24" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <circle cx="9" cy="5.5" r="2.5"/>
                     <path d="M3 15 C3 15 4.5 10 9 10 C13.5 10 15 15 15 15" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Sistemas de gestión</h3>
+                <h3 className="text-2xl font-display font-medium text-white mb-4">Sistemas de gestión</h3>
                 <p className="text-stone-300 leading-relaxed">
                   Clientes, cobranzas, stock, pedidos. El sistema que tu operación necesita, hecho a la medida de cómo trabajás, no al revés.
                 </p>
               </div>
 
-              <div className="bg-stone-900 p-8 md:p-12 hover:bg-stone-800/80 transition-colors">
-                <div className="w-12 h-12 rounded bg-stone-800 border border-stone-700 flex items-center justify-center text-green-400 mb-8">
+              <div className="bg-[#35362f] p-8 md:p-12 hover:bg-stone-100/5 transition-colors">
+                <div className="w-12 h-12 rounded bg-stone-100/10 border border-stone-100/20 flex items-center justify-center text-green-400 mb-8">
                   <svg width="24" height="24" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <rect x="2" y="2" width="6" height="6" rx=".5"/>
                     <rect x="10" y="2" width="6" height="6" rx=".5"/>
@@ -790,7 +790,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                     <rect x="10" y="10" width="6" height="6" rx=".5"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Automatización con IA</h3>
+                <h3 className="text-2xl font-display font-medium text-white mb-4">Automatización con IA</h3>
                 <p className="text-stone-300 leading-relaxed">
                   Las tareas repetitivas que hoy hace una persona, hechas por un agente: cargar datos, responder consultas, cruzar información, avisar.
                 </p>
