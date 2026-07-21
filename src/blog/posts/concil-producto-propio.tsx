@@ -72,7 +72,7 @@ const Content = () => (
 )
 
 export const post: BlogPost = {
-  slug: 'caso-concil-producto-propio',
+  slug: 'concil-producto-propio',
   title: 'CONCIL: cómo construimos nuestro propio producto',
   description:
     'La conciliación bancaria le consume horas todos los meses a cualquier estudio contable. Construimos un producto para eliminarla — y en el camino aprendimos cosas que hoy aplicamos en cada proyecto.',

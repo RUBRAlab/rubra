@@ -1,5 +1,5 @@
-import { Link, useParams, Navigate } from 'react-router-dom'
-import { posts } from './posts'
+import { Link, useParams, Navigate, useLocation } from 'react-router-dom'
+import { posts, basePath } from './posts'
 import { ArrowLeft } from 'lucide-react'
 import { usePageMeta } from '../hooks/usePageMeta'
 
@@ -11,15 +11,21 @@ const formatDate = (dateStr: string) => {
 
 export default function Post() {
   const { slug } = useParams<{ slug: string }>()
+  const location = useLocation()
   const post = posts.find(p => p.slug === slug)
+  const base = post ? basePath(post.category) : '/blog'
+  // Un caso vive en /casos y un artículo en /blog: si se entra por la ruta
+  // equivocada, redirigimos a la canónica en vez de duplicar contenido.
+  const rutaCorrecta = location.pathname.startsWith(base)
 
   usePageMeta({
     title: post ? `${post.title} | RUBRA` : 'RUBRA | Transformación organizacional para empresas',
     description: post ? post.description : 'Acompañamos a líderes, equipos y organizaciones a transformarse de forma simple, humana y consciente.',
-    path: post ? `/blog/${post.slug}` : '/blog',
+    path: post ? `${base}/${post.slug}` : '/blog',
   })
 
   if (!post) return <Navigate to="/blog" replace />
+  if (!rutaCorrecta) return <Navigate to={`${base}/${post.slug}`} replace />
 
   const Content = post.content
 
@@ -32,8 +38,8 @@ export default function Post() {
             <span className="font-display text-3xl font-bold tracking-tight text-stone-900">RUBRA</span>
             <span className="font-display text-3xl font-light text-green-600 ml-1.5">lab</span>
           </Link>
-          <Link to="/blog" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors flex items-center gap-2">
-            <ArrowLeft className="w-4 h-4" /> Blog
+          <Link to={base} className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors flex items-center gap-2">
+            <ArrowLeft className="w-4 h-4" /> {base === '/casos' ? 'Casos' : 'Blog'}
           </Link>
         </div>
       </nav>

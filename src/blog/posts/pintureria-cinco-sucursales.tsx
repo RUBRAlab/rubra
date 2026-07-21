@@ -75,7 +75,7 @@ const Content = () => (
 )
 
 export const post: BlogPost = {
-  slug: 'caso-pintureria-cinco-sucursales',
+  slug: 'pintureria-cinco-sucursales',
   title: 'De vender por mostrador a una tienda online con 5 sucursales',
   description:
     'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a tener su catálogo online, pedidos automáticos y un panel para administrar todo sin depender de nadie técnico.',

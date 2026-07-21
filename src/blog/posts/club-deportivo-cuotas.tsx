@@ -81,7 +81,7 @@ const Content = () => (
 )
 
 export const post: BlogPost = {
-  slug: 'caso-club-deportivo-cuotas',
+  slug: 'club-deportivo-cuotas',
   title: 'Un club de 86 años que dejó de conciliar cuotas a mano',
   description:
     'Cómo el Club Deportivo Social Juan A. Pradere pasó de cruzar transferencias bancarias con nombres en una planilla, a un sistema de socios con pagos online, roles y avisos automáticos.',

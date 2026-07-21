@@ -80,7 +80,7 @@ const Content = () => (
 )
 
 export const post: BlogPost = {
-  slug: 'caso-portal-b2b-bodega',
+  slug: 'portal-b2b-bodega',
   title: 'Un portal B2B para que una bodega deje de vender por WhatsApp',
   description:
     'Cómo construimos para Desquiciado Wines un portal de venta mayorista con listas de precios por cliente, pedidos en minutos y seguimiento logístico automático.',

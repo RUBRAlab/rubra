@@ -1,3 +1,30 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "redirects": [
+    {
+      "source": "/blog/caso-pintureria-cinco-sucursales",
+      "destination": "/casos/pintureria-cinco-sucursales",
+      "permanent": true
+    },
+    {
+      "source": "/blog/caso-club-deportivo-cuotas",
+      "destination": "/casos/club-deportivo-cuotas",
+      "permanent": true
+    },
+    {
+      "source": "/blog/caso-portal-b2b-bodega",
+      "destination": "/casos/portal-b2b-bodega",
+      "permanent": true
+    },
+    {
+      "source": "/blog/caso-concil-producto-propio",
+      "destination": "/casos/concil-producto-propio",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }

@@ -198,25 +198,25 @@ const NAV_LINKS = [
 
 const CASOS = [
   {
-    slug: 'caso-pintureria-cinco-sucursales',
+    slug: 'pintureria-cinco-sucursales',
     rubro: 'Retail · 5 sucursales',
     titulo: 'De vender por mostrador a una tienda online',
     resumen: 'Una pinturería de La Rioja con su catálogo abierto las 24 horas y un panel donde su equipo carga productos y precios sin depender de nadie.',
   },
   {
-    slug: 'caso-club-deportivo-cuotas',
+    slug: 'club-deportivo-cuotas',
     rubro: 'Institución · 86 años',
     titulo: 'Un club que dejó de conciliar cuotas a mano',
     resumen: 'Padrón de socios, pagos online, roles por comisión y avisos por WhatsApp para el Club Deportivo Social Juan A. Pradere.',
   },
   {
-    slug: 'caso-portal-b2b-bodega',
+    slug: 'portal-b2b-bodega',
     rubro: 'Bodega · Venta mayorista',
     titulo: 'Un portal B2B para dejar de vender por WhatsApp',
     resumen: 'Listas de precios por cliente, pedidos en minutos y seguimiento logístico automático para Desquiciado Wines.',
   },
   {
-    slug: 'caso-concil-producto-propio',
+    slug: 'concil-producto-propio',
     rubro: 'Producto propio · SaaS',
     titulo: 'CONCIL: construimos nuestro propio producto',
     resumen: 'Conciliación bancaria para estudios contables, con suscripciones recurrentes y multi-cuenta. En producción en concil.ar.',
@@ -575,7 +575,7 @@ export default function App() {
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                 >
                   <Link
-                    to={`/blog/${caso.slug}`}
+                    to={`/casos/${caso.slug}`}
                     className="group block h-full bg-white/70 backdrop-blur-md rounded-[2rem] p-8 md:p-10 border border-stone-200 hover:border-green-600/40 hover:shadow-lg hover:shadow-green-900/5 transition-all"
                   >
                     <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-4">
@@ -594,6 +594,15 @@ export default function App() {
                   </Link>
                 </motion.div>
               ))}
+            </div>
+
+            <div className="mt-12">
+              <Link
+                to="/casos"
+                className="inline-flex items-center gap-2 text-green-800 font-medium hover:gap-3 transition-all"
+              >
+                Ver todos los casos <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </section>

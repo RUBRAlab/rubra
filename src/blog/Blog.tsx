@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { posts } from './posts'
+import { articulos } from './posts'
 import { ArrowRight } from 'lucide-react'
 import { usePageMeta } from '../hooks/usePageMeta'
 
@@ -12,8 +12,8 @@ const formatDate = (dateStr: string) => {
 
 export default function Blog() {
   usePageMeta({
-    title: 'Blog | RUBRA — Transformación organizacional',
-    description: 'Artículos sobre transformación organizacional, automatización de procesos y gestión del cambio para empresas en Argentina.',
+    title: 'Blog | RUBRA lab — Automatización y procesos para pymes',
+    description: 'Artículos sobre automatización de procesos, cuellos de botella y gestión del cambio para pymes de Latinoamérica.',
     path: '/blog',
   })
 
@@ -38,11 +38,11 @@ export default function Blog() {
         <div className="max-w-3xl mx-auto">
           <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Blog</p>
           <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-stone-900 mb-16">
-            Ideas para organizaciones que quieren cambiar.
+            Ideas para negocios que quieren\n            dejar de hacer las cosas a mano.
           </h1>
 
           <div className="flex flex-col gap-12">
-            {posts.map((post) => (
+            {articulos.map((post) => (
               <article key={post.slug} className="border-t border-stone-200 pt-10">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-xs font-semibold tracking-widest text-green-700 uppercase">{post.category}</span>
