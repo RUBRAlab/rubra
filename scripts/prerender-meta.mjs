@@ -15,6 +15,11 @@ const routes = [
     description: 'Artículos sobre transformación organizacional, automatización de procesos y gestión del cambio para empresas en Argentina.',
   },
   {
+    path: '/blog/caso-pintureria-cinco-sucursales',
+    title: 'De vender por mostrador a una tienda online con 5 sucursales | RUBRA',
+    description: 'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a tener su catálogo online, pedidos automáticos y un panel para administrar todo sin depender de nadie técnico.',
+  },
+  {
     path: '/blog/cuellos-de-botella-el-enemigo-silencioso',
     title: 'Cuellos de botella: el enemigo silencioso que frena el crecimiento | RUBRA',
     description: 'Muchas empresas creen que necesitan más clientes para crecer. El problema casi siempre está adentro. Cómo identificar el punto que está frenando todo y qué hacer para eliminarlo.',
