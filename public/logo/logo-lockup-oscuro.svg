@@ -1,0 +1,24 @@
+<svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg">
+  
+<style>
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-weight: 700;
+    src: url('file:///private/tmp/claude-501/-Users-rupertobravo-PROYECTOS/45bd4625-f875-4ea3-af89-52f8e633930e/scratchpad/spacegrotesk-700.ttf');
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-weight: 500;
+    src: url('file:///private/tmp/claude-501/-Users-rupertobravo-PROYECTOS/45bd4625-f875-4ea3-af89-52f8e633930e/scratchpad/spacegrotesk-500.ttf');
+  }
+</style>
+
+  <rect x="0" y="0" width="560" height="160" fill="#35362f"/>
+  <g transform="translate(40,49.6) scale(1.9)">
+    <rect x="1" y="18" width="13" height="13" rx="2.5" fill="#ffffff"/>
+    <rect x="17" y="18" width="13" height="13" rx="2.5" fill="#ffffff"/>
+    <rect x="1" y="2" width="13" height="13" rx="2.5" fill="#ffffff"/>
+    <rect x="19" y="0" width="13" height="13" rx="2.5" fill="#4ade80"/>
+  </g>
+  <text x="128.8" y="80.0" dominant-baseline="central" font-family="Space Grotesk" font-weight="700" font-size="72" letter-spacing="-1" fill="#ffffff">RUBRA<tspan font-weight="500" fill="#4ade80" dx="6">lab</tspan></text>
+</svg>
