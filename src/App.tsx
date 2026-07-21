@@ -203,6 +203,25 @@ const AbstractBackground = () => {
   );
 };
 
+/**
+ * Isotipo: cuatro bloques, el de arriba a la derecha separado y en verde.
+ * Es la tesis del sitio hecha marca: no falta "más software", falta la pieza que no está.
+ */
+const Isotipo = ({ className = '' }: { className?: string }) => (
+  <svg viewBox="0 0 32 32" className={className} fill="none" aria-hidden="true">
+    <rect x="1" y="18" width="13" height="13" rx="2.5" fill="currentColor" />
+    <rect x="17" y="18" width="13" height="13" rx="2.5" fill="currentColor" />
+    <rect x="1" y="2" width="13" height="13" rx="2.5" fill="currentColor" />
+    <rect x="19" y="0" width="13" height="13" rx="2.5" className="text-green-500" fill="currentColor" />
+  </svg>
+);
+
+const HERO_STATS = [
+  { valor: '12', etiqueta: 'Proyectos en producción' },
+  { valor: '2–6', etiqueta: 'Semanas de construcción' },
+  { valor: 'USD 1.000', etiqueta: 'Desde', destacado: true },
+];
+
 const NAV_LINKS = [
   { label: 'Casos', href: '#casos' },
   { label: 'Método', href: '#metodo' },
@@ -312,19 +331,21 @@ export default function App() {
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <motion.a 
+          <motion.a
             href="#"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-baseline overflow-hidden group"
+            className="flex items-center gap-2.5 overflow-hidden group"
           >
+            <Isotipo className={`w-7 h-7 md:w-8 md:h-8 shrink-0 transition-colors duration-300 ${isScrolled ? 'text-stone-900' : 'text-stone-100'}`} />
+            <motion.div className="flex items-baseline">
             <motion.div className="flex">
               {"RUBRA".split('').map((letter, index) => (
                 <motion.span
                   key={index}
-                  className="font-display text-3xl md:text-4xl font-bold tracking-tight text-stone-900 leading-none"
+                  className={`font-display text-3xl md:text-4xl font-bold tracking-tight leading-none transition-colors duration-300 ${isScrolled ? 'text-stone-900' : 'text-white'}`}
                   initial={{ y: 0 }}
-                  whileHover={{ y: -6, color: '#15803d' }}
+                  whileHover={{ y: -6, color: '#22c55e' }}
                   transition={{
                     type: "spring",
                     stiffness: 300,
@@ -340,7 +361,7 @@ export default function App() {
               {"lab".split('').map((letter, index) => (
                 <motion.span
                   key={index}
-                  className="font-display text-3xl md:text-4xl font-light text-green-600 leading-none"
+                  className={`font-display text-3xl md:text-4xl font-light leading-none transition-colors duration-300 ${isScrolled ? 'text-green-600' : 'text-green-400'}`}
                   initial={{ y: 0 }}
                   whileHover={{ y: 4, rotate: (index % 2 === 0 ? 5 : -5) }}
                   transition={{
@@ -354,18 +375,19 @@ export default function App() {
                 </motion.span>
               ))}
             </div>
+            </motion.div>
           </motion.a>
 
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/blog" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Blog</Link>
+            <Link to="/blog" className={`text-sm font-medium transition-colors ${isScrolled ? 'text-stone-600 hover:text-stone-900' : 'text-stone-300 hover:text-white'}`}>Blog</Link>
             {NAV_LINKS.map((item, i) => (
-              <motion.a 
+              <motion.a
                 key={item.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i }}
-                href={item.href} 
-                className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
+                href={item.href}
+                className={`text-sm font-medium transition-colors ${isScrolled ? 'text-stone-600 hover:text-stone-900' : 'text-stone-300 hover:text-white'}`}
               >
                 {item.label}
               </motion.a>
@@ -375,16 +397,17 @@ export default function App() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
               href="#contacto"
-              className="bg-green-800 text-stone-50 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-green-700 transition-colors flex items-center gap-2 group"
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-colors flex items-center gap-2 group ${isScrolled ? 'bg-green-800 text-stone-50 hover:bg-green-700' : 'bg-green-400 text-green-950 hover:bg-green-300'}`}
             >
               Hablemos
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </div>
 
-          <button 
-            className="md:hidden text-stone-900"
+          <button
+            className={`md:hidden transition-colors ${mobileMenuOpen || isScrolled ? 'text-stone-900' : 'text-white'}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
             {mobileMenuOpen ? <X /> : <Menu />}
           </button>
@@ -421,7 +444,10 @@ export default function App() {
 
       <main className="relative z-10 block">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 md:px-12">
+        <section className="relative bg-[#35362f] pt-32 pb-16 md:pt-48 md:pb-20 px-6 md:px-12 overflow-hidden">
+          {/* Halo verde: da profundidad sin competir con el texto */}
+          <div className="pointer-events-none absolute -top-1/3 -left-1/4 w-[900px] h-[600px] rounded-full bg-green-500/10 blur-3xl" />
+
           <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-7 relative">
               <motion.div
@@ -429,43 +455,59 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] font-display font-semibold tracking-tight text-stone-900 mb-6">
+                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] font-display font-semibold tracking-tight text-white mb-6">
                   Construimos el software <br />
-                  que tu negocio <span className="font-serif italic text-stone-500 font-normal">necesita.</span>
+                  que tu negocio <span className="font-serif italic text-green-300 font-normal">necesita.</span>
                 </h1>
-                <p className="text-lg md:text-xl text-green-700 max-w-xl mb-10 leading-relaxed">
+                <p className="text-lg md:text-xl text-stone-300 max-w-xl mb-10 leading-relaxed">
                   Tiendas online, sistemas de gestión y automatización con IA para pymes de Latinoamérica. Alcance cerrado, precio cerrado, y en producción, no en una presentación.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
-                  <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-800 transition-all hover:shadow-lg hover:shadow-green-900/20 flex items-center gap-2 group">
+                  <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-green-400 text-green-950 px-8 py-4 rounded-full font-semibold hover:bg-green-300 transition-all hover:shadow-lg hover:shadow-green-400/20 flex items-center gap-2 group">
                     Agendar reunión
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a href="#contacto" className="px-8 py-4 rounded-full font-medium border border-stone-300 text-stone-900 hover:bg-stone-100 transition-colors">
+                  <a href="#contacto" className="px-8 py-4 rounded-full font-medium border border-stone-100/25 text-stone-100 hover:bg-stone-100/10 transition-colors">
                     Hacer consulta
                   </a>
                 </div>
-                <p className="mt-6 text-sm text-stone-600">
-                  Proyectos desde <span className="font-semibold text-stone-800">USD 1.000</span>, con alcance y precio cerrados en la propuesta.
-                </p>
               </motion.div>
             </div>
-            
+
             <div className="lg:col-span-5 relative">
-              <motion.div 
+              <motion.div
                 style={{ y: y1, opacity }}
-                className="relative aspect-[4/5] rounded-[2rem] overflow-hidden"
+                className="relative aspect-[4/5] rounded-[2rem] overflow-hidden ring-1 ring-green-400/20"
               >
-                <img 
-                  src={heroImage} 
-                  alt="Ruperto Bravo, fundador de RUBRA lab" 
+                <img
+                  src={heroImage}
+                  alt="Ruperto Bravo, fundador de RUBRA lab"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#35362f] via-transparent to-transparent" />
               </motion.div>
             </div>
           </div>
+
+          {/* Stats: los números que sostienen la promesa del título */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="max-w-7xl mx-auto relative z-10 mt-14 md:mt-20 pt-10 border-t border-stone-100/15 grid grid-cols-3 gap-6 md:gap-12 md:max-w-2xl md:mx-0"
+          >
+            {HERO_STATS.map((stat) => (
+              <div key={stat.etiqueta}>
+                <p className={`font-display text-2xl md:text-4xl font-semibold tracking-tight tabular-nums ${stat.destacado ? 'text-green-400' : 'text-white'}`}>
+                  {stat.valor}
+                </p>
+                <p className="mt-1.5 text-[0.7rem] md:text-xs font-medium uppercase tracking-widest text-stone-400 leading-snug">
+                  {stat.etiqueta}
+                </p>
+              </div>
+            ))}
+          </motion.div>
         </section>
 
         {/* Band */}
@@ -669,7 +711,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                   </svg>
                 </div>
                 <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Tiendas online</h3>
-                <p className="text-stone-400 leading-relaxed">
+                <p className="text-stone-300 leading-relaxed">
                   Ecommerce y portales de venta mayorista con catálogo, pedidos y pagos. Tu equipo carga productos y precios sin llamar a nadie.
                 </p>
               </div>
@@ -682,7 +724,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                   </svg>
                 </div>
                 <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Sistemas de gestión</h3>
-                <p className="text-stone-400 leading-relaxed">
+                <p className="text-stone-300 leading-relaxed">
                   Clientes, cobranzas, stock, pedidos. El sistema que tu operación necesita, hecho a la medida de cómo trabajás, no al revés.
                 </p>
               </div>
@@ -697,7 +739,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                   </svg>
                 </div>
                 <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Automatización con IA</h3>
-                <p className="text-stone-400 leading-relaxed">
+                <p className="text-stone-300 leading-relaxed">
                   Las tareas repetitivas que hoy hace una persona, hechas por un agente: cargar datos, responder consultas, cruzar información, avisar.
                 </p>
               </div>
@@ -814,18 +856,21 @@ Software a medida.<br />Y automatización que trabaja sola.
       <footer className="bg-stone-900/95 backdrop-blur-md text-stone-400 py-12 px-6 md:px-12 border-t border-stone-800 relative z-10 block">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
-            <div className="font-display font-bold tracking-widest text-stone-300 mb-2">RUBRA LAB</div>
-            <p className="text-sm text-stone-500">
+            <div className="flex items-center gap-2.5 mb-2">
+              <Isotipo className="w-6 h-6 text-stone-300" />
+              <span className="font-display font-bold tracking-widest text-stone-300">RUBRA LAB</span>
+            </div>
+            <p className="text-sm text-stone-400">
               © {new Date().getFullYear()} RUBRA Lab · Software y automatización con IA para pymes.
             </p>
           </div>
-          
-          <div className="flex items-center gap-6 text-sm text-stone-500">
+
+          <div className="flex items-center gap-6 text-sm text-stone-400">
             <a
               href="https://crm.rubra.ar/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-stone-300 transition-colors"
+              className="hover:text-white transition-colors"
             >
               Acceso equipo
             </a>
