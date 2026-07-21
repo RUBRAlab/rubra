@@ -15,6 +15,21 @@ const routes = [
     description: 'Artículos sobre transformación organizacional, automatización de procesos y gestión del cambio para empresas en Argentina.',
   },
   {
+    path: '/blog/caso-concil-producto-propio',
+    title: 'CONCIL: cómo construimos nuestro propio producto | RUBRA',
+    description: 'La conciliación bancaria le consume horas todos los meses a cualquier estudio contable. Construimos un producto para eliminarla — y en el camino aprendimos cosas que hoy aplicamos en cada proyecto.',
+  },
+  {
+    path: '/blog/caso-portal-b2b-bodega',
+    title: 'Un portal B2B para que una bodega deje de vender por WhatsApp | RUBRA',
+    description: 'Cómo construimos para Desquiciado Wines un portal de venta mayorista con listas de precios por cliente, pedidos en minutos y seguimiento logístico automático.',
+  },
+  {
+    path: '/blog/caso-club-deportivo-cuotas',
+    title: 'Un club de 86 años que dejó de conciliar cuotas a mano | RUBRA',
+    description: 'Cómo el Club Deportivo Social Juan A. Pradere pasó de cruzar transferencias bancarias con nombres en una planilla, a un sistema de socios con pagos online, roles y avisos automáticos.',
+  },
+  {
     path: '/blog/caso-pintureria-cinco-sucursales',
     title: 'De vender por mostrador a una tienda online con 5 sucursales | RUBRA',
     description: 'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a tener su catálogo online, pedidos automáticos y un panel para administrar todo sin depender de nadie técnico.',
