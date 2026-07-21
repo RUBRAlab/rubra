@@ -284,6 +284,26 @@ const CASOS = [
   },
 ];
 
+/** Frases textuales de clientes, provistas por Ruperto. No editar el contenido. */
+const TESTIMONIOS = [
+  {
+    cliente: 'Peregrina',
+    frase: 'Agilizamos procesos que nos llevaban horas de trabajo. La diferencia se notó desde el primer día.',
+  },
+  {
+    cliente: 'Julia H',
+    frase: 'La capacidad de escucha me impresionó, Rubra supo entender rápidamente lo que necesitaba.',
+  },
+  {
+    cliente: 'Deportivo Pradere',
+    frase: 'Más que un proveedor de software, encontramos un socio tecnológico que entiende nuestro negocio.',
+  },
+  {
+    cliente: 'Desquiciado Wines',
+    frase: 'Rápidos, profesionales y con una capacidad enorme para simplificar procesos complejos.',
+  },
+];
+
 const CLIENTS = [
   { name: 'Blue Sky', logo: logoBlueSky, url: 'https://www.blueskysa.com.ar' },
   { name: 'Concil', logo: logoConcil, url: 'https://www.concil.ar' },
@@ -687,6 +707,38 @@ export default function App() {
               >
                 Ver todos los casos <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonios Section */}
+        <section className="pb-24 px-6 md:px-12 bg-transparent relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-14 max-w-2xl">
+              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Lo que dicen</p>
+              <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-stone-900">
+                En sus <span className="font-serif italic text-stone-500 font-normal">palabras.</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+              {TESTIMONIOS.map((t, i) => (
+                <motion.blockquote
+                  key={t.cliente}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
+                  className="border-l-2 border-green-600/40 pl-6"
+                >
+                  <p className="font-serif italic text-xl md:text-2xl text-stone-800 leading-relaxed mb-4">
+                    “{t.frase}”
+                  </p>
+                  <footer className="text-xs font-semibold tracking-widest text-green-700 uppercase">
+                    {t.cliente}
+                  </footer>
+                </motion.blockquote>
+              ))}
             </div>
           </div>
         </section>
