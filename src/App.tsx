@@ -6,7 +6,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
-import heroImage from './assets/images/ruperto.png';
+import heroImage from './assets/images/ruperto.webp';
 import logoBlueSky from './assets/images/clients/bluesky.png';
 import logoConcil from './assets/images/clients/concil.png';
 import logoDeportivoPradere from './assets/images/clients/deportivo-pradere.png';
@@ -42,6 +42,10 @@ const AbstractBackground = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
 
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -167,15 +171,25 @@ const AbstractBackground = () => {
         }
       });
       
-      animationId = requestAnimationFrame(animate);
+      if (!document.hidden) {
+        animationId = requestAnimationFrame(animate);
+      }
     };
-    
+
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        animate();
+      }
+    };
+
     animate();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       window.removeEventListener('resize', setDimensions);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       cancelAnimationFrame(animationId);
     };
   }, []);
@@ -399,7 +413,7 @@ export default function App() {
               Blog
             </Link>
             <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="bg-stone-900 text-stone-50 px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-800 transition-colors mt-4">
-              Agendar diagnóstico
+              Agendar reunión
             </a>
           </div>
         </div>
@@ -424,14 +438,14 @@ export default function App() {
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-800 transition-all hover:shadow-lg hover:shadow-green-900/20 flex items-center gap-2 group">
-                    Agendar reunion
+                    Agendar reunión
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                   <a href="#contacto" className="px-8 py-4 rounded-full font-medium border border-stone-300 text-stone-900 hover:bg-stone-100 transition-colors">
                     Hacer consulta
                   </a>
                 </div>
-                <p className="mt-6 text-sm text-stone-500">
+                <p className="mt-6 text-sm text-stone-600">
                   Proyectos desde <span className="font-semibold text-stone-800">USD 1.000</span>, con alcance y precio cerrados en la propuesta.
                 </p>
               </motion.div>
@@ -788,7 +802,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                   Una sesión de 30 minutos para mapear los cuellos de botella de tu operación y diseñar un plan de acción concreto.
                 </p>
                 <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="inline-block text-center border border-green-700 text-green-800 px-8 py-4 rounded font-medium hover:bg-green-50 transition-colors">
-                  Reservar sesión →
+                  Agendar reunión →
                 </a>
               </div>
             </div>
@@ -824,6 +838,14 @@ Software a medida.<br />Y automatización que trabaja sola.
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
+        }
+        html {
+          scroll-padding-top: 100px;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          html {
+            scroll-behavior: smooth;
+          }
         }
       `}} />
     </div>
