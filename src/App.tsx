@@ -802,7 +802,7 @@ Software a medida.<br />Y automatización que trabaja sola.
           <div>
             <div className="font-display font-bold tracking-widest text-stone-300 mb-2">RUBRA LAB</div>
             <p className="text-sm text-stone-500">
-              © {new Date().getFullYear()} RUBRA Lab · El futuro no es técnico, es humano.
+              © {new Date().getFullYear()} RUBRA Lab · Software y automatización con IA para pymes.
             </p>
           </div>
           
