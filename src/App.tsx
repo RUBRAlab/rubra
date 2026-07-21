@@ -193,7 +193,35 @@ const NAV_LINKS = [
   { label: 'Casos', href: '#casos' },
   { label: 'Método', href: '#metodo' },
   { label: 'Servicios', href: '#servicios' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contacto', href: '#contacto' },
+];
+
+const FAQS = [
+  {
+    pregunta: '¿Cuánto cuesta un proyecto?',
+    respuesta: 'Desde USD 1.000. El alcance y el precio quedan cerrados en la propuesta antes de escribir una línea de código, así que ese número no cambia a mitad de camino.',
+  },
+  {
+    pregunta: '¿Cuánto tardan en entregar?',
+    respuesta: 'Depende del alcance: trabajamos por fases entregables, no con una sola entrega al final. El cronograma queda definido junto con el precio en la propuesta.',
+  },
+  {
+    pregunta: '¿Cómo usan IA en el desarrollo?',
+    respuesta: 'La IA acelera la escritura de código, pero las decisiones de arquitectura, la seguridad y el QA los hace Ruperto directamente. Lo que se entrega está revisado, no es lo primero que generó un modelo.',
+  },
+  {
+    pregunta: '¿Qué pasa después del lanzamiento?',
+    respuesta: 'Seguimos disponibles para la siguiente fase. El hosting ronda USD 25/mes y hay soporte opcional desde USD 75/mes si preferís no encargarte vos de mantenerlo.',
+  },
+  {
+    pregunta: '¿Soy dueño del código?',
+    respuesta: 'Sí, 100%. No hay dependencia de nuestra plataforma ni licencias por uso: el repositorio y el proyecto quedan a tu nombre.',
+  },
+  {
+    pregunta: '¿Trabajan con empresas fuera de Argentina?',
+    respuesta: 'Sí. Trabajamos de forma remota con pymes y founders de toda Latinoamérica.',
+  },
 ];
 
 const CASOS = [
@@ -241,6 +269,7 @@ const CLIENTS = [
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -402,6 +431,9 @@ export default function App() {
                     Hacer consulta
                   </a>
                 </div>
+                <p className="mt-6 text-sm text-stone-500">
+                  Proyectos desde <span className="font-semibold text-stone-800">USD 1.000</span>, con alcance y precio cerrados en la propuesta.
+                </p>
               </motion.div>
             </div>
             
@@ -499,10 +531,11 @@ export default function App() {
                       <span className="font-display text-2xl font-semibold text-stone-50">01</span>
                     </div>
                   </div>
+                  <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-2">3 a 5 días hábiles</p>
                   <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">Alcance y precio</h3>
                   <p className="text-stone-600 leading-relaxed">
                     Antes de escribir una línea de código, definimos exactamente qué se construye,
-                    en cuánto tiempo y a qué precio. Ese número no cambia a mitad de camino.
+                    en cuánto tiempo y a qué precio, desde USD 1.000. Ese número no cambia a mitad de camino.
                   </p>
                 </motion.div>
 
@@ -518,6 +551,7 @@ export default function App() {
                       <span className="font-display text-2xl font-semibold text-stone-50">02</span>
                     </div>
                   </div>
+                  <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-2">2 a 6 semanas según alcance</p>
                   <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">Construcción</h3>
                   <p className="text-stone-600 leading-relaxed">
                     Trabajamos por fases entregables, no por una sola entrega al final.
@@ -537,6 +571,7 @@ export default function App() {
                       <span className="font-display text-2xl font-semibold text-stone-50">03</span>
                     </div>
                   </div>
+                  <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-2">Entrega + soporte continuo</p>
                   <h3 className="text-2xl font-display font-medium mb-3 text-stone-900">En producción</h3>
                   <p className="text-stone-600 leading-relaxed">
                     Entregamos lo que se construyó, funcionando de verdad y en manos de tu equipo.
@@ -655,6 +690,48 @@ Software a medida.<br />Y automatización que trabaja sola.
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <section className="py-24 px-6 md:px-12 bg-transparent relative z-10" id="faq">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-16 max-w-2xl">
+              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Preguntas frecuentes</p>
+              <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-stone-900">
+                Lo que todos<br /><span className="font-serif italic text-stone-500 font-normal">preguntan.</span>
+              </h2>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              {FAQS.map((faq, i) => {
+                const isOpen = openFaqIndex === i;
+                return (
+                  <div
+                    key={faq.pregunta}
+                    className="border border-stone-200 rounded-2xl bg-white/70 backdrop-blur-md overflow-hidden"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaqIndex(isOpen ? null : i)}
+                      className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="text-lg font-display font-medium text-stone-900">{faq.pregunta}</span>
+                      <ChevronRight
+                        className={`w-5 h-5 shrink-0 text-green-700 transition-transform ${isOpen ? 'rotate-90' : ''}`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-5">
+                        <p className="text-stone-600 leading-relaxed">{faq.respuesta}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section className="py-24 px-6 md:px-12 bg-transparent relative z-10" id="contacto">
           <div className="max-w-6xl mx-auto">
