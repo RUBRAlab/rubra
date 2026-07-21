@@ -808,7 +808,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                       type="text" 
                       placeholder="Ej. Juan Pérez"
                       required
-                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-500 focus:ring-0 focus:border-green-400 transition-colors"
+                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -818,7 +818,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                       type="text" 
                       placeholder="Ej. Logística Global"
                       required
-                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-500 focus:ring-0 focus:border-green-400 transition-colors"
+                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
@@ -828,7 +828,7 @@ Software a medida.<br />Y automatización que trabaja sola.
                       placeholder="Describí brevemente tu mayor cuello de botella..."
                       rows={3}
                       required
-                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-500 focus:ring-0 focus:border-green-400 transition-colors resize-none"
+                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors resize-none"
                     ></textarea>
                   </div>
                   <button type="submit" className="self-start bg-green-400 text-green-950 px-8 py-4 rounded font-semibold hover:bg-green-300 transition-colors">
