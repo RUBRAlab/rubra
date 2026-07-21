@@ -189,6 +189,40 @@ const AbstractBackground = () => {
   );
 };
 
+const NAV_LINKS = [
+  { label: 'Casos', href: '#casos' },
+  { label: 'Método', href: '#metodo' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Contacto', href: '#contacto' },
+];
+
+const CASOS = [
+  {
+    slug: 'caso-pintureria-cinco-sucursales',
+    rubro: 'Retail · 5 sucursales',
+    titulo: 'De vender por mostrador a una tienda online',
+    resumen: 'Una pinturería de La Rioja con su catálogo abierto las 24 horas y un panel donde su equipo carga productos y precios sin depender de nadie.',
+  },
+  {
+    slug: 'caso-club-deportivo-cuotas',
+    rubro: 'Institución · 86 años',
+    titulo: 'Un club que dejó de conciliar cuotas a mano',
+    resumen: 'Padrón de socios, pagos online, roles por comisión y avisos por WhatsApp para el Club Deportivo Social Juan A. Pradere.',
+  },
+  {
+    slug: 'caso-portal-b2b-bodega',
+    rubro: 'Bodega · Venta mayorista',
+    titulo: 'Un portal B2B para dejar de vender por WhatsApp',
+    resumen: 'Listas de precios por cliente, pedidos en minutos y seguimiento logístico automático para Desquiciado Wines.',
+  },
+  {
+    slug: 'caso-concil-producto-propio',
+    rubro: 'Producto propio · SaaS',
+    titulo: 'CONCIL: construimos nuestro propio producto',
+    resumen: 'Conciliación bancaria para estudios contables, con suscripciones recurrentes y multi-cuenta. En producción en concil.ar.',
+  },
+];
+
 const CLIENTS = [
   { name: 'Blue Sky', logo: logoBlueSky, url: 'https://www.blueskysa.com.ar' },
   { name: 'Concil', logo: logoConcil, url: 'https://www.concil.ar' },
@@ -212,8 +246,8 @@ export default function App() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   usePageMeta({
-    title: 'RUBRA | Transformación organizacional para empresas',
-    description: 'Acompañamos a líderes, equipos y organizaciones a transformarse de forma simple, humana y consciente. Diagnóstico, implementación y evolución de procesos en Argentina.',
+    title: 'RUBRA lab | Desarrollo de software y automatización con IA para pymes',
+    description: 'Construimos tiendas online, sistemas de gestión y automatización con IA para pymes de Latinoamérica. Alcance y precio cerrado, en producción. Mirá nuestros casos.',
     path: '/',
   });
 
@@ -281,16 +315,16 @@ export default function App() {
 
           <div className="hidden md:flex items-center gap-8">
             <Link to="/blog" className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Blog</Link>
-            {['Método', 'Servicios', 'Contacto'].map((item, i) => (
+            {NAV_LINKS.map((item, i) => (
               <motion.a 
-                key={item}
+                key={item.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i }}
-                href={`#${item.toLowerCase()}`} 
+                href={item.href} 
                 className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
               >
-                {item}
+                {item.label}
               </motion.a>
             ))}
             <motion.a
@@ -318,14 +352,14 @@ export default function App() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-stone-50 pt-24 px-6 md:hidden">
           <div className="flex flex-col gap-6">
-            {['Método', 'Servicios', 'Contacto'].map((item) => (
+            {NAV_LINKS.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.href}
+                href={item.href}
                 className="text-2xl font-display font-medium text-stone-900 border-b border-stone-200 pb-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {item}
+                {item.label}
               </a>
             ))}
             <Link
@@ -353,11 +387,11 @@ export default function App() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] font-display font-semibold tracking-tight text-stone-900 mb-6">
-                  El futuro no es técnico, <br />
-                  <span className="font-serif italic text-stone-500 font-normal">es humano.</span>
+                  Construimos el software <br />
+                  que tu negocio <span className="font-serif italic text-stone-500 font-normal">necesita.</span>
                 </h1>
                 <p className="text-lg md:text-xl text-green-700 max-w-xl mb-10 leading-relaxed">
-                  Acompañamos a líderes, equipos y organizaciones a atravesar cambios de forma simple, humana y consciente, para que las decisiones correctas dejen de postergarse.
+                  Tiendas online, sistemas de gestión y automatización con IA para pymes de Latinoamérica. Alcance cerrado, precio cerrado, y en producción — no en una presentación.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-800 transition-all hover:shadow-lg hover:shadow-green-900/20 flex items-center gap-2 group">
@@ -397,8 +431,8 @@ export default function App() {
             className="max-w-4xl mx-auto"
           >
             <p className="font-display text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed text-green-100">
-              Creamos soluciones para organizaciones que saben que <span className="font-serif italic font-normal text-white">tienen que cambiar</span>.<br className="hidden md:block" />
-              Si sentís que algo tiene que transformarse pero no sabés por dónde empezar; <span className="font-serif italic font-normal text-white">este acompañamiento es para vos.</span>
+              La mayoría de las pymes no necesita <span className="font-serif italic font-normal text-white">más software</span>.<br className="hidden md:block" />
+              Necesita <span className="font-serif italic font-normal text-white">el que le falta</span>, funcionando de verdad y sin depender de nadie para usarlo.
             </p>
           </motion.div>
         </section>
@@ -521,13 +555,56 @@ export default function App() {
           </div>
         </section>
 
+        {/* Casos Section */}
+        <section className="py-24 px-6 md:px-12 bg-transparent relative z-10" id="casos">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-16">
+              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Lo que construimos</p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-stone-900 max-w-2xl">
+                Casos reales,<br />en producción.
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {CASOS.map((caso, i) => (
+                <motion.div
+                  key={caso.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                >
+                  <Link
+                    to={`/blog/${caso.slug}`}
+                    className="group block h-full bg-white/70 backdrop-blur-md rounded-[2rem] p-8 md:p-10 border border-stone-200 hover:border-green-600/40 hover:shadow-lg hover:shadow-green-900/5 transition-all"
+                  >
+                    <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-4">
+                      {caso.rubro}
+                    </p>
+                    <h3 className="text-2xl md:text-3xl font-display font-medium text-stone-900 mb-4 leading-tight">
+                      {caso.titulo}
+                    </h3>
+                    <p className="text-stone-600 leading-relaxed mb-6">
+                      {caso.resumen}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-green-700 font-medium">
+                      Ver el caso
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Servicios Section */}
         <section className="py-24 px-6 md:px-12 bg-stone-900/95 backdrop-blur-md text-stone-50" id="servicios">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
-              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">Dónde actuamos</p>
+              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">Qué construimos</p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white max-w-2xl">
-                Donde la ineficiencia<br />se transforma en valor.
+Software a medida.<br />Y automatización que trabaja sola.
               </h2>
             </div>
             
@@ -540,9 +617,9 @@ export default function App() {
                     <line x1="5" y1="10" x2="10" y2="10"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Gestión & Procesos</h3>
+                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Tiendas online</h3>
                 <p className="text-stone-400 leading-relaxed">
-                  Dejá de ser el cuello de botella de tu propia empresa. Automatizamos el back-office para que lo administrativo deje de ser una carga.
+                  Ecommerce y portales de venta mayorista con catálogo, pedidos y pagos. Tu equipo carga productos y precios sin llamar a nadie.
                 </p>
               </div>
 
@@ -553,9 +630,9 @@ export default function App() {
                     <path d="M3 15 C3 15 4.5 10 9 10 C13.5 10 15 15 15 15" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Ventas & Clientes</h3>
+                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Sistemas de gestión</h3>
                 <p className="text-stone-400 leading-relaxed">
-                  Atención y calificación de leads las 24 horas. No pierdas más ventas por falta de respuesta inmediata.
+                  Clientes, cobranzas, stock, pedidos. El sistema que tu operación necesita, hecho a la medida de cómo trabajás — no al revés.
                 </p>
               </div>
 
@@ -568,9 +645,9 @@ export default function App() {
                     <rect x="10" y="10" width="6" height="6" rx=".5"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Stock & Logística</h3>
+                <h3 className="text-2xl font-display font-medium text-stone-100 mb-4">Automatización con IA</h3>
                 <p className="text-stone-400 leading-relaxed">
-                  Visibilidad real y proactiva. Sistemas que aprenden de tu demanda para que nunca falte (ni sobre) nada.
+                  Las tareas repetitivas que hoy hace una persona, hechas por un agente: cargar datos, responder consultas, cruzar información, avisar.
                 </p>
               </div>
             </div>
@@ -582,7 +659,7 @@ export default function App() {
             <div className="mb-16 max-w-2xl">
               <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">El siguiente paso</p>
               <p className="text-lg text-stone-600 leading-relaxed">
-                Si tu empresa está lista para dejar atrás los procesos manuales, hablemos. El primer paso es un diagnóstico de situación.
+                Contanos qué necesitás construir o qué proceso te está consumiendo el día. El primer paso es un diagnóstico, sin costo y sin compromiso.
               </p>
             </div>
 
