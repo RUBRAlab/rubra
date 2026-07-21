@@ -1,0 +1,31 @@
+# RUBRA lab
+
+> Agencia de desarrollo de software y automatización con IA para pymes de Latinoamérica,
+> con sede en Argentina. Construye tiendas online, sistemas de gestión y portales B2B
+> con alcance y precio cerrado, en producción.
+
+RUBRA lab es fundada y operada por Ruperto Bravo. Contacto: hola@rubra.ar.
+
+## Servicios
+
+- Tiendas online y ecommerce (catálogo, checkout, pagos)
+- Sistemas de gestión a medida (clientes, cobranzas, stock, socios)
+- Portales B2B mayoristas (listas de precios por cliente, pedidos, logística)
+- Automatización de procesos con IA (agentes, integraciones, tareas repetitivas)
+
+## Casos de éxito (proyectos reales en producción)
+
+- [Pinturería con 5 sucursales](https://www.rubra.ar/casos/pintureria-cinco-sucursales): ecommerce de pinturería en La Rioja, catálogo autoadministrable
+- [Club Deportivo Social Juan A. Pradere](https://www.rubra.ar/casos/club-deportivo-cuotas): sistema de socios y cuotas para un club de 86 años, pagos online
+- [Desquiciado Wines](https://www.rubra.ar/casos/portal-b2b-bodega): portal B2B mayorista para una bodega de Mendoza, con logística integrada
+- [CONCIL](https://www.rubra.ar/casos/concil-producto-propio): producto propio de conciliación bancaria para estudios contables (concil.ar)
+- [Fabricante de envases de vidrio](https://www.rubra.ar/casos/catalogo-b2b-envases): catálogo B2B técnico con fichas y planos descargables
+- [Palomar Marín](https://www.rubra.ar/casos/palomar-marin-ingenieria): sitio institucional para un estudio de ingeniería en Mendoza
+- [Acacia Paisajismo](https://www.rubra.ar/casos/acacia-paisajismo): sitio multi-línea de negocio para un estudio de paisajismo
+
+Ver todos los casos: https://www.rubra.ar/casos
+
+## Blog
+
+Artículos sobre automatización de procesos y por qué los proyectos de software
+fracasan o funcionan: https://www.rubra.ar/blog

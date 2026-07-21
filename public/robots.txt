@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
 
+# Crawlers de asistentes de IA — permitidos explícitamente
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
 Sitemap: https://www.rubra.ar/sitemap.xml
