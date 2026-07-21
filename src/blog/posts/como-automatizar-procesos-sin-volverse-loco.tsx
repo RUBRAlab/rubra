@@ -87,8 +87,9 @@ const Content = () => (
       Eso se nota en la calidad, en el ánimo y, eventualmente, en los resultados.
     </p>
     <p>
-      Por eso decimos que automatizar no es un tema técnico. Es una decisión sobre cómo querés que trabaje
-      tu empresa.
+      Automatizar es una decisión de negocio antes que una decisión técnica: primero se define cómo querés
+      que trabaje tu empresa, y después se construye el sistema que lo hace posible. Ese es exactamente
+      nuestro trabajo — podés ver <a href="/casos">cómo lo resolvimos en otros negocios</a>.
     </p>
   </article>
 )

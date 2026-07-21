@@ -49,15 +49,20 @@ const Content = () => (
       puede hacer mejor, más rápido y sin equivocarse.
     </p>
 
-    <h2>El diagnóstico es el primer paso</h2>
+    <h2>Reconocerlo es la mitad. La otra mitad es construirlo</h2>
     <p>
-      Reconocer estas señales no significa que haya que transformar todo de golpe. Significa que hay algo concreto
-      que mejorar. En RUBRA trabajamos con un diagnóstico inicial de 30 minutos donde mapeamos los principales
-      cuellos de botella de tu operación y definimos qué tiene más impacto resolver primero.
+      Ninguna de estas tres señales se arregla con fuerza de voluntad ni con una planilla mejor hecha.
+      Se arreglan cuando existe el sistema que hoy no está: el que valida antes de que el error ocurra,
+      el que guarda la información donde todos la ven, el que hace solo lo que hoy espera a una persona.
     </p>
     <p>
-      Sin vender tecnología por la tecnología. Sin implementar herramientas que nadie va a usar. Con foco en lo
-      que realmente mueve la aguja de tu negocio.
+      Eso es lo que construimos. Empezamos mirando tu operación, identificamos qué tiene más impacto
+      resolver primero, y lo desarrollamos con alcance y precio cerrado. Sin proyectos eternos y sin
+      herramientas que nadie termina usando.
+    </p>
+    <p>
+      Podés ver <a href="/casos">algunos de los sistemas que ya construimos</a>, o{' '}
+      <a href="mailto:hola@rubra.ar">escribirnos</a> y lo charlamos.
     </p>
   </article>
 )

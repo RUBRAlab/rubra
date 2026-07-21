@@ -2,38 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.rubra.ar/</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.rubra.ar/blog</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.rubra.ar/casos</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.rubra.ar/casos/acacia-paisajismo</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.rubra.ar/casos/palomar-marin-ingenieria</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.rubra.ar/casos/catalogo-b2b-envases</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.rubra.ar/casos/concil-producto-propio</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.rubra.ar/casos/portal-b2b-bodega</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.rubra.ar/casos/club-deportivo-cuotas</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.rubra.ar/casos/pintureria-cinco-sucursales</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rubra.ar/blog/cuellos-de-botella-el-enemigo-silencioso</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>never</changefreq>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rubra.ar/blog/gestion-del-cambio-por-que-la-tecnologia-sola-no-alcanza</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>never</changefreq>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rubra.ar/blog/como-automatizar-procesos-sin-volverse-loco</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>never</changefreq>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rubra.ar/blog/senales-de-que-tu-empresa-necesita-automatizar</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>never</changefreq>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>

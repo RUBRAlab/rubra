@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF9"/>
+      <stop offset="100%" stop-color="#F0FDF4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#15803D"/>
+
+  <!-- Logotipo -->
+  <text x="80" y="130" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="46" font-weight="700" fill="#1C1917" letter-spacing="-1">RUBRA</text>
+  <text x="243" y="130" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="46" font-weight="300" fill="#16A34A" letter-spacing="-1">lab</text>
+
+  <!-- Titular -->
+  <text x="80" y="285" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="76" font-weight="600" fill="#1C1917" letter-spacing="-2.5">Construimos el software</text>
+  <text x="80" y="375" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="76" font-weight="600" fill="#1C1917" letter-spacing="-2.5">que tu negocio necesita.</text>
+
+  <!-- Bajada -->
+  <text x="80" y="452" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="30" font-weight="400" fill="#15803D">Tiendas online, sistemas de gestión y automatización con IA</text>
+  <text x="80" y="494" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="30" font-weight="400" fill="#15803D">para pymes de Latinoamérica.</text>
+
+  <!-- Pie -->
+  <line x1="80" y1="548" x2="1120" y2="548" stroke="#E7E5E4" stroke-width="2"/>
+  <text x="80" y="592" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="26" font-weight="500" fill="#57534E">www.rubra.ar</text>
+  <text x="1120" y="592" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="26" font-weight="400" fill="#57534E">Alcance cerrado. Precio cerrado.</text>
+</svg>

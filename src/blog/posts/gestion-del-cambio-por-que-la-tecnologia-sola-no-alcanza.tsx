@@ -84,21 +84,27 @@ const Content = () => (
       equipo empieza a confiar en él. Meses después, cuando ya no se imagina trabajar de otra manera.
     </p>
     <p>
-      Las empresas que lo hacen bien no son las que tienen mejor tecnología. Son las que acompañan mejor
-      a sus personas durante el camino.
+      Las empresas que lo hacen bien no son las que compran la herramienta más cara. Son las que
+      construyen la herramienta correcta y acompañan a su equipo mientras la adopta.
     </p>
     <p>
-      Y eso no lo hace ningún software. Lo hacen las personas que lideran el proceso.
+      Por eso no entregamos un sistema y nos vamos. El software se diseña alrededor de cómo trabaja
+      el equipo —no al revés—, y se ajusta durante las primeras semanas de uso real, que es cuando
+      aparecen las cosas que ninguna reunión previa anticipó.
+    </p>
+    <p>
+      Es la diferencia entre un sistema que se usa y uno que termina abandonado al lado del Excel de
+      siempre. Podés ver <a href="/casos">cómo trabajamos en proyectos reales</a>.
     </p>
   </article>
 )
 
 export const post: BlogPost = {
   slug: 'gestion-del-cambio-por-que-la-tecnologia-sola-no-alcanza',
-  title: 'Gestión del cambio: por qué la tecnología sola no alcanza',
-  description: 'Implementar un sistema es la parte fácil. Lo difícil es lograr que las personas cambien su forma de trabajar. Acá está la diferencia entre un proyecto que funciona y uno que termina en el Excel de siempre.',
+  title: 'Por qué un sistema nuevo fracasa (y no es por la tecnología)',
+  description: 'Construir el sistema es la parte fácil. Lo difícil es que el equipo lo adopte. Qué separa un proyecto que se usa todos los días de uno que termina abandonado.',
   date: '2026-06-06',
-  category: 'Transformación',
+  category: 'Procesos',
   readTime: 5,
   content: Content,
 }

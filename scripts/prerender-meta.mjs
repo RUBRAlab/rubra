@@ -20,6 +20,21 @@ const routes = [
     description: 'Tiendas online, sistemas de gestión y portales B2B que construimos para pymes e instituciones. Casos reales, en producción.',
   },
   {
+    path: '/casos/acacia-paisajismo',
+    title: 'Un estudio de paisajismo que dejó de depender de Instagram | RUBRA',
+    description: 'Acacia Paisajismo diseña y ejecuta jardines en Gran Mendoza. Le construimos el sitio donde su portfolio, su tienda y sus cursos tienen cada uno su lugar.',
+  },
+  {
+    path: '/casos/palomar-marin-ingenieria',
+    title: 'Un estudio de ingeniería que ahora tiene dónde mostrar su obra | RUBRA',
+    description: 'Palomar Marín construye viviendas, edificios e instituciones en Mendoza. Le construimos el sitio donde su portfolio, sus servicios y sus consultas viven en un solo lugar.',
+  },
+  {
+    path: '/casos/catalogo-b2b-envases',
+    title: 'Un catálogo técnico que responde antes de que pregunten | RUBRA',
+    description: 'Cómo una empresa de envases de vidrio publicó su catálogo completo con fichas técnicas y planos descargables, para que las consultas lleguen ya armadas.',
+  },
+  {
     path: '/casos/concil-producto-propio',
     title: 'CONCIL: cómo construimos nuestro propio producto | RUBRA',
     description: 'La conciliación bancaria le consume horas todos los meses a cualquier estudio contable. Construimos un producto para eliminarla — y en el camino aprendimos cosas que hoy aplicamos en cada proyecto.',
@@ -46,8 +61,8 @@ const routes = [
   },
   {
     path: '/blog/gestion-del-cambio-por-que-la-tecnologia-sola-no-alcanza',
-    title: 'Gestión del cambio: por qué la tecnología sola no alcanza | RUBRA',
-    description: 'Implementar un sistema es la parte fácil. Lo difícil es lograr que las personas cambien su forma de trabajar. Acá está la diferencia entre un proyecto que funciona y uno que termina en el Excel de siempre.',
+    title: 'Por qué un sistema nuevo fracasa (y no es por la tecnología) | RUBRA',
+    description: 'Construir el sistema es la parte fácil. Lo difícil es que el equipo lo adopte. Qué separa un proyecto que se usa todos los días de uno que termina abandonado.',
   },
   {
     path: '/blog/como-automatizar-procesos-sin-volverse-loco',

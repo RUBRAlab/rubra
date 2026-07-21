@@ -7,9 +7,15 @@ import { post as casoPintureria } from './pintureria-cinco-sucursales'
 import { post as casoClub } from './club-deportivo-cuotas'
 import { post as casoBodega } from './portal-b2b-bodega'
 import { post as casoConcil } from './concil-producto-propio'
+import { post as casoEnvases } from './catalogo-b2b-envases'
+import { post as casoPalomar } from './palomar-marin-ingenieria'
+import { post as casoAcacia } from './acacia-paisajismo'
 
 // El orden acá define el orden en el blog (primero = más reciente)
 export const posts = [
+  casoAcacia,
+  casoPalomar,
+  casoEnvases,
   casoConcil,
   casoBodega,
   casoClub,
