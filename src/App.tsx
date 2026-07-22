@@ -328,7 +328,7 @@ export default function App() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   usePageMeta({
-    title: 'RUBRA lab | Desarrollo de software y automatización con IA para pymes',
+    title: 'RUBRA lab',
     description: 'Construimos tiendas online, sistemas de gestión y automatización con IA para pymes de Latinoamérica. Alcance y precio cerrado, en producción. Mirá nuestros casos.',
     path: '/',
   });
