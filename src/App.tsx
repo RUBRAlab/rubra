@@ -476,11 +476,11 @@ export default function App() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] font-display font-semibold tracking-tight text-white mb-6">
-                  Construimos el software <br />
-                  que tu negocio <span className="font-serif italic text-green-300 font-normal">necesita.</span>
+                  Software pensado para personas, <br />
+                  construido para <span className="font-serif italic text-green-300 font-normal">empresas.</span>
                 </h1>
                 <p className="text-lg md:text-xl text-stone-300 max-w-xl mb-10 leading-relaxed">
-                  Tiendas online, sistemas de gestión y automatización con IA para pymes de Latinoamérica. Alcance cerrado, precio cerrado, y en producción, no en una presentación.
+                  Desarrollamos soluciones digitales que simplifican el trabajo diario de las pymes: e-commerce, sistemas de gestión y automatizaciones con IA. Cada proyecto tiene un alcance claro, un precio transparente y una implementación lista para generar valor.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-green-400 text-green-950 px-8 py-4 rounded-full font-semibold hover:bg-green-300 transition-all hover:shadow-lg hover:shadow-green-400/20 flex items-center gap-2 group">
