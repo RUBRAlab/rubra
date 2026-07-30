@@ -55,6 +55,11 @@ const routes = [
     description: 'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a tener su catálogo online, pedidos automáticos y un panel para administrar todo sin depender de nadie técnico.',
   },
   {
+    path: '/blog/costos-ocultos-de-no-automatizar',
+    title: 'Los costos ocultos de no automatizar tu pyme | RUBRA',
+    description: 'Automatizar tiene un costo visible y conocido. No automatizar también tiene un costo, pero está repartido y escondido. Cómo calcular lo que realmente te está costando seguir trabajando a mano.',
+  },
+  {
     path: '/blog/cuellos-de-botella-el-enemigo-silencioso',
     title: 'Cuellos de botella: el enemigo silencioso que frena el crecimiento | RUBRA',
     description: 'Muchas empresas creen que necesitan más clientes para crecer. El problema casi siempre está adentro. Cómo identificar el punto que está frenando todo y qué hacer para eliminarlo.',
