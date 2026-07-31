@@ -586,7 +586,7 @@ export default function App() {
             <div className="mb-20 max-w-2xl">
               <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">Cómo trabajamos</p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white">
-                Alcance cerrado.<br />Precio cerrado.<br /><span className="font-serif italic text-green-300 font-normal">Sin sorpresas.</span>
+                Alcance claro.<br />Precio transparente.<br /><span className="font-serif italic text-green-300 font-normal">Sin sorpresas.</span>
               </h2>
             </div>
 
