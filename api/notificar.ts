@@ -37,8 +37,9 @@ export async function POST(request: Request) {
   const token = process.env.NOTIFY_TOKEN
   const apiKey = process.env.RESEND_API_KEY
 
-  if (!token || !apiKey) {
-    return Response.json({ error: 'Endpoint sin configurar' }, { status: 500 })
+  const faltan = [!token && 'NOTIFY_TOKEN', !apiKey && 'RESEND_API_KEY'].filter(Boolean)
+  if (faltan.length) {
+    return Response.json({ error: 'Endpoint sin configurar', faltan }, { status: 500 })
   }
 
   const auth = request.headers.get('authorization')
