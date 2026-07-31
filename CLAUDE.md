@@ -35,3 +35,9 @@ enlaza con el botón **"Acceso equipo"** en el footer.
 
 - Hosting: USD 25/mes
 - Soporte: USD 75/mes (opcional)
+
+## Cerrar sesión
+
+Al terminar de trabajar acá (código o marketing), correr el skill `cerrar-sesion`
+para volcar el estado a `RUBRA-OS/CONTEXTO-OPERATIVO.md`. Si no se cierra así,
+esta sesión guarda su propia memoria aislada y el contexto se fragmenta otra vez.
