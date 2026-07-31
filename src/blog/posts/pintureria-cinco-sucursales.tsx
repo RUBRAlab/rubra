@@ -18,7 +18,7 @@ const Content = () => (
       completo, recibir pedidos online y administrar todo sin depender de nadie técnico.
     </p>
     <p>
-      Ese último punto es el que casi siempre falta. Muchas pymes tienen una web que no pueden
+      Ese último punto es el que casi siempre falta. Muchas empresas tienen una web que no pueden
       tocar: para cambiar un precio hay que llamar al que la hizo. Eso no es una herramienta,
       es una dependencia.
     </p>
@@ -53,7 +53,7 @@ const Content = () => (
       la necesite.
     </p>
     <p>
-      Trabajar por fases no es un detalle comercial. Es lo que permite que una pyme incorpore
+      Trabajar por fases no es un detalle comercial. Es lo que permite que una empresa incorpore
       tecnología sin apostar todo de entrada: cada fase entrega algo que funciona y se paga solo
       la siguiente si tiene sentido.
     </p>

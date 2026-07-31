@@ -253,7 +253,7 @@ const FAQS = [
   },
   {
     pregunta: '¿Trabajan con empresas fuera de Argentina?',
-    respuesta: 'Sí. Trabajamos de forma remota con pymes y founders de toda Latinoamérica.',
+    respuesta: 'Sí. Trabajamos de forma remota con empresas y founders de toda Latinoamérica.',
   },
 ];
 
@@ -329,7 +329,7 @@ export default function App() {
 
   usePageMeta({
     title: 'RUBRA lab',
-    description: 'Construimos tiendas online, sistemas de gestión y automatización con IA para pymes de Latinoamérica. Alcance y precio cerrado, en producción. Mirá nuestros casos.',
+    description: 'Construimos tiendas online, sistemas de gestión y automatización con IA para empresas de Latinoamérica. Alcance y precio cerrado, en producción. Mirá nuestros casos.',
     path: '/',
   });
 
@@ -538,7 +538,7 @@ export default function App() {
             className="max-w-4xl mx-auto"
           >
             <p className="font-display text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed text-green-100">
-              La mayoría de las pymes no necesita <span className="font-serif italic font-normal text-white">más software</span>.<br className="hidden md:block" />
+              La mayoría de las empresas no necesita <span className="font-serif italic font-normal text-white">más software</span>.<br className="hidden md:block" />
               Necesita <span className="font-serif italic font-normal text-white">el que le falta</span>, funcionando de verdad y sin depender de nadie para usarlo.
             </p>
           </motion.div>
@@ -912,7 +912,7 @@ Software a medida.<br />Y automatización que trabaja sola.
               <span className="font-display font-bold tracking-widest text-stone-300">RUBRA LAB</span>
             </div>
             <p className="text-sm text-stone-400">
-              © {new Date().getFullYear()} RUBRA Lab · Software y automatización con IA para pymes.
+              © {new Date().getFullYear()} RUBRA Lab · Software y automatización con IA para empresas.
             </p>
           </div>
 

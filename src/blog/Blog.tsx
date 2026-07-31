@@ -12,8 +12,8 @@ const formatDate = (dateStr: string) => {
 
 export default function Blog() {
   usePageMeta({
-    title: 'Blog | RUBRA lab: automatización y procesos para pymes',
-    description: 'Artículos sobre automatización de procesos, cuellos de botella y gestión del cambio para pymes de Latinoamérica.',
+    title: 'Blog | RUBRA lab: automatización y procesos para empresas',
+    description: 'Artículos sobre automatización de procesos, cuellos de botella y gestión del cambio para empresas de Latinoamérica.',
     path: '/blog',
   })
 

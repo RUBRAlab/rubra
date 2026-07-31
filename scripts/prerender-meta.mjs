@@ -11,13 +11,13 @@ const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf-8')
 const routes = [
   {
     path: '/blog',
-    title: 'Blog | RUBRA lab: automatización y procesos para pymes',
-    description: 'Artículos sobre automatización de procesos, cuellos de botella y gestión del cambio para pymes de Latinoamérica.',
+    title: 'Blog | RUBRA lab: automatización y procesos para empresas',
+    description: 'Artículos sobre automatización de procesos, cuellos de botella y gestión del cambio para empresas de Latinoamérica.',
   },
   {
     path: '/casos',
-    title: 'Casos | RUBRA lab: software para pymes de Latinoamérica',
-    description: 'Tiendas online, sistemas de gestión y portales B2B que construimos para pymes e instituciones. Casos reales, en producción.',
+    title: 'Casos | RUBRA lab: software para empresas de Latinoamérica',
+    description: 'Tiendas online, sistemas de gestión y portales B2B que construimos para empresas e instituciones. Casos reales, en producción.',
   },
   {
     path: '/casos/acacia-paisajismo',
@@ -56,7 +56,7 @@ const routes = [
   },
   {
     path: '/blog/costos-ocultos-de-no-automatizar',
-    title: 'Los costos ocultos de no automatizar tu pyme | RUBRA',
+    title: 'Los costos ocultos de no automatizar tu empresa | RUBRA',
     description: 'Automatizar tiene un costo visible y conocido. No automatizar también tiene un costo, pero está repartido y escondido. Cómo calcular lo que realmente te está costando seguir trabajando a mano.',
   },
   {

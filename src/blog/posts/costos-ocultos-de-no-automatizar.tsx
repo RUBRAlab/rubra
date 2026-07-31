@@ -3,7 +3,7 @@ import { BlogPost } from '../types'
 const Content = () => (
   <article>
     <p>
-      "Todavía no nos justifica automatizar" es una frase que se escucha mucho en pymes. Y casi
+      "Todavía no nos justifica automatizar" es una frase que se escucha mucho en empresas. Y casi
       siempre está mal calculada. No porque automatizar sea gratis, sino porque no automatizar
       tampoco lo es. Solo que ese costo no aparece en ningún balance.
     </p>
@@ -100,7 +100,7 @@ const Content = () => (
 
 export const post: BlogPost = {
   slug: 'costos-ocultos-de-no-automatizar',
-  title: 'Los costos ocultos de no automatizar tu pyme',
+  title: 'Los costos ocultos de no automatizar tu empresa',
   description: 'Automatizar tiene un costo visible y conocido. No automatizar también tiene un costo, pero está repartido y escondido. Cómo calcular lo que realmente te está costando seguir trabajando a mano.',
   date: '2026-07-30',
   category: 'Operaciones',
