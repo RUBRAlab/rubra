@@ -38,7 +38,7 @@ export default function Blog() {
         <div className="max-w-3xl mx-auto">
           <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Blog</p>
           <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-stone-900 mb-16">
-            Ideas para negocios que quieren\n            dejar de hacer las cosas a mano.
+            Ideas para negocios que quieren dejar de hacer las cosas a mano.
           </h1>
 
           <div className="flex flex-col gap-12">
