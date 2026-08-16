@@ -99,12 +99,116 @@ const Content = () => (
   </article>
 )
 
+const ContentEn = () => (
+  <article>
+    <p>
+      There's a pattern that keeps repeating. A company invests in a new tool: a CRM, a management
+      system, automation software. The first few months everything looks fine. And then, slowly, the
+      team drifts back to Excel.
+    </p>
+    <p>
+      Not because the tool was bad.
+    </p>
+    <p>
+      But because nobody worked on what actually makes a change stick.
+    </p>
+
+    <h2>The problem isn't the technology</h2>
+    <p>
+      Implementing a system is the easy part. The hard part is getting people to change how they work.
+      And that doesn't happen just because the software is installed and the team sat through a
+      thirty-minute demo.
+    </p>
+    <p>
+      Change management is exactly that: the work of supporting people <em>while</em> the organization
+      transforms. Not before, not after. During.
+    </p>
+
+    <h2>Why resistance shows up (and why it's normal)</h2>
+    <p>
+      When a company changes how things are done, people ask themselves questions that often go
+      unspoken:
+    </p>
+    <ul>
+      <li>Is this going to make my job harder?</li>
+      <li>Are they going to ask me to do things I wasn't trained for?</li>
+      <li>Is there something they're not telling me?</li>
+      <li>Why change something that already works?</li>
+    </ul>
+    <p>
+      These doubts aren't a lack of willingness. They're completely logical human reactions to the
+      unknown. The mistake is ignoring them or pretending they don't exist.
+    </p>
+
+    <h2>What actually reduces resistance</h2>
+    <p>
+      It's not training. It's not the user manual. It's the answer to a single question: <em>what's in
+      it for me?</em>
+    </p>
+    <p>
+      When people understand how the change makes <em>their</em> work easier (not the company's work in
+      the abstract, but theirs specifically), adoption changes completely.
+    </p>
+    <p>
+      "You won't have to enter this by hand anymore" is far more powerful than "the company will
+      become more efficient."
+    </p>
+
+    <h2>The mistake of designing without asking</h2>
+    <p>
+      Another common pattern: leadership defines the new process, rolls it out, and later discovers
+      nobody uses it the way they expected.
+    </p>
+    <p>
+      Because the people who designed the process aren't the ones running it every day.
+    </p>
+    <p>
+      Involving end users from the start isn't just a goodwill gesture. It's pure pragmatism. They know
+      operational details that no outside consultant will uncover in a two-hour discovery session. And
+      when they take part in the design, they defend the outcome as their own.
+    </p>
+
+    <h2>Training isn't showing a demo</h2>
+    <p>
+      Real training is when someone can use the tool on their own, with their real data, in their
+      actual situations. And when they have someone to turn to when something doesn't work the way
+      they expected.
+    </p>
+    <p>
+      That takes time, support, and patience. Not one afternoon of PowerPoint slides.
+    </p>
+
+    <h2>Change isn't an event. It's a process.</h2>
+    <p>
+      The transformation doesn't happen the day the new system launches. It happens weeks later, when
+      the team starts to trust it. Months later, when they can no longer imagine working any other way.
+    </p>
+    <p>
+      The companies that get this right aren't the ones that buy the most expensive tool. They're the
+      ones that build the right tool and support their team through adopting it.
+    </p>
+    <p>
+      That's why we don't hand over a system and walk away. The software is designed around how the
+      team works (not the other way around), and it's adjusted during the first weeks of real use,
+      which is when things show up that no prior meeting anticipated.
+    </p>
+    <p>
+      That's the difference between a system that gets used and one that ends up abandoned next to the
+      usual spreadsheet. You can see <a href="/casos">how we work on real projects</a>.
+    </p>
+  </article>
+)
+
 export const post: BlogPost = {
   slug: 'gestion-del-cambio-por-que-la-tecnologia-sola-no-alcanza',
   title: 'Por qué un sistema nuevo fracasa (y no es por la tecnología)',
   description: 'Construir el sistema es la parte fácil. Lo difícil es que el equipo lo adopte. Qué separa un proyecto que se usa todos los días de uno que termina abandonado.',
+  title_en: 'Why a new system fails (and it\'s not the technology)',
+  description_en: 'Building the system is the easy part. Getting the team to adopt it is the hard part. What separates a project that gets used every day from one that ends up abandoned.',
+  category_en: 'Processes',
   date: '2026-06-06',
   category: 'Procesos',
   readTime: 5,
   content: Content,
+  content_en: ContentEn,
 }

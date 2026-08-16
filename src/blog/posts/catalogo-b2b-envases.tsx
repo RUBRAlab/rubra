@@ -73,6 +73,80 @@ const Content = () => (
   </article>
 )
 
+const ContentEn = () => (
+  <article>
+    <p>
+      A company that manufactures and sells glass containers for wineries and beverage
+      brands. It doesn't sell a bottle: it sells a format, a weight, a capacity, and a
+      color that have to match what the brand envisions for its product.
+    </p>
+    <p>
+      Its catalog has dozens of models. Every inquiry started with an email back-and-forth:
+      which bottle, what dimensions, is there a technical drawing, how much does it cost.
+      The catalog knowledge lived in the sales team's heads.
+    </p>
+
+    <h2>The problem with selling technical products</h2>
+    <p>
+      When what you sell has a spec sheet, the customer doesn't buy from a photo. They
+      need the exact data: capacity, height, diameter, neck type, weight. And they need
+      the technical drawing to hand off to their designer or their bottling line.
+    </p>
+    <p>
+      Without that published, every inquiry ties up a person. With it published, the
+      customer moves forward on their own until the moment a conversation is actually
+      needed: the quote.
+    </p>
+
+    <h2>What we built</h2>
+    <ul>
+      <li>
+        <strong>The full catalog online</strong>, with more than sixty models loaded,
+        their real photos, and their spec sheet.
+      </li>
+      <li>
+        <strong>Filters by category and material</strong>, to get to the right model
+        without browsing the entire catalog.
+      </li>
+      <li>
+        <strong>Downloadable technical drawing</strong> on every product. The data the
+        customer used to request by email, now they get it themselves.
+      </li>
+      <li>
+        <strong>Multi-select quote requests</strong>: the customer selects several bottles
+        while browsing and requests a price for all of them together. The inquiry reaches
+        the team already organized, with the models identified.
+      </li>
+      <li>
+        <strong>An in-house content manager</strong> so the company and its photo agency
+        can upload products and images without depending on us.
+      </li>
+    </ul>
+
+    <h2>The design decision</h2>
+    <p>
+      Glass packaging is an aesthetic product: the brand chooses it, in part, because they
+      like how it looks. The site was built clean, airy, and minimalist, so the product
+      photos would take full center stage.
+    </p>
+    <p>
+      It's the opposite of an industrial catalog packed with tables. Here the product is
+      what you look at, and the technical data is a click away when you need it.
+    </p>
+
+    <h2>The result</h2>
+    <p>
+      The catalog is live in production and inquiries arrive already identified, with the
+      models already chosen. The sales team stopped explaining the catalog and started
+      doing what matters: quoting.
+    </p>
+    <p>
+      Do you sell products with spec sheets and still answer the same questions by email?{' '}
+      <a href="mailto:hola@rubra.ar">Get in touch</a>.
+    </p>
+  </article>
+)
+
 export const post: BlogPost = {
   slug: 'catalogo-b2b-envases',
   title: 'Un catálogo técnico que responde antes de que pregunten',
@@ -82,4 +156,9 @@ export const post: BlogPost = {
   category: 'Casos',
   readTime: 4,
   content: Content,
+  title_en: 'A technical catalog that answers before they ask',
+  description_en:
+    'How a glass packaging company published its full catalog with spec sheets and downloadable drawings, so inquiries arrive already organized.',
+  category_en: 'Case study',
+  content_en: ContentEn,
 }

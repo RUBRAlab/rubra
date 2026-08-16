@@ -71,13 +71,92 @@ const Content = () => (
   </article>
 )
 
+const ContentEn = () => (
+  <article>
+    <p>
+      <strong>Acacia Paisajismo</strong> is Agustina D'Innocenzo's landscaping studio in
+      Greater Mendoza. She designs gardens, executes turnkey projects, provides
+      maintenance, and sells sod.
+    </p>
+    <p>
+      A business like this lives off its photos. A finished garden convinces more than
+      any text ever could. But the photos were on Instagram, mixed in with the rest of
+      the feed and getting lost as time went by.
+    </p>
+
+    <h2>When the business isn't just one thing</h2>
+    <p>
+      Acacia doesn't sell just one thing. It designs projects, executes builds,
+      maintains gardens, sells products, and teaches courses. Each of those lines
+      speaks to a different person: whoever wants to redo their backyard isn't the
+      same person looking for an online course.
+    </p>
+    <p>
+      Cramming all of that into a single page is the classic mistake. The visitor
+      comes in looking for one thing and has to wade through three others that don't
+      interest them.
+    </p>
+
+    <h2>What we built</h2>
+    <ul>
+      <li>
+        <strong>One page per business line</strong>: projects, shop, courses, and
+        contact, each with its own path, and a homepage that steers visitors toward
+        the right one.
+      </li>
+      <li>
+        <strong>The project portfolio</strong> with real photos of finished gardens,
+        the studio's strongest sales argument.
+      </li>
+      <li>
+        <strong>A shop</strong> for the products that sell themselves: sod, plants,
+        pots.
+      </li>
+      <li>
+        <strong>The courses</strong> with their own dedicated space, for the audience
+        that isn't looking to hire but to learn.
+      </li>
+      <li>
+        <strong>A contact page with FAQs</strong>, answering questions before the
+        client has to ask the same one for the tenth time.
+      </li>
+    </ul>
+
+    <h2>The detail that mattered</h2>
+    <p>
+      Agustina had her own watercolor illustrations. Instead of using generic icons,
+      we worked them into the design as section backgrounds.
+    </p>
+    <p>
+      It's a small detail, and that's exactly the point: a landscaping studio sells
+      taste and aesthetic judgment. If its website looks like any other template, it's
+      contradicting what it sells.
+    </p>
+
+    <h2>The result</h2>
+    <p>
+      Acacia now has its work published, organized by business line, in a space of
+      its own that doesn't depend on any social network's algorithm.
+    </p>
+    <p>
+      Does your work sell by being shown, and is it only on Instagram?{' '}
+      <a href="mailto:hola@rubra.ar">Get in touch</a>.
+    </p>
+  </article>
+)
+
 export const post: BlogPost = {
   slug: 'acacia-paisajismo',
   title: 'Un estudio de paisajismo que dejó de depender de Instagram',
   description:
     'Acacia Paisajismo diseña y ejecuta jardines en Gran Mendoza. Le construimos el sitio donde su portfolio, su tienda y sus cursos tienen cada uno su lugar.',
+  title_en: 'A landscaping studio that stopped depending on Instagram',
+  description_en:
+    'Acacia Paisajismo designs and builds gardens in Greater Mendoza. We built the site where its portfolio, shop, and courses each have their own place.',
   date: '2026-07-21',
   category: 'Casos',
+  category_en: 'Case study',
   readTime: 3,
   content: Content,
+  content_en: ContentEn,
 }

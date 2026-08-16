@@ -80,6 +80,87 @@ const Content = () => (
   </article>
 )
 
+const ContentEn = () => (
+  <article>
+    <p>
+      The <a href="https://www.deportivopradere.com.ar">Club Deportivo Social Juan A. Pradere</a>
+      has 86 years of history. Hundreds of members, membership dues, sports activities,
+      and a board that runs everything on volunteer effort.
+    </p>
+    <p>
+      The problem wasn't a lack of systems. It was one very specific issue: the treasurer
+      received bank transfers every month with no way of knowing which member each
+      deposit belonged to.
+    </p>
+
+    <h2>The real problem institutions face</h2>
+    <p>
+      A club isn't a company. It has no IT department and no software budget.
+      It has volunteers who give up their free time and make do with what they have:
+      a spreadsheet, a notebook, online banking open in another tab.
+    </p>
+    <p>
+      That works until it doesn't. As the club grows, the administrative workload
+      grows faster than the capacity of the people carrying it. And the cost isn't paid
+      in money: it's paid in hours from people who would rather be running the club
+      than matching deposits to names.
+    </p>
+
+    <h2>What we built</h2>
+    <ul>
+      <li>
+        <strong>A centralized member registry</strong>, with each member's dues status
+        up to date, their history, and the sports activities they're enrolled in.
+      </li>
+      <li>
+        <strong>Online payments</strong>: members pay their dues from their phone and the
+        system logs it automatically. No more guessing whose transfer is whose.
+      </li>
+      <li>
+        <strong>Manual entry as well</strong>, because the club still takes cash payments
+        at the front desk. The system adapted to how the club works, not the other way around.
+      </li>
+      <li>
+        <strong>Roles with different permissions</strong>: the board manages everything,
+        each sub-committee's treasurer sees full information but can't modify it,
+        and each member gets access to their own portal.
+      </li>
+      <li>
+        <strong>WhatsApp notifications</strong>, because that's where club members actually read messages.
+      </li>
+      <li>
+        <strong>An installable phone app</strong>, without going through app stores or
+        asking anyone to download anything complicated.
+      </li>
+    </ul>
+
+    <h2>The decision that mattered most</h2>
+    <p>
+      The system was designed around one constraint: the users aren't technical and many
+      don't have email. Access was solved with an ID number and a PIN — something
+      club members can remember without help.
+    </p>
+    <p>
+      That kind of decision doesn't show up in any requirements document. It shows up
+      when you sit down to understand how the institution actually works before
+      writing a single line of code.
+    </p>
+
+    <h2>The result</h2>
+    <p>
+      The system is in production with online payments active. Reconciling dues, which
+      used to be hours of manual work, is now automatic.
+    </p>
+    <p>
+      An 86-year-old club doesn't need to turn into a tech company. It needs the
+      administrative side to stop eating up the time of the people who keep it running.
+    </p>
+    <p>
+      Does your institution need something like this? <a href="mailto:hola@rubra.ar">Get in touch</a>.
+    </p>
+  </article>
+)
+
 export const post: BlogPost = {
   slug: 'club-deportivo-cuotas',
   title: 'Un club de 86 años que dejó de conciliar cuotas a mano',
@@ -89,4 +170,9 @@ export const post: BlogPost = {
   category: 'Casos',
   readTime: 4,
   content: Content,
+  title_en: 'An 86-year-old club that stopped reconciling dues by hand',
+  description_en:
+    'How Club Deportivo Social Juan A. Pradere went from matching bank transfers to names on a spreadsheet, to a membership system with online payments, roles, and automatic notifications.',
+  category_en: 'Case study',
+  content_en: ContentEn,
 }

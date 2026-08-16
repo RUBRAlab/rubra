@@ -105,12 +105,121 @@ const Content = () => (
   </article>
 )
 
+const ContentEn = () => (
+  <article>
+    <p>
+      Some companies spend years thinking their problem is getting more customers. More marketing,
+      more salespeople, more advertising.
+    </p>
+    <p>
+      And yet, when they do get more customers, the problem only multiplies.
+    </p>
+    <p>
+      Because the bottleneck was never outside. It was inside.
+    </p>
+
+    <h2>What is a bottleneck?</h2>
+    <p>
+      It's any point in the process that limits everything else. A single slow step that makes the
+      whole system wait.
+    </p>
+    <p>
+      The image is simple: a four-lane highway that suddenly narrows to one. It doesn't matter how
+      smoothly traffic flows before or after. Everything piles up at that point.
+    </p>
+    <p>
+      In a company, exactly the same thing happens. An approval process that depends on a single
+      person. A system that doesn't talk to another. A task that has to be done by hand because
+      "that's how it's always been done." That's enough to bring the whole organization to a crawl.
+    </p>
+
+    <h2>How to know if you have one</h2>
+    <p>
+      Some symptoms are obvious. Others aren't.
+    </p>
+    <ul>
+      <li>Pending tasks that pile up no matter how hard the team works.</li>
+      <li>Customers waiting longer for answers than they should.</li>
+      <li>One person who "knows everything" and without whom nothing moves forward.</li>
+      <li>Information that lives in three different systems and has to be cross-checked by hand.</li>
+      <li>Errors that repeat over and over, at the same point in the process.</li>
+    </ul>
+    <p>
+      If any of these sound familiar, it's not a coincidence.
+    </p>
+
+    <h2>The three most common bottlenecks</h2>
+
+    <h3>1. The manual process that never got digitized</h3>
+    <p>
+      The spreadsheet that started as a temporary fix and is now the backbone of the operation.
+      The paper form that someone later types into the system. The sheet that depends on one person
+      updating it every day.
+    </p>
+    <p>
+      It's not a lack of technology. It's that nobody ever decided to replace it.
+    </p>
+
+    <h3>2. Systems that don't talk to each other</h3>
+    <p>
+      A CRM, a billing system, a stock spreadsheet, a customer service chat. Each one works fine on
+      its own. The problem is they don't communicate, so someone has to connect them by hand:
+      copying, pasting, checking.
+    </p>
+    <p>
+      That "someone" could be doing something else.
+    </p>
+
+    <h3>3. The person who is the system</h3>
+    <p>
+      When all the information, contacts, criteria, and decisions live in one person's head, that
+      person is the bottleneck. Not because they're indispensable (even if they sometimes believe it),
+      but because the system wasn't designed to work without them.
+    </p>
+    <p>
+      The solution isn't to do without that person. It's to make sure the knowledge they hold no
+      longer depends on their being present.
+    </p>
+
+    <h2>How to find it</h2>
+    <p>
+      Follow a complete process from start to finish. From the moment a potential customer comes in
+      to the moment the sale closes, or from the moment an order arrives to the moment it's delivered.
+    </p>
+    <p>
+      At each stage, ask yourself: where does it stall? What's waiting on what? What gets entered
+      twice? What needs someone to remember it?
+    </p>
+    <p>
+      The bottleneck almost always shows up quickly.
+    </p>
+
+    <h2>What happens when you remove it</h2>
+    <p>
+      Something interesting happens when a company solves its main bottleneck.
+    </p>
+    <p>
+      It doesn't just improve productivity. It improves team morale, because people stop working
+      against the current. It improves the customer experience, because things happen faster and
+      with fewer errors. And real capacity for growth appears.
+    </p>
+    <p>
+      Growing doesn't always mean doing more. Sometimes it just means no longer doing what was
+      holding everything back.
+    </p>
+  </article>
+)
+
 export const post: BlogPost = {
   slug: 'cuellos-de-botella-el-enemigo-silencioso',
   title: 'Cuellos de botella: el enemigo silencioso que frena el crecimiento',
+  title_en: 'Bottlenecks: the silent enemy holding back growth',
   description: 'Muchas empresas creen que necesitan más clientes para crecer. El problema casi siempre está adentro. Cómo identificar el punto que está frenando todo y qué hacer para eliminarlo.',
+  description_en: 'Many companies believe they need more customers to grow. The problem is almost always internal. How to identify the point that is holding everything back and what to do about it.',
   date: '2026-06-06',
   category: 'Operaciones',
+  category_en: 'Operations',
   readTime: 5,
   content: Content,
+  content_en: ContentEn,
 }

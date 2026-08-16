@@ -94,12 +94,111 @@ const Content = () => (
   </article>
 )
 
+const ContentEn = () => (
+  <article>
+    <p>
+      The first time someone tells us "I want to automate my company," they almost always picture the
+      same thing: robots, artificial intelligence, a massive project with consultants in suits and an
+      invoice that makes you nervous.
+    </p>
+    <p>
+      None of that.
+    </p>
+    <p>
+      In practice, automation means something much more mundane: a task a person currently does by hand
+      can run on its own. Or almost on its own. The system handles it and your team finds out about the
+      result, not the process.
+    </p>
+
+    <h2>Where to actually start</h2>
+    <p>
+      There's a question we ask in almost every initial diagnosis: <em>what do you do every day that you
+      could stop doing?</em>
+    </p>
+    <p>
+      The answers are always similar. Copying data from one system to another. Sending the same email
+      with different names. Updating the stock spreadsheet by hand. Remembering to call customers who
+      didn't respond. Putting together Monday's report.
+    </p>
+    <p>
+      These are necessary tasks. They take time. And almost always, they don't need a person doing them.
+    </p>
+
+    <h2>A simple rule to spot what to automate</h2>
+    <p>
+      If a task repeats every week and has defined steps, it can be automated.
+    </p>
+    <p>
+      It doesn't need to be complicated. It doesn't need to be expensive. Just ask yourself these
+      questions:
+    </p>
+    <ul>
+      <li>Does your team copy information between systems?</li>
+      <li>Do you send the same messages over and over?</li>
+      <li>Do processes stall when someone is out?</li>
+      <li>Do you rely too much on someone <em>remembering</em> to do something?</li>
+    </ul>
+    <p>
+      If you answered yes to any of these, you've already found where to start.
+    </p>
+
+    <h2>The myth that does the most damage</h2>
+    <p>
+      "Automating means replacing people."
+    </p>
+    <p>
+      No. It's the opposite.
+    </p>
+    <p>
+      The companies that use technology best don't have fewer people. They have people doing things that
+      matter (solving problems, serving customers, making decisions) instead of entering data into a
+      form that could fill itself in.
+    </p>
+    <p>
+      Automation doesn't compete with people. It competes with the tasks nobody likes doing.
+    </p>
+
+    <h2>The most common mistake: trying to do everything at once</h2>
+    <p>
+      We've seen "total digital transformation" projects that end up going nowhere. Not because the idea
+      was bad, but because they tried to change fifteen things at the same time and the team collapsed.
+    </p>
+    <p>
+      What works is starting with one process. Just one. The one that hurts the most, takes the most
+      time, generates the most errors. Automate it well, see the result, and only then move on to the
+      next one.
+    </p>
+    <p>
+      That first result convinces everyone: the owner, the team, the accountant who was skeptical.
+    </p>
+
+    <h2>What you get back isn't time. It's energy.</h2>
+    <p>
+      When you eliminate a manual task that used to be done every day, the first effect isn't "time
+      saved." The real effect is that the person stops arriving exhausted by eleven in the morning. They
+      stop making mistakes out of boredom. They stop feeling like their job is a conveyor belt.
+    </p>
+    <p>
+      That shows up in quality, in morale, and eventually, in results.
+    </p>
+    <p>
+      Automating is a business decision before it's a technical one: first you define how you want your
+      company to work, and then you build the system that makes it possible. That's exactly what we do.
+      You can see <a href="/casos">how we solved it for other businesses</a>.
+    </p>
+  </article>
+)
+
 export const post: BlogPost = {
   slug: 'como-automatizar-procesos-sin-volverse-loco',
   title: 'Cómo automatizar procesos en tu empresa sin volverse loco',
   description: 'Automatizar no es un proyecto enorme ni requiere robots. Es eliminar las tareas repetitivas que consumen el tiempo y la energía de tu equipo, y hay un único lugar correcto por donde empezar.',
+  title_en: 'How to Automate Processes in Your Company Without Losing Your Mind',
+  description_en: "Automation isn't a huge project or something that requires robots. It's about eliminating the repetitive tasks that drain your team's time and energy, and there's one right place to start.",
+  category_en: 'Automation',
   date: '2026-06-06',
   category: 'Automatización',
   readTime: 4,
   content: Content,
+  content_en: ContentEn,
 }
