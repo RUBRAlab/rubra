@@ -20,14 +20,16 @@ import logoPulsoWines from './assets/images/clients/pulso-wines.png';
 import logoDesquiciado from './assets/images/clients/desquiciado.png';
 import logoAcacia from './assets/images/clients/acacia.jpg';
 import { usePageMeta } from './hooks/usePageMeta';
-import { 
-  ArrowRight, 
-  Menu, 
-  X, 
-  ChevronRight, 
-  Globe, 
-  Zap, 
-  ShieldCheck, 
+import { useLanguage } from './i18n/LanguageContext';
+import { translations } from './i18n/translations';
+import {
+  ArrowRight,
+  Menu,
+  X,
+  ChevronRight,
+  Globe,
+  Zap,
+  ShieldCheck,
   BarChart3,
   Mail,
   Phone,
@@ -216,94 +218,6 @@ const Isotipo = ({ className = '' }: { className?: string }) => (
   </svg>
 );
 
-const HERO_STATS = [
-  { valor: '12', etiqueta: 'Proyectos en producción' },
-  { valor: '2–6', etiqueta: 'Semanas de construcción' },
-  { valor: 'USD 1.000', etiqueta: 'Desde', destacado: true },
-];
-
-const NAV_LINKS = [
-  { label: 'Casos', href: '#casos' },
-  { label: 'Método', href: '#metodo' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contacto', href: '#contacto' },
-];
-
-const FAQS = [
-  {
-    pregunta: '¿Cuánto cuesta un proyecto?',
-    respuesta: 'Desde USD 1.000. El alcance y el precio quedan cerrados en la propuesta antes de escribir una línea de código, así que ese número no cambia a mitad de camino.',
-  },
-  {
-    pregunta: '¿Cuánto tardan en entregar?',
-    respuesta: 'Depende del alcance: trabajamos por fases entregables, no con una sola entrega al final. El cronograma queda definido junto con el precio en la propuesta.',
-  },
-  {
-    pregunta: '¿Cómo usan IA en el desarrollo?',
-    respuesta: 'La IA acelera la escritura de código, pero las decisiones de arquitectura, la seguridad y el QA los hace Ruperto directamente. Lo que se entrega está revisado, no es lo primero que generó un modelo.',
-  },
-  {
-    pregunta: '¿Qué pasa después del lanzamiento?',
-    respuesta: 'Seguimos disponibles para la siguiente fase. El hosting ronda USD 25/mes y hay soporte opcional desde USD 75/mes si preferís no encargarte vos de mantenerlo.',
-  },
-  {
-    pregunta: '¿Soy dueño del código?',
-    respuesta: 'Sí, 100%. No hay dependencia de nuestra plataforma ni licencias por uso: el repositorio y el proyecto quedan a tu nombre.',
-  },
-  {
-    pregunta: '¿Trabajan con empresas fuera de Argentina?',
-    respuesta: 'Sí. Trabajamos de forma remota con empresas y founders de toda Latinoamérica.',
-  },
-];
-
-const CASOS = [
-  {
-    slug: 'pintureria-cinco-sucursales',
-    rubro: 'Retail · 5 sucursales',
-    titulo: 'De vender por mostrador a una tienda online',
-    resumen: 'Una pinturería de La Rioja con su catálogo abierto las 24 horas y un panel donde su equipo carga productos y precios sin depender de nadie.',
-  },
-  {
-    slug: 'club-deportivo-cuotas',
-    rubro: 'Institución · 86 años',
-    titulo: 'Un club que dejó de conciliar cuotas a mano',
-    resumen: 'Padrón de socios, pagos online, roles por comisión y avisos por WhatsApp para el Club Deportivo Social Juan A. Pradere.',
-  },
-  {
-    slug: 'portal-b2b-bodega',
-    rubro: 'Bodega · Venta mayorista',
-    titulo: 'Un portal B2B para dejar de vender por WhatsApp',
-    resumen: 'Listas de precios por cliente, pedidos en minutos y seguimiento logístico automático para Desquiciado Wines.',
-  },
-  {
-    slug: 'concil-producto-propio',
-    rubro: 'Producto propio · SaaS',
-    titulo: 'CONCIL: construimos nuestro propio producto',
-    resumen: 'Conciliación bancaria para estudios contables, con suscripciones recurrentes y multi-cuenta. En producción en concil.ar.',
-  },
-];
-
-/** Frases textuales de clientes, provistas por Ruperto. No editar el contenido. */
-const TESTIMONIOS = [
-  {
-    cliente: 'Peregrina',
-    frase: 'Agilizamos procesos que nos llevaban horas de trabajo. La diferencia se notó desde el primer día.',
-  },
-  {
-    cliente: 'Julia H',
-    frase: 'La capacidad de escucha me impresionó, Rubra supo entender rápidamente lo que necesitaba.',
-  },
-  {
-    cliente: 'Deportivo Pradere',
-    frase: 'Más que un proveedor de software, encontramos un socio tecnológico que entiende nuestro negocio.',
-  },
-  {
-    cliente: 'Desquiciado Wines',
-    frase: 'Rápidos, profesionales y con una capacidad enorme para simplificar procesos complejos.',
-  },
-];
-
 const CLIENTS = [
   { name: 'Blue Sky', logo: logoBlueSky, url: 'https://www.blueskysa.com.ar' },
   { name: 'Concil', logo: logoConcil, url: 'https://www.concil.ar' },
@@ -326,10 +240,12 @@ export default function App() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
 
   usePageMeta({
-    title: 'RUBRA lab',
-    description: 'Construimos tiendas online, sistemas de gestión y automatización con IA para empresas de Latinoamérica. Alcance y precio cerrado, en producción. Mirá nuestros casos.',
+    title: t.meta.title,
+    description: t.meta.description,
     path: '/',
   });
 
@@ -399,8 +315,8 @@ export default function App() {
           </motion.a>
 
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/blog" className={`text-sm font-medium transition-colors ${isScrolled ? 'text-stone-600 hover:text-stone-900' : 'text-stone-300 hover:text-white'}`}>Blog</Link>
-            {NAV_LINKS.map((item, i) => (
+            <Link to="/blog" className={`text-sm font-medium transition-colors ${isScrolled ? 'text-stone-600 hover:text-stone-900' : 'text-stone-300 hover:text-white'}`}>{t.nav.blog}</Link>
+            {t.nav.links.map((item, i) => (
               <motion.a
                 key={item.href}
                 initial={{ opacity: 0, y: -10 }}
@@ -412,6 +328,14 @@ export default function App() {
                 {item.label}
               </motion.a>
             ))}
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              aria-label={t.nav.langToggleLabel}
+              className={`w-9 h-9 rounded-full border text-xs font-semibold flex items-center justify-center transition-colors ${isScrolled ? 'border-stone-300 text-stone-700 hover:bg-stone-100' : 'border-stone-100/25 text-stone-100 hover:bg-stone-100/10'}`}
+            >
+              {t.nav.langToggle}
+            </button>
             <motion.a
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -419,18 +343,28 @@ export default function App() {
               href="#contacto"
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-colors flex items-center gap-2 group ${isScrolled ? 'bg-green-800 text-stone-50 hover:bg-green-700' : 'bg-green-400 text-green-950 hover:bg-green-300'}`}
             >
-              Hablemos
+              {t.nav.cta}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </div>
 
-          <button
-            className={`md:hidden transition-colors ${mobileMenuOpen || isScrolled ? 'text-stone-900' : 'text-white'}`}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-          >
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              aria-label={t.nav.langToggleLabel}
+              className={`w-9 h-9 rounded-full border text-xs font-semibold flex items-center justify-center transition-colors ${mobileMenuOpen || isScrolled ? 'border-stone-300 text-stone-700' : 'border-stone-100/25 text-stone-100'}`}
+            >
+              {t.nav.langToggle}
+            </button>
+            <button
+              className={`transition-colors ${mobileMenuOpen || isScrolled ? 'text-stone-900' : 'text-white'}`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
+            >
+              {mobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -438,7 +372,7 @@ export default function App() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-stone-50 pt-24 px-6 md:hidden">
           <div className="flex flex-col gap-6">
-            {NAV_LINKS.map((item) => (
+            {t.nav.links.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
@@ -453,10 +387,10 @@ export default function App() {
               onClick={() => setMobileMenuOpen(false)}
               className="text-2xl font-display font-medium text-stone-900 border-b border-stone-200 pb-4"
             >
-              Blog
+              {t.nav.blog}
             </Link>
             <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="bg-stone-900 text-stone-50 px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-800 transition-colors mt-4">
-              Agendar reunión
+              {t.nav.scheduleMeeting}
             </a>
           </div>
         </div>
@@ -476,18 +410,18 @@ export default function App() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <h1 className="text-4xl md:text-6xl lg:text-[4rem] leading-[1.05] font-display font-semibold tracking-tight text-white mb-6">
-                  Nos encargamos de la <span className="font-serif italic text-green-300 font-normal">tecnología</span> para que vos puedas enfocarte en tu <span className="font-serif italic text-green-300 font-normal">negocio.</span>
+                  {t.hero.titleParts[0]}<span className="font-serif italic text-green-300 font-normal">{t.hero.titleParts[1]}</span>{t.hero.titleParts[2]}<span className="font-serif italic text-green-300 font-normal">{t.hero.titleParts[3]}</span>
                 </h1>
                 <p className="text-lg md:text-xl text-stone-300 max-w-xl mb-10 leading-relaxed">
-                  Creamos las soluciones que necesitás para vender más, organizar mejor tu empresa y automatizar tareas. Hablamos claro, cumplimos lo acordado y entregamos soluciones listas para usar.
+                  {t.hero.subtitle}
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-green-400 text-green-950 px-8 py-4 rounded-full font-semibold hover:bg-green-300 transition-all hover:shadow-lg hover:shadow-green-400/20 flex items-center gap-2 group">
-                    Agendar reunión
+                    {t.hero.ctaSchedule}
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                   <a href="#contacto" className="px-8 py-4 rounded-full font-medium border border-stone-100/25 text-stone-100 hover:bg-stone-100/10 transition-colors">
-                    Hacer consulta
+                    {t.hero.ctaContact}
                   </a>
                 </div>
               </motion.div>
@@ -516,7 +450,7 @@ export default function App() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="max-w-7xl mx-auto relative z-10 mt-14 md:mt-20 pt-10 border-t border-stone-100/15 grid grid-cols-3 gap-6 md:gap-12 md:max-w-2xl md:mx-0"
           >
-            {HERO_STATS.map((stat) => (
+            {t.heroStats.map((stat) => (
               <div key={stat.etiqueta}>
                 <p className={`font-display text-2xl md:text-4xl font-semibold tracking-tight tabular-nums ${stat.destacado ? 'text-green-400' : 'text-white'}`}>
                   {stat.valor}
@@ -538,8 +472,8 @@ export default function App() {
             className="max-w-4xl mx-auto"
           >
             <p className="font-display text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed text-green-100">
-              La mayoría de las empresas no necesita <span className="font-serif italic font-normal text-white">más software</span>.<br className="hidden md:block" />
-              Necesita <span className="font-serif italic font-normal text-white">el que le falta</span>, funcionando de verdad y sin depender de nadie para usarlo.
+              {t.band.partA}<span className="font-serif italic font-normal text-white">{t.band.partAEm}</span>{t.band.partB}<br className="hidden md:block" />
+              {t.band.partC}<span className="font-serif italic font-normal text-white">{t.band.partCEm}</span>{t.band.partD}
             </p>
           </motion.div>
         </section>
@@ -548,7 +482,7 @@ export default function App() {
         <section className="py-20 px-6 md:px-12 bg-transparent relative z-10">
           <div className="max-w-7xl mx-auto">
             <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-10 text-center">
-              Confían en nosotros
+              {t.clients.heading}
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 items-center justify-items-center">
               {CLIENTS.map((client) => {
@@ -584,9 +518,9 @@ export default function App() {
         <section className="py-24 px-6 md:px-12 bg-[#35362f] relative z-10" id="metodo">
           <div className="max-w-7xl mx-auto">
             <div className="mb-20 max-w-2xl">
-              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">Cómo trabajamos</p>
+              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">{t.metodo.kicker}</p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white">
-                Alcance claro.<br />Precio transparente.<br /><span className="font-serif italic text-green-300 font-normal">Sin sorpresas.</span>
+                {t.metodo.titleParts[0]}<br />{t.metodo.titleParts[1]}<br /><span className="font-serif italic text-green-300 font-normal">{t.metodo.titleParts[2]}</span>
               </h2>
             </div>
 
@@ -606,11 +540,10 @@ export default function App() {
                       <span className="font-display text-2xl font-semibold text-white">01</span>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">3 a 5 días hábiles</p>
-                  <h3 className="text-2xl font-display font-medium mb-3 text-white">Alcance y precio</h3>
+                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">{t.metodo.steps[0].tag}</p>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-white">{t.metodo.steps[0].title}</h3>
                   <p className="text-stone-300 leading-relaxed">
-                    Antes de escribir una línea de código, definimos exactamente qué se construye,
-                    en cuánto tiempo y a qué precio, desde USD 1.000. Ese número no cambia a mitad de camino.
+                    {t.metodo.steps[0].body}
                   </p>
                 </motion.div>
 
@@ -626,11 +559,10 @@ export default function App() {
                       <span className="font-display text-2xl font-semibold text-white">02</span>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">2 a 6 semanas según alcance</p>
-                  <h3 className="text-2xl font-display font-medium mb-3 text-white">Construcción</h3>
+                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">{t.metodo.steps[1].tag}</p>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-white">{t.metodo.steps[1].title}</h3>
                   <p className="text-stone-300 leading-relaxed">
-                    Trabajamos por fases entregables, no por una sola entrega al final.
-                    Vas viendo el avance real, no una presentación de lo que vamos a hacer.
+                    {t.metodo.steps[1].body}
                   </p>
                 </motion.div>
 
@@ -646,11 +578,10 @@ export default function App() {
                       <span className="font-display text-2xl font-semibold text-green-950">03</span>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">Entrega + soporte continuo</p>
-                  <h3 className="text-2xl font-display font-medium mb-3 text-white">En producción</h3>
+                  <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-2">{t.metodo.steps[2].tag}</p>
+                  <h3 className="text-2xl font-display font-medium mb-3 text-white">{t.metodo.steps[2].title}</h3>
                   <p className="text-stone-300 leading-relaxed">
-                    Entregamos lo que se construyó, funcionando de verdad y en manos de tu equipo.
-                    Seguimos disponibles para la siguiente fase cuando la necesites.
+                    {t.metodo.steps[2].body}
                   </p>
                 </motion.div>
               </div>
@@ -662,14 +593,14 @@ export default function App() {
         <section className="py-24 px-6 md:px-12 bg-transparent relative z-10" id="casos">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
-              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Lo que construimos</p>
+              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">{t.casos.kicker}</p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-stone-900 max-w-2xl">
-                Casos reales,<br />en producción.
+                {t.casos.titleParts[0]}<br />{t.casos.titleParts[1]}
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {CASOS.map((caso, i) => (
+              {t.casos.items.map((caso, i) => (
                 <motion.div
                   key={caso.slug}
                   initial={{ opacity: 0, y: 20 }}
@@ -691,7 +622,7 @@ export default function App() {
                       {caso.resumen}
                     </p>
                     <span className="inline-flex items-center gap-2 text-green-700 font-medium">
-                      Ver el caso
+                      {t.casos.verCaso}
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </Link>
@@ -704,7 +635,7 @@ export default function App() {
                 to="/casos"
                 className="inline-flex items-center gap-2 text-green-800 font-medium hover:gap-3 transition-all"
               >
-                Ver todos los casos <ArrowRight className="w-4 h-4" />
+                {t.casos.verTodos} <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -714,16 +645,16 @@ export default function App() {
         <section className="pb-24 px-6 md:px-12 bg-transparent relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="mb-14 max-w-2xl">
-              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Lo que dicen</p>
+              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">{t.testimonios.kicker}</p>
               <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-stone-900">
-                En sus <span className="font-serif italic text-stone-500 font-normal">palabras.</span>
+                {t.testimonios.titleA}<span className="font-serif italic text-stone-500 font-normal">{t.testimonios.titleEm}</span>
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
-              {TESTIMONIOS.map((t, i) => (
+              {t.testimonios.items.map((testimonio, i) => (
                 <motion.blockquote
-                  key={t.cliente}
+                  key={testimonio.cliente}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
@@ -731,10 +662,10 @@ export default function App() {
                   className="border-l-2 border-green-600/40 pl-6"
                 >
                   <p className="font-serif italic text-xl md:text-2xl text-stone-800 leading-relaxed mb-4">
-                    “{t.frase}”
+                    “{testimonio.frase}”
                   </p>
                   <footer className="text-xs font-semibold tracking-widest text-green-700 uppercase">
-                    {t.cliente}
+                    {testimonio.cliente}
                   </footer>
                 </motion.blockquote>
               ))}
@@ -746,9 +677,9 @@ export default function App() {
         <section className="py-24 px-6 md:px-12 bg-[#35362f] text-stone-50" id="servicios">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
-              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">Qué construimos</p>
+              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">{t.servicios.kicker}</p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white max-w-2xl">
-Software a medida.<br />Y automatización que trabaja sola.
+                {t.servicios.titleLine1}<br />{t.servicios.titleLine2}
               </h2>
             </div>
             
@@ -761,9 +692,9 @@ Software a medida.<br />Y automatización que trabaja sola.
                     <line x1="5" y1="10" x2="10" y2="10"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-white mb-4">Tiendas online</h3>
+                <h3 className="text-2xl font-display font-medium text-white mb-4">{t.servicios.items[0].title}</h3>
                 <p className="text-stone-300 leading-relaxed">
-                  Ecommerce y portales de venta mayorista con catálogo, pedidos y pagos. Tu equipo carga productos y precios sin llamar a nadie.
+                  {t.servicios.items[0].body}
                 </p>
               </div>
 
@@ -774,9 +705,9 @@ Software a medida.<br />Y automatización que trabaja sola.
                     <path d="M3 15 C3 15 4.5 10 9 10 C13.5 10 15 15 15 15" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-white mb-4">Sistemas de gestión</h3>
+                <h3 className="text-2xl font-display font-medium text-white mb-4">{t.servicios.items[1].title}</h3>
                 <p className="text-stone-300 leading-relaxed">
-                  Clientes, cobranzas, stock, pedidos. El sistema que tu operación necesita, hecho a la medida de cómo trabajás, no al revés.
+                  {t.servicios.items[1].body}
                 </p>
               </div>
 
@@ -789,9 +720,9 @@ Software a medida.<br />Y automatización que trabaja sola.
                     <rect x="10" y="10" width="6" height="6" rx=".5"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-medium text-white mb-4">Automatización con IA</h3>
+                <h3 className="text-2xl font-display font-medium text-white mb-4">{t.servicios.items[2].title}</h3>
                 <p className="text-stone-300 leading-relaxed">
-                  Las tareas repetitivas que hoy hace una persona, hechas por un agente: cargar datos, responder consultas, cruzar información, avisar.
+                  {t.servicios.items[2].body}
                 </p>
               </div>
             </div>
@@ -802,14 +733,14 @@ Software a medida.<br />Y automatización que trabaja sola.
         <section className="py-24 px-6 md:px-12 bg-transparent relative z-10" id="faq">
           <div className="max-w-4xl mx-auto">
             <div className="mb-16 max-w-2xl">
-              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">Preguntas frecuentes</p>
+              <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">{t.faq.kicker}</p>
               <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-stone-900">
-                Lo que todos<br /><span className="font-serif italic text-stone-500 font-normal">preguntan.</span>
+                {t.faq.titleA}<br /><span className="font-serif italic text-stone-500 font-normal">{t.faq.titleEm}</span>
               </h2>
             </div>
 
             <div className="flex flex-col gap-4">
-              {FAQS.map((faq, i) => {
+              {t.faq.items.map((faq, i) => {
                 const isOpen = openFaqIndex === i;
                 return (
                   <div
@@ -843,59 +774,59 @@ Software a medida.<br />Y automatización que trabaja sola.
         <section className="py-24 px-6 md:px-12 bg-[#35362f] relative z-10" id="contacto">
           <div className="max-w-6xl mx-auto">
             <div className="mb-16 max-w-2xl">
-              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">El siguiente paso</p>
+              <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-4">{t.contact.kicker}</p>
               <p className="text-lg text-stone-300 leading-relaxed">
-                Contanos qué necesitás construir o qué proceso te está consumiendo el día. El primer paso es un diagnóstico, sin costo y sin compromiso.
+                {t.contact.intro}
               </p>
             </div>
 
             <div className="grid md:grid-cols-5 gap-12 lg:gap-24">
               <div className="md:col-span-3">
-                <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); const name = (document.getElementById("name") as HTMLInputElement).value; const company = (document.getElementById("company") as HTMLInputElement).value; const process = (document.getElementById("process") as HTMLTextAreaElement).value; const subject = encodeURIComponent(`Consulta de ${name}`); const body = encodeURIComponent(`Nombre: ${name}\nEmpresa: ${company}\n\n${process}`); const a = document.createElement('a'); a.href = `mailto:hola@rubra.ar?subject=${subject}&body=${body}`; a.click(); (e.target as HTMLFormElement).reset(); }}>
+                <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); const name = (document.getElementById("name") as HTMLInputElement).value; const company = (document.getElementById("company") as HTMLInputElement).value; const process = (document.getElementById("process") as HTMLTextAreaElement).value; const subject = encodeURIComponent(t.contact.mailSubject(name)); const body = encodeURIComponent(t.contact.mailBody(name, company, process)); const a = document.createElement('a'); a.href = `mailto:hola@rubra.ar?subject=${subject}&body=${body}`; a.click(); (e.target as HTMLFormElement).reset(); }}>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">Nombre completo</label>
-                    <input 
+                    <label htmlFor="name" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">{t.contact.nameLabel}</label>
+                    <input
                       id="name"
-                      type="text" 
-                      placeholder="Ej. Juan Pérez"
+                      type="text"
+                      placeholder={t.contact.namePlaceholder}
                       required
                       className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="company" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">Empresa / Industria</label>
-                    <input 
+                    <label htmlFor="company" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">{t.contact.companyLabel}</label>
+                    <input
                       id="company"
-                      type="text" 
-                      placeholder="Ej. Logística Global"
+                      type="text"
+                      placeholder={t.contact.companyPlaceholder}
                       required
                       className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
-                    <label htmlFor="process" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">¿Qué proceso deseás profesionalizar?</label>
-                    <textarea 
+                    <label htmlFor="process" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">{t.contact.processLabel}</label>
+                    <textarea
                       id="process"
-                      placeholder="Describí brevemente tu mayor cuello de botella..."
+                      placeholder={t.contact.processPlaceholder}
                       rows={3}
                       required
                       className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors resize-none"
                     ></textarea>
                   </div>
                   <button type="submit" className="self-start bg-green-400 text-green-950 px-8 py-4 rounded font-semibold hover:bg-green-300 transition-colors">
-                    Enviar consulta
+                    {t.contact.submit}
                   </button>
                 </form>
               </div>
 
               <div className="md:col-span-2 flex flex-col justify-center border-t md:border-t-0 md:border-l border-stone-100/15 pt-12 md:pt-0 md:pl-12 lg:pl-16">
-                <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">Sesión en vivo</p>
-                <h3 className="text-2xl font-display font-medium text-white mb-4">Diagnóstico gratuito</h3>
+                <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">{t.contact.liveSession}</p>
+                <h3 className="text-2xl font-display font-medium text-white mb-4">{t.contact.diagnosisTitle}</h3>
                 <p className="text-stone-300 leading-relaxed mb-8">
-                  Una sesión de 30 minutos para mapear los cuellos de botella de tu operación y diseñar un plan de acción concreto.
+                  {t.contact.diagnosisBody}
                 </p>
                 <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="inline-block text-center border border-green-400/40 text-green-300 px-8 py-4 rounded font-medium hover:bg-green-400/10 transition-colors">
-                  Agendar reunión →
+                  {t.contact.scheduleMeeting}
                 </a>
               </div>
             </div>
@@ -912,7 +843,7 @@ Software a medida.<br />Y automatización que trabaja sola.
               <span className="font-display font-bold tracking-widest text-stone-300">RUBRA LAB</span>
             </div>
             <p className="text-sm text-stone-400">
-              © {new Date().getFullYear()} RUBRA Lab · Software y automatización con IA para empresas.
+              {t.footer.tagline(new Date().getFullYear())}
             </p>
           </div>
 
@@ -923,7 +854,7 @@ Software a medida.<br />Y automatización que trabaja sola.
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
             >
-              Acceso equipo
+              {t.footer.teamAccess}
             </a>
           </div>
         </div>
