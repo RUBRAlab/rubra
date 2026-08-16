@@ -10,11 +10,21 @@ interface LanguageContextValue {
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
 const STORAGE_KEY = 'rubra-lang';
+// La fija el middleware (middleware.ts) según el país de la IP del visitante.
+// Es solo un default: si el usuario ya eligió idioma, STORAGE_KEY manda siempre.
+const GEO_COOKIE_NAME = 'rubra-lang-geo';
+
+function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
 
 function getInitialLanguage(): Language {
   if (typeof window === 'undefined') return 'es';
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored === 'es' || stored === 'en') return stored;
+  const geo = getCookie(GEO_COOKIE_NAME);
+  if (geo === 'es' || geo === 'en') return geo;
   return navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'es';
 }
 
