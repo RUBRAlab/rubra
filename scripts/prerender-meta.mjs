@@ -55,6 +55,11 @@ const routes = [
     description: 'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a tener su catálogo online, pedidos automáticos y un panel para administrar todo sin depender de nadie técnico.',
   },
   {
+    path: '/blog/por-que-2-a-6-semanas-no-3-meses',
+    title: 'Por qué 2 a 6 semanas y no 3 meses | RUBRA',
+    description: 'Software a medida no tiene por qué significar un proyecto de meses. Qué se corta —y qué no— para entregar un sistema funcionando en semanas, sin bajar la calidad.',
+  },
+  {
     path: '/blog/costos-ocultos-de-no-automatizar',
     title: 'Los costos ocultos de no automatizar tu empresa | RUBRA',
     description: 'Automatizar tiene un costo visible y conocido. No automatizar también tiene un costo, pero está repartido y escondido. Cómo calcular lo que realmente te está costando seguir trabajando a mano.',
