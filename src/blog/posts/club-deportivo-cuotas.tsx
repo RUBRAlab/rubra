@@ -137,7 +137,7 @@ const ContentEn = () => (
     <h2>The decision that mattered most</h2>
     <p>
       The system was designed around one constraint: the users aren't technical and many
-      don't have email. Access was solved with an ID number and a PIN — something
+      don't have email. Access was solved with an ID number and a PIN - something
       club members can remember without help.
     </p>
     <p>

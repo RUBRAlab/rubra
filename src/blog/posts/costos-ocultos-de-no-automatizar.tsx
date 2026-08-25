@@ -81,7 +81,7 @@ const Content = () => (
       <li>El límite de crecimiento que ese proceso manual le pone al negocio.</li>
     </ol>
     <p>
-      Comparado contra eso, el costo de automatizar —que es finito, conocido y de una sola vez—
+      Comparado contra eso, el costo de automatizar -que es finito, conocido y de una sola vez-
       suele ser mucho menor de lo que parecía al principio.
     </p>
 
@@ -139,7 +139,7 @@ const ContentEn = () => (
 
     <h2>The cost of error</h2>
     <p>
-      Manual processes fail. Not because anyone is careless — it's statistics. Copying a
+      Manual processes fail. Not because anyone is careless - it's statistics. Copying a
       number by hand, entering an order, updating stock: all of that carries a margin of
       human error that grows with volume.
     </p>
@@ -179,7 +179,7 @@ const ContentEn = () => (
       <li>The growth ceiling that manual process puts on the business.</li>
     </ol>
     <p>
-      Compared to that, the cost of automating — which is finite, known, and one-time — tends
+      Compared to that, the cost of automating - which is finite, known, and one-time - tends
       to be much lower than it seemed at first.
     </p>
 

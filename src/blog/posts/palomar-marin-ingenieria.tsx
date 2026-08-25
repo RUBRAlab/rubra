@@ -100,7 +100,7 @@ const ContentEn = () => (
     <ul>
       <li>
         <strong>A portfolio of completed projects</strong> as the heart of the site.
-        Not a decorative gallery — the main argument.
+        Not a decorative gallery - the main argument.
       </li>
       <li>
         <strong>Services explained clearly</strong>: full project management,

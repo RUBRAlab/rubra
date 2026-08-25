@@ -9,14 +9,14 @@ const Content = () => (
     </p>
     <p>
       No tiene por qué ser así. La mayoría de los sistemas que resuelven un problema real de
-      una pyme —no una plataforma de escala, un sistema puntual— se pueden construir y entregar
+      una pyme -no una plataforma de escala, un sistema puntual- se pueden construir y entregar
       en dos a seis semanas. La diferencia no es magia ni un equipo más grande. Es qué se corta.
     </p>
 
     <h2>Lo que hace largo un proyecto no es el código</h2>
     <p>
-      Escribir la lógica de un sistema —el CRUD, las validaciones, la integración con un medio
-      de pago, el panel de administración— rara vez toma meses. Lo que estira los proyectos es
+      Escribir la lógica de un sistema -el CRUD, las validaciones, la integración con un medio
+      de pago, el panel de administración- rara vez toma meses. Lo que estira los proyectos es
       todo lo que rodea al código: semanas de relevamiento antes de escribir la primera línea,
       un documento de alcance que se revisa varias veces antes de aprobarse, capas de aprobación
       donde cada cambio pasa por dos o tres personas antes de tocar el proyecto.
@@ -31,7 +31,7 @@ const Content = () => (
     <p>
       Achicar el tiempo no significa saltear entender el problema. Significa no convertir esa
       etapa en un proyecto en sí misma. Una o dos conversaciones para entender qué se necesita
-      de verdad —no lo que el cliente cree que necesita, sino el problema de fondo— alcanzan
+      de verdad -no lo que el cliente cree que necesita, sino el problema de fondo- alcanzan
       para arrancar. El resto del alcance se termina de definir mientras el sistema ya se está
       construyendo, no antes.
     </p>
@@ -96,14 +96,14 @@ const ContentEn = () => (
     </p>
     <p>
       It doesn't have to be that way. Most systems that solve a real problem for a small
-      business — not a platform built to scale, a specific system — can be built and delivered
+      business - not a platform built to scale, a specific system - can be built and delivered
       in two to six weeks. The difference isn't magic or a bigger team. It's what gets cut.
     </p>
 
     <h2>What makes a project long isn't the code</h2>
     <p>
-      Writing the logic of a system — the CRUD, the validations, the payment integration, the
-      admin panel — rarely takes months. What stretches projects out is everything around the
+      Writing the logic of a system - the CRUD, the validations, the payment integration, the
+      admin panel - rarely takes months. What stretches projects out is everything around the
       code: weeks of discovery before writing the first line, a scope document reviewed
       several times before it's approved, layers of approval where every change passes through
       two or three people before touching the project.
@@ -111,15 +111,15 @@ const ContentEn = () => (
     <p>
       None of that builds the system. It only delays it. In a consultancy with structure, those
       layers exist because there's a lot of people to coordinate. In a one-person project backed
-      by AI, those layers simply don't exist — there's no one to coordinate.
+      by AI, those layers simply don't exist - there's no one to coordinate.
     </p>
 
     <h2>Short discovery, not zero discovery</h2>
     <p>
       Cutting the timeline down doesn't mean skipping the step of understanding the problem. It
       means not turning that step into a project of its own. One or two conversations to
-      understand what's really needed — not what the client thinks they need, but the underlying
-      problem — are enough to get started. The rest of the scope gets defined while the system
+      understand what's really needed - not what the client thinks they need, but the underlying
+      problem - are enough to get started. The rest of the scope gets defined while the system
       is already being built, not before.
     </p>
     <p>
@@ -178,8 +178,8 @@ export const post: BlogPost = {
   slug: 'por-que-2-a-6-semanas-no-3-meses',
   title: 'Por qué 2 a 6 semanas y no 3 meses',
   title_en: 'Why 2 to 6 weeks, not 3 months',
-  description: 'Software a medida no tiene por qué significar un proyecto de meses. Qué se corta —y qué no— para entregar un sistema funcionando en semanas, sin bajar la calidad.',
-  description_en: 'Custom software doesn\'t have to mean a months-long project. What gets cut — and what doesn\'t — to deliver a working system in weeks, without cutting quality.',
+  description: 'Software a medida no tiene por qué significar un proyecto de meses. Qué se corta -y qué no- para entregar un sistema funcionando en semanas, sin bajar la calidad.',
+  description_en: 'Custom software doesn\'t have to mean a months-long project. What gets cut - and what doesn\'t - to deliver a working system in weeks, without cutting quality.',
   date: '2026-08-25',
   category: 'Proceso',
   category_en: 'Process',
