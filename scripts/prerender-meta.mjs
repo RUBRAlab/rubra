@@ -20,6 +20,11 @@ const routes = [
     description: 'Tiendas online, sistemas de gestión y portales B2B que construimos para empresas e instituciones. Casos reales, en producción.',
   },
   {
+    path: '/casos/marca-cosmetica-natural-mendoza',
+    title: 'Tenía el producto y los clientes. Le faltaba la marca. | RUBRA',
+    description: 'VRU Ritual hace cosmética natural artesanal en Mendoza. Antes del sitio hubo que construir la marca: nombre, paleta y tono, sacados del producto real.',
+  },
+  {
     path: '/casos/acacia-paisajismo',
     title: 'Un estudio de paisajismo que dejó de depender de Instagram | RUBRA',
     description: 'Acacia Paisajismo diseña y ejecuta jardines en Gran Mendoza. Le construimos el sitio donde su portfolio, su tienda y sus cursos tienen cada uno su lugar.',

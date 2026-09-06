@@ -11,10 +11,12 @@ import { post as casoConcil } from './concil-producto-propio'
 import { post as casoEnvases } from './catalogo-b2b-envases'
 import { post as casoPalomar } from './palomar-marin-ingenieria'
 import { post as casoAcacia } from './acacia-paisajismo'
+import { post as casoVru } from './marca-cosmetica-natural-mendoza'
 import { post as costosOcultos } from './costos-ocultos-de-no-automatizar'
 
 // El orden acá define el orden en el blog (primero = más reciente)
 export const posts = [
+  casoVru,
   dosASeisSemanas,
   costosOcultos,
   casoAcacia,
