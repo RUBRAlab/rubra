@@ -6,6 +6,7 @@ import App from './App.tsx'
 import Blog from './blog/Blog.tsx'
 import Post from './blog/Post.tsx'
 import Casos from './casos/Casos.tsx'
+import NotFound from './NotFound.tsx'
 import { LanguageProvider } from './i18n/LanguageContext.tsx'
 import './index.css'
 
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/blog/:slug" element={<Post />} />
           <Route path="/casos" element={<Casos />} />
           <Route path="/casos/:slug" element={<Post />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Analytics />
       </LanguageProvider>

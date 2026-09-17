@@ -17,8 +17,8 @@ const formatDate = (dateStr: string, language: 'es' | 'en') => {
 
 const COPY = {
   es: {
-    notFoundTitle: 'RUBRA | Transformación organizacional para empresas',
-    notFoundDescription: 'Acompañamos a líderes, equipos y organizaciones a transformarse de forma simple, humana y consciente.',
+    notFoundTitle: 'Artículo no encontrado | RUBRA lab',
+    notFoundDescription: 'Construimos el software que tu negocio necesita: tiendas online, sistemas de gestión, portales B2B y automatización.',
     back: (base: string) => (base === '/casos' ? 'Casos' : 'Blog'),
     readTime: (min: number) => `${min} min de lectura`,
     resonated: '¿Te resonó este artículo?',
@@ -26,8 +26,8 @@ const COPY = {
     ctaButton: 'Reservar sesión →',
   },
   en: {
-    notFoundTitle: 'RUBRA | Organizational transformation for businesses',
-    notFoundDescription: 'We help leaders, teams and organizations transform in a simple, human and mindful way.',
+    notFoundTitle: 'Article not found | RUBRA lab',
+    notFoundDescription: 'We build the software your business needs: online stores, management systems, B2B portals and automation.',
     back: (base: string) => (base === '/casos' ? 'Case studies' : 'Blog'),
     readTime: (min: number) => `${min} min read`,
     resonated: 'Did this article resonate with you?',

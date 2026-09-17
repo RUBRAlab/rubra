@@ -108,3 +108,12 @@ for (const route of routes) {
   fs.writeFileSync(path.join(outDir, 'index.html'), html)
   console.log(`prerender-meta: ${route.path} -> ${path.relative(dist, outDir)}/index.html`)
 }
+
+// 404.html: Vercel lo sirve con status 404 real para cualquier ruta que no exista en
+// dist ni en los rewrites. Es la misma app, así que React renderiza <NotFound />.
+const notFound = template
+  .replace(/<title>.*?<\/title>/, '<title>Página no encontrada | RUBRA lab</title>')
+  .replace(/<meta name="robots"[^>]*>/, '')
+  .replace('</head>', '<meta name="robots" content="noindex">\n</head>')
+fs.writeFileSync(path.join(dist, '404.html'), notFound)
+console.log('prerender-meta: 404 -> 404.html')
