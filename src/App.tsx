@@ -41,7 +41,7 @@ import {
 // Número real de WhatsApp Business de RUBRA lab (whatsapp_setup, rubra-crm).
 // Se usa como wa.me: funciona con cualquier número, no depende de si está
 // operando por la app normal o por Cloud API en un momento dado.
-const WHATSAPP_NUMBER = '5491173856054';
+const WHATSAPP_NUMBER = '5491178171726';
 
 function buildWhatsappLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
