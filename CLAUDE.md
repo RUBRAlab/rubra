@@ -24,7 +24,17 @@ enlaza con el botón **"Acceso equipo"** en el footer.
 
 ## Convenciones
 
-- El formulario de contacto NO tiene backend: arma un `mailto:hola@rubra.ar` desde el `onSubmit`.
+- El formulario de contacto postea a `api/contacto.ts` (Vercel Function, Resend): manda el
+  mail a `hola@rubra.ar` con `reply_to` del visitante y una autorespuesta al mismo. Reemplazó
+  al `mailto:` viejo (2026-09-16): no generaba lead, no funcionaba en celulares sin cliente de
+  mail, y no había forma de saber si alguien lo había intentado. Requiere `RESEND_API_KEY`
+  (reusa las mismas env vars que `api/notificar.ts`: `NOTIFY_FROM`, `NOTIFY_TO`).
+- Botón flotante de WhatsApp (`WhatsAppFloatingButton` en `App.tsx`) con el número real de
+  RUBRA (`WHATSAPP_NUMBER`, ver `whatsapp_setup` en memoria de rubra-crm). Es un `wa.me`, no
+  depende de si el número está operando por la app normal o por Cloud API.
+- Eventos de `@vercel/analytics` (`track()`) en los 3 CTA de agendar reunión, el WhatsApp
+  flotante y el envío del formulario — antes no había forma de saber si alguien intentaba
+  convertir. Ver Web Analytics del proyecto en Vercel para leerlos.
 - La navegación tiene una versión desktop y un menú hamburguesa mobile separados dentro de
   `App.tsx`: si agregás/quitás un link, **hacelo en ambos** (es fácil olvidarse del mobile).
 - Commits en español, descriptivos.

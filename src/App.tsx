@@ -6,6 +6,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
+import { track } from '@vercel/analytics';
 import heroImage from './assets/images/ruperto.webp';
 import logoBlueSky from './assets/images/clients/bluesky.png';
 import logoConcil from './assets/images/clients/concil.png';
@@ -33,8 +34,34 @@ import {
   BarChart3,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  MessageCircle
 } from 'lucide-react';
+
+// Número real de WhatsApp Business de RUBRA lab (whatsapp_setup, rubra-crm).
+// Se usa como wa.me: funciona con cualquier número, no depende de si está
+// operando por la app normal o por Cloud API en un momento dado.
+const WHATSAPP_NUMBER = '5491173856054';
+
+function buildWhatsappLink(message: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+function WhatsAppFloatingButton({ label, message }: { label: string; message: string }) {
+  return (
+    <a
+      href={buildWhatsappLink(message)}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => track('whatsapp_click', { origin: 'floating' })}
+      aria-label={label}
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white px-4 py-3.5 rounded-full shadow-lg shadow-black/20 hover:brightness-105 transition-all"
+    >
+      <MessageCircle className="w-5 h-5" />
+      <span className="hidden sm:inline text-sm font-semibold">{label}</span>
+    </a>
+  );
+}
 
 const AbstractBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -237,6 +264,7 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -389,7 +417,7 @@ export default function App() {
             >
               {t.nav.blog}
             </Link>
-            <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="bg-stone-900 text-stone-50 px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-800 transition-colors mt-4">
+            <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => { track('schedule_click', { origin: 'mobile_nav' }); setMobileMenuOpen(false); }} className="bg-stone-900 text-stone-50 px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-800 transition-colors mt-4">
               {t.nav.scheduleMeeting}
             </a>
           </div>
@@ -416,7 +444,7 @@ export default function App() {
                   {t.hero.subtitle}
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
-                  <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="bg-green-400 text-green-950 px-8 py-4 rounded-full font-semibold hover:bg-green-300 transition-all hover:shadow-lg hover:shadow-green-400/20 flex items-center gap-2 group">
+                  <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => track('schedule_click', { origin: 'hero' })} className="bg-green-400 text-green-950 px-8 py-4 rounded-full font-semibold hover:bg-green-300 transition-all hover:shadow-lg hover:shadow-green-400/20 flex items-center gap-2 group">
                     {t.hero.ctaSchedule}
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
@@ -782,13 +810,47 @@ export default function App() {
 
             <div className="grid md:grid-cols-5 gap-12 lg:gap-24">
               <div className="md:col-span-3">
-                <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); const name = (document.getElementById("name") as HTMLInputElement).value; const company = (document.getElementById("company") as HTMLInputElement).value; const process = (document.getElementById("process") as HTMLTextAreaElement).value; const subject = encodeURIComponent(t.contact.mailSubject(name)); const body = encodeURIComponent(t.contact.mailBody(name, company, process)); const a = document.createElement('a'); a.href = `mailto:hola@rubra.ar?subject=${subject}&body=${body}`; a.click(); (e.target as HTMLFormElement).reset(); }}>
+                <form
+                  className="flex flex-col gap-8"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    const form = e.target as HTMLFormElement;
+                    const name = (document.getElementById('name') as HTMLInputElement).value;
+                    const email = (document.getElementById('email') as HTMLInputElement).value;
+                    const company = (document.getElementById('company') as HTMLInputElement).value;
+                    const process = (document.getElementById('process') as HTMLTextAreaElement).value;
+                    setFormStatus('sending');
+                    try {
+                      const res = await fetch('/api/contacto', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, company, process, lang: language }),
+                      });
+                      if (!res.ok) throw new Error('request failed');
+                      track('contact_form_submit');
+                      setFormStatus('sent');
+                      form.reset();
+                    } catch {
+                      setFormStatus('error');
+                    }
+                  }}
+                >
                   <div className="flex flex-col gap-2">
                     <label htmlFor="name" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">{t.contact.nameLabel}</label>
                     <input
                       id="name"
                       type="text"
                       placeholder={t.contact.namePlaceholder}
+                      required
+                      className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="text-xs font-semibold tracking-widest text-stone-400 uppercase">{t.contact.emailLabel}</label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder={t.contact.emailPlaceholder}
                       required
                       className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors"
                     />
@@ -813,9 +875,21 @@ export default function App() {
                       className="w-full bg-transparent border-0 border-b border-stone-100/25 py-3 text-white placeholder:text-stone-400 focus:ring-0 focus:border-green-400 transition-colors resize-none"
                     ></textarea>
                   </div>
-                  <button type="submit" className="self-start bg-green-400 text-green-950 px-8 py-4 rounded font-semibold hover:bg-green-300 transition-colors">
-                    {t.contact.submit}
-                  </button>
+                  <div className="flex flex-col gap-3">
+                    <button
+                      type="submit"
+                      disabled={formStatus === 'sending'}
+                      className="self-start bg-green-400 text-green-950 px-8 py-4 rounded font-semibold hover:bg-green-300 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {formStatus === 'sending' ? t.contact.sending : t.contact.submit}
+                    </button>
+                    {formStatus === 'sent' && (
+                      <p className="text-sm text-green-400">{t.contact.sent}</p>
+                    )}
+                    {formStatus === 'error' && (
+                      <p className="text-sm text-red-400">{t.contact.sendError}</p>
+                    )}
+                  </div>
                 </form>
               </div>
 
@@ -825,7 +899,7 @@ export default function App() {
                 <p className="text-stone-300 leading-relaxed mb-8">
                   {t.contact.diagnosisBody}
                 </p>
-                <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" className="inline-block text-center border border-green-400/40 text-green-300 px-8 py-4 rounded font-medium hover:bg-green-400/10 transition-colors">
+                <a href="https://calendar.app.google/EkGn6twofhVFeFQu6" target="_blank" rel="noopener noreferrer" onClick={() => track('schedule_click', { origin: 'contact_section' })} className="inline-block text-center border border-green-400/40 text-green-300 px-8 py-4 rounded font-medium hover:bg-green-400/10 transition-colors">
                   {t.contact.scheduleMeeting}
                 </a>
               </div>
@@ -859,6 +933,8 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      <WhatsAppFloatingButton label={t.whatsapp.label} message={t.whatsapp.message} />
 
       {/* Tailwind configuration for animation */}
       <style dangerouslySetInnerHTML={{__html: `
