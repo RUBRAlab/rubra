@@ -13,9 +13,11 @@ import { post as casoPalomar } from './palomar-marin-ingenieria'
 import { post as casoAcacia } from './acacia-paisajismo'
 import { post as casoVru } from './marca-cosmetica-natural-mendoza'
 import { post as costosOcultos } from './costos-ocultos-de-no-automatizar'
+import { post as casoConstructora } from './constructora-control-de-caja-por-obra'
 
 // El orden acá define el orden en el blog (primero = más reciente)
 export const posts = [
+  casoConstructora,
   casoVru,
   dosASeisSemanas,
   costosOcultos,

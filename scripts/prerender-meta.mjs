@@ -55,6 +55,11 @@ const routes = [
     description: 'Cómo el Club Deportivo Social Juan A. Pradere pasó de cruzar transferencias bancarias con nombres en una planilla, a un sistema de socios con pagos online, roles y avisos automáticos.',
   },
   {
+    path: '/casos/constructora-control-de-caja-por-obra',
+    title: 'De anotar la caja de cada obra a mano a un control en tiempo real | RUBRA',
+    description: 'Una constructora manejaba la caja de sus obras en dos apps que no se hablaban. Le construimos un sistema con billeteras bimonetarias, presupuesto por obra y flujo de aprobación comprador→tesorero.',
+  },
+  {
     path: '/casos/pintureria-cinco-sucursales',
     title: 'De vender por mostrador a una tienda online con 5 sucursales | RUBRA',
     description: 'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a tener su catálogo online, pedidos automáticos y un panel para administrar todo sin depender de nadie técnico.',
