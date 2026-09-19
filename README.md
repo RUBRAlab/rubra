@@ -3,7 +3,7 @@
 Landing + blog de **RUBRA**, agencia de automatización IA para PyMEs. Contacto: hola@rubra.ar.
 
 El CRM interno es un proyecto aparte (repo `RUBRAlab/rubra-crm`, dominio **crm.rubra.ar**); este
-sitio lo enlaza con el botón **"Acceso equipo"** en el pie de página.
+sitio no lo enlaza (se entra directo por crm.rubra.ar).
 
 ## Stack
 

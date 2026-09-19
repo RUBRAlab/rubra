@@ -1,8 +1,8 @@
 # RUBRA — Sitio web (www.rubra.ar)
 
 Landing + blog de RUBRA (agencia de automatización IA para PyMEs). Contacto: hola@rubra.ar.
-El CRM interno es un proyecto aparte (`../rubra-crm`, dominio crm.rubra.ar); este sitio lo
-enlaza con el botón **"Acceso equipo"** en el footer.
+El CRM interno es un proyecto aparte (`../rubra-crm`, dominio crm.rubra.ar); este sitio no lo
+enlaza (se entra directo por crm.rubra.ar).
 
 ## Stack (NO es Next.js ni Supabase)
 

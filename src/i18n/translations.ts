@@ -173,7 +173,6 @@ export const translations = {
     },
     footer: {
       tagline: (year: number) => `© ${year} RUBRA Lab · Software y automatización con IA para empresas.`,
-      teamAccess: 'Acceso equipo',
     },
   },
   en: {
@@ -350,7 +349,6 @@ export const translations = {
     },
     footer: {
       tagline: (year: number) => `© ${year} RUBRA Lab · Software and AI automation for businesses.`,
-      teamAccess: 'Team access',
     },
   },
 } as const;

@@ -921,16 +921,6 @@ export default function App() {
             </p>
           </div>
 
-          <div className="flex items-center gap-6 text-sm text-stone-400">
-            <a
-              href="https://crm.rubra.ar/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              {t.footer.teamAccess}
-            </a>
-          </div>
         </div>
       </footer>
 
