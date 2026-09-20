@@ -32,6 +32,7 @@ Ver todos los casos: https://www.rubra.ar/casos
 Artículos sobre automatización de procesos y por qué los proyectos de software
 fracasan o funcionan: https://www.rubra.ar/blog
 
+- [Cuánto cuesta un software a medida en Argentina](https://www.rubra.ar/blog/cuanto-cuesta-un-software-a-medida-en-argentina): rangos de precio por tipo de proyecto, qué mueve el precio dentro de cada rango y qué costos siguen después del lanzamiento
 - [Cómo elegir una agencia de automatización con IA](https://www.rubra.ar/blog/como-elegir-agencia-de-automatizacion-con-ia): tipos de proveedores, preguntas antes de contratar, señales de alerta y cuándo una agencia chica no conviene
 - [Precio cerrado vs. por hora](https://www.rubra.ar/blog/precio-cerrado-vs-por-hora): cómo contratar software a medida, quién asume el riesgo en cada modelo y qué tiene que decir una propuesta
 - [Por qué 2 a 6 semanas y no 3 meses](https://www.rubra.ar/blog/por-que-2-a-6-semanas-no-3-meses): qué se corta y qué no para entregar un sistema en semanas
