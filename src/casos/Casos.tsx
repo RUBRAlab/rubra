@@ -6,6 +6,7 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { LanguageToggle } from '../i18n/LanguageToggle'
 import { Isotipo, Wordmark } from '../components/Brand'
 import { SiteFooter, FloatingWhatsApp } from '../components/SiteFooter'
+import { CasoPreview, variantForSlug } from '../components/CasoPreview'
 
 const COPY = {
   es: {
@@ -82,15 +83,18 @@ export default function Casos() {
               <Link
                 key={caso.slug}
                 to={`/casos/${caso.slug}`}
-                className="group block bg-white rounded-[2rem] p-8 md:p-10 border border-stone-200 hover:border-green-600/40 hover:shadow-lg hover:shadow-green-900/5 transition-all"
+                className="group flex flex-col bg-white rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-green-600/40 hover:shadow-lg hover:shadow-green-900/5 transition-all"
               >
+                <div className="rounded-2xl overflow-hidden mb-7 bg-stone-100/60 border border-stone-200/80">
+                  <CasoPreview variant={variantForSlug(caso.slug)} />
+                </div>
                 <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-4">
                   {c.readTime(caso.readTime)}
                 </p>
                 <h2 className="text-2xl md:text-3xl font-display font-medium text-stone-900 mb-4 leading-tight">
                   {language === 'en' ? caso.title_en : caso.title}
                 </h2>
-                <p className="text-stone-600 leading-relaxed mb-6">{language === 'en' ? caso.description_en : caso.description}</p>
+                <p className="text-stone-600 leading-relaxed mb-6 flex-1">{language === 'en' ? caso.description_en : caso.description}</p>
                 <span className="inline-flex items-center gap-2 text-green-700 font-medium">
                   {c.verCaso}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
