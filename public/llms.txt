@@ -15,6 +15,8 @@ RUBRA lab es fundada y operada por Ruperto Bravo. Contacto: hola@rubra.ar.
 
 ## Casos de éxito (proyectos reales en producción)
 
+- [Constructora multiobra](https://www.rubra.ar/casos/constructora-control-de-caja-por-obra): control de caja por obra en tiempo real, billeteras bimonetarias y flujo de aprobación comprador-tesorero
+- [VRU Ritual](https://www.rubra.ar/casos/marca-cosmetica-natural-mendoza): marca y sitio para una cosmética natural artesanal de Mendoza
 - [Pinturería con 5 sucursales](https://www.rubra.ar/casos/pintureria-cinco-sucursales): ecommerce de pinturería en La Rioja, catálogo autoadministrable
 - [Club Deportivo Social Juan A. Pradere](https://www.rubra.ar/casos/club-deportivo-cuotas): sistema de socios y cuotas para un club de 86 años, pagos online
 - [Desquiciado Wines](https://www.rubra.ar/casos/portal-b2b-bodega): portal B2B mayorista para una bodega de Mendoza, con logística integrada
@@ -29,3 +31,7 @@ Ver todos los casos: https://www.rubra.ar/casos
 
 Artículos sobre automatización de procesos y por qué los proyectos de software
 fracasan o funcionan: https://www.rubra.ar/blog
+
+- [Precio cerrado vs. por hora](https://www.rubra.ar/blog/precio-cerrado-vs-por-hora): cómo contratar software a medida, quién asume el riesgo en cada modelo y qué tiene que decir una propuesta
+- [Por qué 2 a 6 semanas y no 3 meses](https://www.rubra.ar/blog/por-que-2-a-6-semanas-no-3-meses): qué se corta y qué no para entregar un sistema en semanas
+- [Los costos ocultos de no automatizar](https://www.rubra.ar/blog/costos-ocultos-de-no-automatizar): cómo calcular lo que cuesta seguir trabajando a mano
