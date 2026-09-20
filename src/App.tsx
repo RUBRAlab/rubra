@@ -562,13 +562,15 @@ export default function App() {
           </div>
 
           {/* Stats: los números que sostienen la promesa del título */}
-          <div className="max-w-7xl mx-auto relative z-10 mt-14 md:mt-20 pt-10 border-t border-stone-100/15 grid grid-cols-3 gap-6 md:gap-12 md:max-w-3xl md:mx-0">
+          {/* En mobile van apilados con la etiqueta al lado: en 3 columnas a
+              375px "USD 1.000" no entra y se corta contra el borde. */}
+          <div className="max-w-7xl mx-auto relative z-10 mt-14 md:mt-20 pt-10 border-t border-stone-100/15 flex flex-col gap-5 sm:grid sm:grid-cols-3 sm:gap-6 md:gap-12 md:max-w-3xl md:mx-0">
             {t.heroStats.map((stat) => (
-              <div key={stat.etiqueta} className="flex flex-col">
+              <div key={stat.etiqueta} className="flex items-baseline gap-3 sm:flex-col sm:gap-0">
                 <p className={`font-display text-2xl md:text-4xl font-semibold tracking-tight tabular-nums whitespace-nowrap ${stat.destacado ? 'text-green-400' : 'text-white'}`}>
                   {stat.valor}
                 </p>
-                <p className="mt-1.5 text-[0.7rem] md:text-xs font-medium uppercase tracking-widest text-stone-400 leading-snug">
+                <p className="text-[0.7rem] md:text-xs font-medium uppercase tracking-widest text-stone-400 leading-snug sm:mt-1.5">
                   {stat.etiqueta}
                 </p>
               </div>
