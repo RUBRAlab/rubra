@@ -9,3 +9,4 @@ coverage/
 .vercel
 
 .claude/launch.json
+dist-ssr/

@@ -1,14 +1,18 @@
-// Genera una copia de dist/index.html por cada ruta con su propio
-// <title>, meta description, canonical y OG/Twitter tags ya en el HTML
-// que recibe Googlebot (sin depender de que se ejecute el JS).
+// Prerender de build: por cada ruta genera un index.html con su <title>, metas,
+// schema y el HTML real de la página dentro de #root. Los crawlers de IA (GPTBot,
+// ClaudeBot, PerplexityBot) no ejecutan JS: sin esto reciben la página vacía.
 import fs from 'fs'
 import path from 'path'
+import { pathToFileURL } from 'url'
 
 const SITE = 'https://www.rubra.ar'
 const dist = path.resolve('dist')
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf-8')
+const { render, postRoutes } = await import(
+  pathToFileURL(path.resolve('dist-ssr/entry-server.js')).href
+)
 
-const routes = [
+const indexRoutes = [
   {
     path: '/blog',
     title: 'Blog | RUBRA lab: automatización y procesos para empresas',
@@ -19,111 +23,123 @@ const routes = [
     title: 'Casos | RUBRA lab: software para empresas de Latinoamérica',
     description: 'Tiendas online, sistemas de gestión y portales B2B que construimos para empresas e instituciones. Casos reales, en producción.',
   },
-  {
-    path: '/casos/marca-cosmetica-natural-mendoza',
-    title: 'Tenía el producto y los clientes. Le faltaba la marca. | RUBRA',
-    description: 'VRU Ritual hace cosmética natural artesanal en Mendoza. Antes del sitio hubo que construir la marca: nombre, paleta y tono, sacados del producto real.',
-  },
-  {
-    path: '/casos/acacia-paisajismo',
-    title: 'Un estudio de paisajismo que dejó de depender de Instagram | RUBRA',
-    description: 'Acacia Paisajismo diseña y ejecuta jardines en Gran Mendoza. Le construimos el sitio donde su portfolio, su tienda y sus cursos tienen cada uno su lugar.',
-  },
-  {
-    path: '/casos/palomar-marin-ingenieria',
-    title: 'Un estudio de ingeniería que ahora tiene dónde mostrar su obra | RUBRA',
-    description: 'Palomar Marín construye viviendas, edificios e instituciones en Mendoza. Le construimos el sitio donde su portfolio, sus servicios y sus consultas viven en un solo lugar.',
-  },
-  {
-    path: '/casos/catalogo-b2b-envases',
-    title: 'Un catálogo técnico que responde antes de que pregunten | RUBRA',
-    description: 'Cómo una empresa de envases de vidrio publicó su catálogo completo con fichas técnicas y planos descargables, para que las consultas lleguen ya armadas.',
-  },
-  {
-    path: '/casos/concil-producto-propio',
-    title: 'CONCIL: cómo construimos nuestro propio producto | RUBRA',
-    description: 'La conciliación bancaria le consume horas todos los meses a cualquier estudio contable. Construimos un producto para eliminarla, y en el camino aprendimos cosas que hoy aplicamos en cada proyecto.',
-  },
-  {
-    path: '/casos/portal-b2b-bodega',
-    title: 'Un portal B2B para que una bodega deje de vender por WhatsApp | RUBRA',
-    description: 'Cómo construimos para Desquiciado Wines un portal de venta mayorista con listas de precios por cliente, pedidos en minutos y seguimiento logístico automático.',
-  },
-  {
-    path: '/casos/club-deportivo-cuotas',
-    title: 'Un club de 86 años que dejó de conciliar cuotas a mano | RUBRA',
-    description: 'Cómo el Club Deportivo Social Juan A. Pradere pasó de cruzar transferencias bancarias con nombres en una planilla, a un sistema de socios con pagos online, roles y avisos automáticos.',
-  },
-  {
-    path: '/casos/constructora-control-de-caja-por-obra',
-    title: 'De anotar la caja de cada obra a mano a un control en tiempo real | RUBRA',
-    description: 'Una constructora manejaba la caja de sus obras en dos apps que no se hablaban. Le construimos un sistema con billeteras bimonetarias, presupuesto por obra y flujo de aprobación comprador→tesorero.',
-  },
-  {
-    path: '/casos/pintureria-cinco-sucursales',
-    title: 'De vender por mostrador a una tienda online con 5 sucursales | RUBRA',
-    description: 'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a tener su catálogo online, pedidos automáticos y un panel para administrar todo sin depender de nadie técnico.',
-  },
-  {
-    path: '/blog/por-que-2-a-6-semanas-no-3-meses',
-    title: 'Por qué 2 a 6 semanas y no 3 meses | RUBRA',
-    description: 'Software a medida no tiene por qué significar un proyecto de meses. Qué se corta —y qué no— para entregar un sistema funcionando en semanas, sin bajar la calidad.',
-  },
-  {
-    path: '/blog/costos-ocultos-de-no-automatizar',
-    title: 'Los costos ocultos de no automatizar tu empresa | RUBRA',
-    description: 'Automatizar tiene un costo visible y conocido. No automatizar también tiene un costo, pero está repartido y escondido. Cómo calcular lo que realmente te está costando seguir trabajando a mano.',
-  },
-  {
-    path: '/blog/cuellos-de-botella-el-enemigo-silencioso',
-    title: 'Cuellos de botella: el enemigo silencioso que frena el crecimiento | RUBRA',
-    description: 'Muchas empresas creen que necesitan más clientes para crecer. El problema casi siempre está adentro. Cómo identificar el punto que está frenando todo y qué hacer para eliminarlo.',
-  },
-  {
-    path: '/blog/gestion-del-cambio-por-que-la-tecnologia-sola-no-alcanza',
-    title: 'Por qué un sistema nuevo fracasa (y no es por la tecnología) | RUBRA',
-    description: 'Construir el sistema es la parte fácil. Lo difícil es que el equipo lo adopte. Qué separa un proyecto que se usa todos los días de uno que termina abandonado.',
-  },
-  {
-    path: '/blog/como-automatizar-procesos-sin-volverse-loco',
-    title: 'Cómo automatizar procesos en tu empresa sin volverse loco | RUBRA',
-    description: 'Automatizar no es un proyecto enorme ni requiere robots. Es eliminar las tareas repetitivas que consumen el tiempo y la energía de tu equipo, y hay un único lugar correcto por donde empezar.',
-  },
-  {
-    path: '/blog/senales-de-que-tu-empresa-necesita-automatizar',
-    title: '3 señales de que tu empresa necesita automatizar sus procesos | RUBRA',
-    description: 'Hay un momento en que el crecimiento empieza a jugar en contra. Estos son los tres síntomas más claros de que los procesos manuales están frenando tu empresa.',
-  },
 ]
+
+const escAttr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+const escText = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+const jsonLd = (data) =>
+  `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`
 
 // El bloque FAQPage solo describe la home: si viaja en cada ruta prerenderizada,
 // Google ve un FAQ declarado en páginas que no lo tienen.
 const stripFaqSchema = (html) =>
   html.replace(/[ \t]*<!-- faq-schema:start[\s\S]*?faq-schema:end -->\n?/, '')
 
-for (const route of routes) {
+const injectApp = (html, routePath) => {
+  const app = render(routePath)
+  if (app.length < 500) throw new Error(`prerender: ${routePath} rindió HTML vacío`)
+  return html.replace('<div id="root"></div>', () => `<div id="root">${app}</div>`)
+}
+
+const articleSchema = (route) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: route.headline,
+  description: route.description,
+  datePublished: route.date,
+  dateModified: route.date,
+  inLanguage: 'es-AR',
+  articleSection: route.isCaso ? 'Casos de éxito' : 'Blog',
+  mainEntityOfPage: `${SITE}${route.path}`,
+  image: `${SITE}/og-image-v2.png`,
+  author: { '@type': 'Person', name: 'Ruperto Bravo', url: SITE },
+  publisher: {
+    '@type': 'Organization',
+    name: 'RUBRA lab',
+    url: SITE,
+    logo: { '@type': 'ImageObject', url: `${SITE}/logo/isotipo.png` },
+  },
+})
+
+const breadcrumbSchema = (route) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'RUBRA lab', item: `${SITE}/` },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: route.isCaso ? 'Casos' : 'Blog',
+      item: `${SITE}${route.isCaso ? '/casos' : '/blog'}`,
+    },
+    { '@type': 'ListItem', position: 3, name: route.headline, item: `${SITE}${route.path}` },
+  ],
+})
+
+const writeRoute = (route, extraHead = '') => {
   const url = `${SITE}${route.path}`
-  const html = stripFaqSchema(template)
-    .replace(/<title>.*?<\/title>/, `<title>${route.title}</title>`)
-    .replace(/(<meta name="description" content=")[^"]*(")/, `$1${route.description}$2`)
-    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
-    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
-    .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${route.title}$2`)
-    .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${route.description}$2`)
-    .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${route.title}$2`)
-    .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${route.description}$2`)
+  const title = escText(route.title)
+  const description = escAttr(route.description)
+  const attr = (re, value) => (html) => html.replace(re, (_, a, b) => `${a}${value}${b}`)
+  let html = stripFaqSchema(template).replace(/<title>.*?<\/title>/, () => `<title>${title}</title>`)
+  for (const apply of [
+    attr(/(<meta name="description" content=")[^"]*(")/, description),
+    attr(/(<link rel="canonical" href=")[^"]*(")/, url),
+    attr(/(<meta property="og:url" content=")[^"]*(")/, url),
+    attr(/(<meta property="og:title" content=")[^"]*(")/, escAttr(route.title)),
+    attr(/(<meta property="og:description" content=")[^"]*(")/, description),
+    attr(/(<meta name="twitter:title" content=")[^"]*(")/, escAttr(route.title)),
+    attr(/(<meta name="twitter:description" content=")[^"]*(")/, description),
+  ]) html = apply(html)
+  if (extraHead) html = html.replace('</head>', () => `${extraHead}\n  </head>`)
+  html = injectApp(html, route.path)
 
   const outDir = path.join(dist, ...route.path.split('/').filter(Boolean))
   fs.mkdirSync(outDir, { recursive: true })
   fs.writeFileSync(path.join(outDir, 'index.html'), html)
-  console.log(`prerender-meta: ${route.path} -> ${path.relative(dist, outDir)}/index.html`)
+  console.log(`prerender: ${route.path} (${(html.length / 1024).toFixed(0)} KB)`)
+}
+
+for (const route of indexRoutes) writeRoute(route)
+for (const route of postRoutes) {
+  writeRoute(route, `    ${jsonLd(articleSchema(route))}\n    ${jsonLd(breadcrumbSchema(route))}`)
 }
 
 // 404.html: Vercel lo sirve con status 404 real para cualquier ruta que no exista en
 // dist ni en los rewrites. Es la misma app, así que React renderiza <NotFound />.
+// Se arma desde el template vacío, antes de inyectarle la home a index.html.
 const notFound = stripFaqSchema(template)
   .replace(/<title>.*?<\/title>/, '<title>Página no encontrada | RUBRA lab</title>')
   .replace(/<meta name="robots"[^>]*>/, '')
   .replace('</head>', '<meta name="robots" content="noindex">\n</head>')
 fs.writeFileSync(path.join(dist, '404.html'), notFound)
-console.log('prerender-meta: 404 -> 404.html')
+console.log('prerender: 404 -> 404.html')
+
+// La home va última: index.html es también el template del resto.
+const home = injectApp(template, '/')
+fs.writeFileSync(path.join(dist, 'index.html'), home)
+console.log(`prerender: / (${(home.length / 1024).toFixed(0)} KB)`)
+
+// Sitemap generado desde las rutas reales, para que un post nuevo no quede afuera.
+const today = new Date().toISOString().slice(0, 10)
+const entries = [
+  { loc: '/', lastmod: today, changefreq: 'monthly', priority: '1.0' },
+  ...indexRoutes.map((r) => ({ loc: r.path, lastmod: today, changefreq: 'weekly', priority: '0.9' })),
+  ...postRoutes.map((r) => ({ loc: r.path, lastmod: r.date, changefreq: 'monthly', priority: '0.7' })),
+]
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries
+  .map(
+    (e) => `  <url>
+    <loc>${SITE}${e.loc}</loc>
+    <lastmod>${e.lastmod}</lastmod>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>
+  </url>`,
+  )
+  .join('\n')}
+</urlset>
+`
+fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap)
+console.log(`prerender: sitemap.xml (${entries.length} URLs)`)

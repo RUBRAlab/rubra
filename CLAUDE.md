@@ -19,7 +19,10 @@ enlaza (se entra directo por crm.rubra.ar).
 - `src/blog/` — `Blog.tsx` (índice), `Post.tsx` (detalle), `posts/` (cada post es un `.tsx` que
   exporta un `FC`; ver `posts/index.ts` y `types.ts`).
 - `src/hooks/usePageMeta.ts` — setea `<title>`/meta por página.
-- `scripts/prerender-meta.mjs` — corre en el build para prerenderizar meta/HTML por ruta del blog.
+- `scripts/prerender-meta.mjs` — corre en el build: renderiza cada ruta con React (`src/entry-server.tsx`,
+  compilado a `dist-ssr/`) y escribe un `index.html` por ruta con el contenido real en `#root`, metas,
+  schema `Article` y el `sitemap.xml`. Las rutas salen de `posts/index.ts`: un post nuevo entra solo.
+  Es para crawlers de IA, que no ejecutan JS. El cliente monta con `createRoot`, no hidrata.
 - `index.html`, `public/`, `metadata.json`.
 
 ## Convenciones
@@ -38,7 +41,7 @@ enlaza (se entra directo por crm.rubra.ar).
 - La navegación tiene una versión desktop y un menú hamburguesa mobile separados dentro de
   `App.tsx`: si agregás/quitás un link, **hacelo en ambos** (es fácil olvidarse del mobile).
 - Commits en español, descriptivos.
-- `npm run lint` = `tsc --noEmit`. `npm run build` = `vite build && node scripts/prerender-meta.mjs`
+- `npm run lint` = `tsc --noEmit`. `npm run build` = `vite build` + build SSR + `node scripts/prerender-meta.mjs`
   (Vercel usa `build`). Verificar ambos antes de deployar.
 
 ## Presupuesto base cliente (referencia comercial)

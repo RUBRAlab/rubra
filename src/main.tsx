@@ -1,29 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
-import App from './App.tsx'
-import Blog from './blog/Blog.tsx'
-import Post from './blog/Post.tsx'
-import Casos from './casos/Casos.tsx'
-import NotFound from './NotFound.tsx'
-import { LanguageProvider } from './i18n/LanguageContext.tsx'
+import { AppRoutes } from './AppRoutes.tsx'
 import './index.css'
 
+// createRoot (no hydrateRoot) a propósito: el HTML prerenderizado en #root es para
+// crawlers que no ejecutan JS. El idioma se resuelve en el cliente (localStorage/geo),
+// así que hidratar daría mismatch para visitantes en inglés.
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <LanguageProvider>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<Post />} />
-          <Route path="/casos" element={<Casos />} />
-          <Route path="/casos/:slug" element={<Post />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Analytics />
-      </LanguageProvider>
+      <AppRoutes />
+      <Analytics />
     </BrowserRouter>
   </StrictMode>,
 )
