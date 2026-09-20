@@ -84,7 +84,6 @@ export const translations = {
       items: [
         {
           slug: 'pintureria-cinco-sucursales',
-          preview: 'tienda',
           rubro: 'Retail · 5 sucursales',
           titulo: 'De vender por mostrador a una tienda online',
           resumen: 'Una pinturería de La Rioja con su catálogo abierto las 24 horas y un panel donde su equipo carga productos y precios sin depender de nadie.',
@@ -92,7 +91,6 @@ export const translations = {
         },
         {
           slug: 'club-deportivo-cuotas',
-          preview: 'padron',
           rubro: 'Institución · 86 años',
           titulo: 'Un club que dejó de conciliar cuotas a mano',
           resumen: 'Padrón de socios, pagos online, roles por comisión y avisos por WhatsApp para el Club Deportivo Social Juan A. Pradere.',
@@ -100,7 +98,6 @@ export const translations = {
         },
         {
           slug: 'portal-b2b-bodega',
-          preview: 'b2b',
           rubro: 'Bodega · Venta mayorista',
           titulo: 'Un portal B2B para dejar de vender por WhatsApp',
           resumen: 'Listas de precios por cliente, pedidos en minutos y seguimiento logístico automático para Desquiciado Wines.',
@@ -108,7 +105,6 @@ export const translations = {
         },
         {
           slug: 'concil-producto-propio',
-          preview: 'saas',
           rubro: 'Producto propio · SaaS',
           titulo: 'CONCIL: construimos nuestro propio producto',
           resumen: 'Conciliación bancaria para estudios contables, con suscripciones recurrentes y multi-cuenta. En producción en concil.ar.',
@@ -301,7 +297,6 @@ export const translations = {
       items: [
         {
           slug: 'pintureria-cinco-sucursales',
-          preview: 'tienda',
           rubro: 'Retail · 5 stores',
           titulo: 'From counter sales to an online store',
           resumen: 'A paint store in La Rioja with its catalog open 24/7 and a panel where its team manages products and prices without depending on anyone.',
@@ -309,7 +304,6 @@ export const translations = {
         },
         {
           slug: 'club-deportivo-cuotas',
-          preview: 'padron',
           rubro: 'Institution · 86 years',
           titulo: 'A club that stopped reconciling dues by hand',
           resumen: 'Member registry, online payments, board-role permissions and WhatsApp notifications for Club Deportivo Social Juan A. Pradere.',
@@ -317,7 +311,6 @@ export const translations = {
         },
         {
           slug: 'portal-b2b-bodega',
-          preview: 'b2b',
           rubro: 'Winery · Wholesale',
           titulo: 'A B2B portal to stop selling over WhatsApp',
           resumen: 'Customer-specific price lists, orders placed in minutes and automatic logistics tracking for Desquiciado Wines.',
@@ -325,7 +318,6 @@ export const translations = {
         },
         {
           slug: 'concil-producto-propio',
-          preview: 'saas',
           rubro: 'Our own product · SaaS',
           titulo: 'CONCIL: we built our own product',
           resumen: 'Bank reconciliation for accounting firms, with recurring subscriptions and multi-account support. Live in production at concil.ar.',

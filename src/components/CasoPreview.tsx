@@ -1,7 +1,25 @@
+import shotPintureria from '../assets/images/casos/pintureria.webp'
+import shotConcil from '../assets/images/casos/concil.webp'
+import shotPalomar from '../assets/images/casos/palomar.webp'
+
+/**
+ * Capturas reales de los productos entregados, para los casos cuyo resultado es
+ * público. Los que son sistemas internos (padrón de socios, portal B2B, control
+ * de caja) no tienen captura: están detrás de login y muestran datos reales de
+ * clientes, así que van con el diagrama esquemático.
+ */
+const SHOT_BY_SLUG: Record<string, string> = {
+  'pintureria-cinco-sucursales': shotPintureria,
+  'concil-producto-propio': shotConcil,
+  'palomar-marin-ingenieria': shotPalomar,
+}
+
+export const shotForSlug = (slug: string): string | undefined => SHOT_BY_SLUG[slug]
+
 /**
  * Previsualización esquemática de cada caso. No es una captura: es un diagrama
  * de qué se entregó, para que la card no sea un bloque de texto plano.
- * Cuando haya capturas reales de los productos, reemplazan a esto.
+ * Se usa solo donde no hay captura real posible.
  */
 export const CasoPreview = ({ variant }: { variant: string }) => {
   const stone = '#d6d3d1';
@@ -98,7 +116,7 @@ export const CasoPreview = ({ variant }: { variant: string }) => {
   };
 
   return (
-    <svg viewBox="0 0 320 150" className="w-full h-auto" role="img" aria-hidden="true">
+    <svg viewBox="0 0 320 150" className="w-full h-full" role="img" aria-hidden="true">
       <rect x="0.5" y="0.5" width="319" height="149" rx="11" fill="#fafaf9" stroke={stoneSoft} />
       <path d="M0 11.5 A11 11 0 0 1 11.5 0.5 H308.5 A11 11 0 0 1 319.5 11.5 V20 H0.5 Z" fill={stoneSoft} />
       <circle cx="16" cy="11" r="3" fill="#c9c6c3" />
@@ -123,3 +141,27 @@ const VARIANT_BY_SLUG: Record<string, string> = {
 }
 
 export const variantForSlug = (slug: string) => VARIANT_BY_SLUG[slug] ?? 'saas'
+
+/**
+ * Visual de la card de un caso: captura real si la hay, diagrama si no.
+ * El contenedor fija el ratio para que todas las cards de la grilla midan
+ * igual, sin importar cuál de las dos se muestre.
+ */
+export const CasoVisual = ({ slug, alt }: { slug: string; alt: string }) => {
+  const shot = shotForSlug(slug)
+  return (
+    <div className="rounded-2xl overflow-hidden mb-7 bg-stone-100/60 border border-stone-200/80 aspect-[320/150]">
+      {shot ? (
+        <img
+          src={shot}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover object-top"
+        />
+      ) : (
+        <CasoPreview variant={variantForSlug(slug)} />
+      )}
+    </div>
+  )
+}

@@ -7,7 +7,7 @@
 export const WHATSAPP_NUMBER = '5491178171726'
 export const CALENDAR_URL = 'https://calendar.app.google/EkGn6twofhVFeFQu6'
 export const EMAIL = 'hola@rubra.ar'
-export const LINKEDIN_URL = 'https://www.linkedin.com/company/rurba-latam'
+export const LINKEDIN_URL = 'https://www.linkedin.com/company/rubra-latam'
 export const INSTAGRAM_URL = 'https://www.instagram.com/rubra.latam'
 
 export function buildWhatsappLink(message: string) {

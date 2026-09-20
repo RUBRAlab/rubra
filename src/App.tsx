@@ -23,7 +23,7 @@ import { usePageMeta } from './hooks/usePageMeta';
 import { useLanguage } from './i18n/LanguageContext';
 import { translations } from './i18n/translations';
 import { Isotipo, Wordmark } from './components/Brand';
-import { CasoPreview } from './components/CasoPreview';
+import { CasoVisual } from './components/CasoPreview';
 import { SiteFooter, WhatsAppFloatingButton } from './components/SiteFooter';
 import { CALENDAR_URL, buildWhatsappLink } from './config';
 import {
@@ -595,9 +595,7 @@ export default function App() {
                     to={`/casos/${caso.slug}`}
                     className="group flex flex-col h-full bg-white/70 backdrop-blur-md rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-green-600/40 hover:shadow-lg hover:shadow-green-900/5 transition-all"
                   >
-                    <div className="rounded-2xl overflow-hidden mb-7 bg-stone-100/60 border border-stone-200/80">
-                      <CasoPreview variant={caso.preview} />
-                    </div>
+                    <CasoVisual slug={caso.slug} alt={caso.titulo} />
                     <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-4">
                       {caso.rubro}
                     </p>

@@ -6,7 +6,7 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { LanguageToggle } from '../i18n/LanguageToggle'
 import { Isotipo, Wordmark } from '../components/Brand'
 import { SiteFooter, FloatingWhatsApp } from '../components/SiteFooter'
-import { CasoPreview, variantForSlug } from '../components/CasoPreview'
+import { CasoVisual } from '../components/CasoPreview'
 
 const COPY = {
   es: {
@@ -85,9 +85,7 @@ export default function Casos() {
                 to={`/casos/${caso.slug}`}
                 className="group flex flex-col bg-white rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-green-600/40 hover:shadow-lg hover:shadow-green-900/5 transition-all"
               >
-                <div className="rounded-2xl overflow-hidden mb-7 bg-stone-100/60 border border-stone-200/80">
-                  <CasoPreview variant={variantForSlug(caso.slug)} />
-                </div>
+                <CasoVisual slug={caso.slug} alt={language === 'en' ? caso.title_en : caso.title} />
                 <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-4">
                   {c.readTime(caso.readTime)}
                 </p>
