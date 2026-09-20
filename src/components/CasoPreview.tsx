@@ -1,17 +1,19 @@
 import shotPintureria from '../assets/images/casos/pintureria.webp'
 import shotConcil from '../assets/images/casos/concil.webp'
 import shotPalomar from '../assets/images/casos/palomar.webp'
+import shotPradere from '../assets/images/casos/pradere.webp'
 
 /**
- * Capturas reales de los productos entregados, para los casos cuyo resultado es
- * público. Los que son sistemas internos (padrón de socios, portal B2B, control
- * de caja) no tienen captura: están detrás de login y muestran datos reales de
- * clientes, así que van con el diagrama esquemático.
+ * Capturas reales de los productos entregados. Las de sistemas internos se toman
+ * con sesión y se publican con los datos personales difuminados: en el padrón del
+ * club eso es nombre, DNI y teléfono de los 193 socios. Los casos que siguen sin
+ * captura posible (portal B2B, control de caja) van con el diagrama esquemático.
  */
 const SHOT_BY_SLUG: Record<string, string> = {
   'pintureria-cinco-sucursales': shotPintureria,
   'concil-producto-propio': shotConcil,
   'palomar-marin-ingenieria': shotPalomar,
+  'club-deportivo-cuotas': shotPradere,
 }
 
 export const shotForSlug = (slug: string): string | undefined => SHOT_BY_SLUG[slug]
