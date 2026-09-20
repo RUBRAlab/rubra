@@ -25,9 +25,11 @@ import shotPalomar from '../assets/images/casos/palomar.webp'
 type Pantalla = { src: string; alt: string; tipo: 'desktop' | 'phone' }
 
 /**
- * Pantallas reales de proyectos entregados. Las del CRM propio van con los
- * montos y los contactos difuminados: son la facturación de RUBRA y los datos
- * de contacto de los clientes, no material público.
+ * Pantallas reales de proyectos entregados, con los datos comerciales tapados:
+ * del CRM propio se difuminan montos y contactos (es la facturación de RUBRA y
+ * los datos de sus clientes), y del portal B2B de la bodega los precios por
+ * canal, el CUIT y la línea de crédito — el mismo criterio que ya se aplicó a
+ * la captura del caso `portal-b2b-bodega`.
  */
 const FILA_A: Pantalla[] = [
   { src: genialCatalogo, alt: 'Catálogo de insumos con filtros — GENIAL Wine', tipo: 'desktop' },
