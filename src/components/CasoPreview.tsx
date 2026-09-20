@@ -1,3 +1,4 @@
+import { Ventana } from './Mockup'
 import shotPintureria from '../assets/images/casos/pintureria.webp'
 import shotConcil from '../assets/images/casos/concil.webp'
 import shotPalomar from '../assets/images/casos/palomar.webp'
@@ -152,21 +153,39 @@ export const variantForSlug = (slug: string) => VARIANT_BY_SLUG[slug] ?? 'saas'
  * El contenedor fija el ratio para que todas las cards de la grilla midan
  * igual, sin importar cuál de las dos se muestre.
  */
+/**
+ * Dominio que se muestra en la barra del marco. Solo para los que tienen sitio
+ * público: los sistemas internos van sin URL y el diagrama va sin marco.
+ */
+const DOMINIO_BY_SLUG: Record<string, string> = {
+  'pintureria-cinco-sucursales': 'pintureriaslaespanola.com.ar',
+  'concil-producto-propio': 'concil.ar',
+  'palomar-marin-ingenieria': 'palomarmarin.com.ar',
+  'club-deportivo-cuotas': 'deportivopradere.com.ar/admin',
+  'portal-b2b-bodega': 'portal.desquiciado.com',
+}
+
 export const CasoVisual = ({ slug, alt }: { slug: string; alt: string }) => {
   const shot = shotForSlug(slug)
-  return (
-    <div className="rounded-2xl overflow-hidden mb-7 bg-stone-100/60 border border-stone-200/80 aspect-[320/150]">
-      {shot ? (
-        <img
-          src={shot}
-          alt={alt}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover object-top"
-        />
-      ) : (
+
+  // El diagrama esquemático no lleva marco: no es una pantalla, es un esquema.
+  if (!shot) {
+    return (
+      <div className="rounded-2xl overflow-hidden mb-7 bg-stone-100/60 border border-stone-200/80 aspect-[320/150]">
         <CasoPreview variant={variantForSlug(slug)} />
-      )}
-    </div>
+      </div>
+    )
+  }
+
+  return (
+    <Ventana dominio={DOMINIO_BY_SLUG[slug]} className="mb-7 shadow-sm">
+      <img
+        src={shot}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        className="w-full aspect-[320/150] object-cover object-top"
+      />
+    </Ventana>
   )
 }

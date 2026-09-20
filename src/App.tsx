@@ -21,6 +21,10 @@ import logoPulsoWines from './assets/images/clients/pulso-wines.webp';
 import logoDesquiciado from './assets/images/clients/desquiciado.webp';
 import logoAcacia from './assets/images/clients/acacia.webp';
 import { PantallasStrip } from './components/PantallasStrip';
+import { Ventana } from './components/Mockup';
+import svcTienda from './assets/images/pantallas/genial-catalogo.webp';
+import svcGestion from './assets/images/pantallas/flowpyme-dashboard.webp';
+import svcAutomatizacion from './assets/images/pantallas/flowpyme-importacion.webp';
 import { usePageMeta } from './hooks/usePageMeta';
 import { useLanguage } from './i18n/LanguageContext';
 import { translations } from './i18n/translations';
@@ -230,6 +234,9 @@ const LOGO_BY_NAME: Record<string, string> = Object.fromEntries(
 );
 
 const SERVICE_ICONS = [Store, LayoutDashboard, Bot];
+
+// Mismo orden que SERVICE_ICONS y que t.servicios.items.
+const SERVICE_SHOTS = [svcTienda, svcGestion, svcAutomatizacion];
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -530,12 +537,25 @@ export default function App() {
               {t.servicios.items.map((item, i) => {
                 const Icon = SERVICE_ICONS[i];
                 return (
-                  <div key={item.title} className="bg-[#35362f] p-8 md:p-12 hover:bg-stone-100/5 transition-colors">
+                  <div key={item.title} className="bg-[#35362f] p-8 md:p-10 hover:bg-stone-100/5 transition-colors flex flex-col">
                     <div className="w-12 h-12 rounded-xl bg-stone-100/10 border border-stone-100/20 flex items-center justify-center text-green-400 mb-8">
                       <Icon className="w-6 h-6" strokeWidth={1.5} />
                     </div>
                     <h3 className="text-2xl font-display font-medium text-white mb-4">{item.title}</h3>
-                    <p className="text-stone-300 leading-relaxed">{item.body}</p>
+                    <p className="text-stone-300 leading-relaxed mb-8">{item.body}</p>
+                    {/* Una captura por servicio: el ícono dice la categoría, la
+                        captura muestra que eso existe y ya se entregó. */}
+                    <Ventana tono="oscuro" className="mt-auto -mb-2">
+                      <img
+                        src={SERVICE_SHOTS[i]}
+                        alt={item.title}
+                        loading="lazy"
+                        decoding="async"
+                        width={1200}
+                        height={750}
+                        className="w-full aspect-[16/10] object-cover object-top"
+                      />
+                    </Ventana>
                   </div>
                 );
               })}
