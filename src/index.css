@@ -24,3 +24,53 @@
     }
   }
 }
+
+/* Marquesina de capturas del hero. Va en CSS y no en motion: son ~20 imágenes
+   moviéndose en loop, y con JS el hilo principal se nota en celulares baratos.
+   La animación corre sobre transform, así que no dispara layout. */
+@layer components {
+  .marquee {
+    overflow: hidden;
+  }
+
+  .marquee > * {
+    animation: marquee-directa 70s linear infinite;
+  }
+
+  .marquee > [data-marquee='reversa'] {
+    animation-name: marquee-reversa;
+    animation-duration: 85s;
+  }
+
+  /* Se frena al pasar el mouse para poder mirar una pantalla. */
+  .marquee:hover > * {
+    animation-play-state: paused;
+  }
+
+  /* Difuminado en los bordes: sin esto las capturas se cortan a filo de viewport. */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee > * {
+      animation: none;
+    }
+    .marquee {
+      overflow-x: auto;
+    }
+  }
+}
+
+/* -50% y no -100%: cada fila lleva el set de pantallas duplicado, así que a
+   mitad de recorrido la copia queda exactamente donde arrancó el original. */
+@keyframes marquee-directa {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reversa {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}

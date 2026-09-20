@@ -20,6 +20,7 @@ import logoPeregrina from './assets/images/clients/peregrina.webp';
 import logoPulsoWines from './assets/images/clients/pulso-wines.webp';
 import logoDesquiciado from './assets/images/clients/desquiciado.webp';
 import logoAcacia from './assets/images/clients/acacia.webp';
+import { PantallasStrip } from './components/PantallasStrip';
 import { usePageMeta } from './hooks/usePageMeta';
 import { useLanguage } from './i18n/LanguageContext';
 import { translations } from './i18n/translations';
@@ -449,6 +450,9 @@ export default function App() {
             ))}
           </div>
         </section>
+
+        {/* Franja de pantallas: hace visible el "+29 proyectos" del hero */}
+        <PantallasStrip kicker={t.pantallas.kicker} titulo={t.pantallas.titulo} cta={t.pantallas.cta} />
 
         {/* Clientes */}
         <section className="py-20 px-6 md:px-12 bg-transparent relative z-10">

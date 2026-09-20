@@ -41,6 +41,11 @@ export const translations = {
     clients: {
       heading: 'Confían en nosotros',
     },
+    pantallas: {
+      kicker: 'Trabajo entregado',
+      titulo: 'Pantallas reales de sistemas y sitios que están funcionando hoy en empresas argentinas.',
+      cta: 'Ver los casos completos',
+    },
     metodo: {
       kicker: 'Cómo trabajamos',
       titleParts: ['Alcance claro.', 'Precio transparente.', 'Sin sorpresas.'],
@@ -241,6 +246,11 @@ export const translations = {
     },
     clients: {
       heading: 'Trusted by',
+    },
+    pantallas: {
+      kicker: 'Delivered work',
+      titulo: 'Real screens from systems and sites running today at Argentine companies.',
+      cta: 'See the full case studies',
     },
     metodo: {
       kicker: 'How we work',
