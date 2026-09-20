@@ -53,11 +53,11 @@ export default function Casos() {
             <Isotipo className="w-7 h-7 text-stone-900" />
             <Wordmark dark size="sm" />
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <LanguageToggle className="border-stone-300 text-stone-700 hover:bg-stone-100" />
             <Link
               to="/#contacto"
-              className="bg-green-800 text-stone-50 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-green-700 transition-colors flex items-center gap-2 group"
+              className="bg-green-800 text-stone-50 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium hover:bg-green-700 transition-colors flex items-center gap-2 group whitespace-nowrap"
             >
               {c.cta}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -16,7 +16,9 @@ export const Isotipo = ({ className = '' }: { className?: string }) => (
  * Centralizado acá para que nav, footer y páginas internas no diverjan.
  */
 export const Wordmark = ({ dark = false, size = 'md' }: { dark?: boolean; size?: 'sm' | 'md' }) => {
-  const sizeClass = size === 'sm' ? 'text-2xl' : 'text-3xl md:text-4xl'
+  // En 'sm' arranca más chico: en el nav de las páginas internas, a 375px,
+  // el logo + idioma + CTA no entran en una línea.
+  const sizeClass = size === 'sm' ? 'text-xl sm:text-2xl' : 'text-3xl md:text-4xl'
   return (
     <span className="flex items-baseline">
       <span className={`font-display font-bold tracking-tight leading-none ${sizeClass} ${dark ? 'text-stone-900' : 'text-white'}`}>

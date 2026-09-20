@@ -73,9 +73,9 @@ export default function Post() {
             <Isotipo className="w-7 h-7 text-stone-900" />
             <Wordmark dark size="sm" />
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <LanguageToggle className="border-stone-300 text-stone-700 hover:bg-stone-100" />
-            <Link to={base} className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors flex items-center gap-2">
+            <Link to={base} className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors flex items-center gap-2 whitespace-nowrap">
               <ArrowLeft className="w-4 h-4" /> {c.back(base)}
             </Link>
           </div>
