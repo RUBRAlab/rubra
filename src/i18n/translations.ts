@@ -20,7 +20,7 @@ export const translations = {
       description: 'Construimos tiendas online, sistemas de gestión y automatización con IA para empresas de Latinoamérica. Alcance y precio cerrado, en producción. Mirá nuestros casos.',
     },
     heroStats: [
-      { valor: '12', etiqueta: 'Proyectos en producción' },
+      { valor: '+29', etiqueta: 'Proyectos nuevos este año' },
       { valor: '2–6', etiqueta: 'Semanas de construcción' },
       { valor: 'USD 1.000', etiqueta: 'Desde', destacado: true },
     ],
@@ -221,7 +221,7 @@ export const translations = {
       description: 'We build online stores, management systems and AI automation for Latin American companies. Fixed scope and price, live in production. Check out our case studies.',
     },
     heroStats: [
-      { valor: '12', etiqueta: 'Projects in production' },
+      { valor: '+29', etiqueta: 'New projects this year' },
       { valor: '2–6', etiqueta: 'Weeks to build' },
       { valor: 'USD 1,000', etiqueta: 'Starting at', destacado: true },
     ],
