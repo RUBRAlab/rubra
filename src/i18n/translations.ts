@@ -30,20 +30,6 @@ export const translations = {
       ctaSchedule: 'Agendar reunión',
       ctaContact: 'Escribinos por WhatsApp',
     },
-    // Reemplaza a la foto de stock del hero: la cercanía la da saber con quién
-    // vas a hablar y cómo se trabaja, no una cara.
-    directo: {
-      kicker: 'Quién está del otro lado',
-      frase: 'Del otro lado no hay un equipo de ventas. Está quien va a construir tu proyecto.',
-      puntos: [
-        { titulo: 'Una sola persona, de principio a fin', detalle: 'El que te cotiza es el que escribe el código y el que te entrega.' },
-        { titulo: 'Respuesta el mismo día hábil', detalle: 'Por WhatsApp o por mail, sin pasar por una mesa de entrada.' },
-        { titulo: 'Te explicamos en castellano', detalle: 'Sin jerga técnica ni presentaciones de 40 slides para decir algo simple.' },
-      ],
-      firma: 'Ruperto Bravo',
-      rol: 'Fundador de RUBRA lab',
-      cta: 'Escribime por WhatsApp',
-    },
     band: {
       partA: 'La mayoría de las empresas no necesita ',
       partAEm: 'más software',
@@ -244,18 +230,6 @@ export const translations = {
       subtitle: 'We build the solutions you need to sell more, run your company better and automate tasks. We talk straight, deliver what we agree on, and ship solutions ready to use.',
       ctaSchedule: 'Book a meeting',
       ctaContact: 'Message us on WhatsApp',
-    },
-    directo: {
-      kicker: 'Who you’ll be talking to',
-      frase: 'There’s no sales team on the other side. It’s the person who will build your project.',
-      puntos: [
-        { titulo: 'One person, start to finish', detalle: 'Whoever quotes the project is the one who writes the code and hands it over.' },
-        { titulo: 'Same business day reply', detalle: 'On WhatsApp or email, with no front desk in between.' },
-        { titulo: 'Explained in plain language', detalle: 'No jargon, no 40-slide deck to say something simple.' },
-      ],
-      firma: 'Ruperto Bravo',
-      rol: 'Founder of RUBRA lab',
-      cta: 'Message me on WhatsApp',
     },
     band: {
       partA: 'Most companies don’t need ',

@@ -5,8 +5,9 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { track } from '@vercel/analytics';
+import heroImage from './assets/images/ruperto.webp';
 import logoBlueSky from './assets/images/clients/bluesky.webp';
 import logoConcil from './assets/images/clients/concil.webp';
 import logoDeportivoPradere from './assets/images/clients/deportivo-pradere.webp';
@@ -34,10 +35,7 @@ import {
   MessageCircle,
   Store,
   LayoutDashboard,
-  Bot,
-  UserRound,
-  Clock,
-  Languages
+  Bot
 } from 'lucide-react';
 
 /**
@@ -231,13 +229,15 @@ const LOGO_BY_NAME: Record<string, string> = Object.fromEntries(
 );
 
 const SERVICE_ICONS = [Store, LayoutDashboard, Bot];
-const DIRECTO_ICONS = [UserRound, Clock, Languages];
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 1000], [0, 200]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
 
@@ -417,52 +417,19 @@ export default function App() {
               </div>
             </div>
 
-            {/* Quién está del otro lado. Reemplaza a la foto: la cercanía la da
-                saber con quién vas a tratar y cómo, no una imagen. */}
             <div className="lg:col-span-5 relative">
-              <div className="rounded-[2rem] border border-green-400/25 bg-stone-100/[0.05] backdrop-blur-sm p-8 md:p-9">
-                <Isotipo className="w-10 h-10 text-stone-100 mb-6" />
-                <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-4">
-                  {t.directo.kicker}
-                </p>
-                <p className="font-serif italic text-2xl md:text-[1.6rem] leading-snug text-white mb-8">
-                  {t.directo.frase}
-                </p>
-
-                <ul className="flex flex-col gap-5 mb-8">
-                  {t.directo.puntos.map((punto, i) => {
-                    const Icon = DIRECTO_ICONS[i];
-                    return (
-                      <li key={punto.titulo} className="flex gap-4">
-                        <span className="w-9 h-9 shrink-0 rounded-full bg-green-400/10 border border-green-400/25 flex items-center justify-center text-green-300">
-                          <Icon className="w-4 h-4" />
-                        </span>
-                        <span>
-                          <span className="block text-sm font-semibold text-white leading-snug">{punto.titulo}</span>
-                          <span className="block text-sm text-stone-400 leading-snug mt-0.5">{punto.detalle}</span>
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-
-                <div className="pt-6 border-t border-stone-100/15 flex flex-wrap items-center justify-between gap-4">
-                  <div>
-                    <p className="font-serif italic text-lg text-white leading-none">{t.directo.firma}</p>
-                    <p className="text-xs text-stone-400 mt-1.5">{t.directo.rol}</p>
-                  </div>
-                  <a
-                    href={buildWhatsappLink(t.whatsapp.message)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => track('whatsapp_click', { origin: 'hero_card' })}
-                    className="text-sm font-medium text-green-300 hover:text-green-200 inline-flex items-center gap-2 transition-colors"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    {t.directo.cta}
-                  </a>
-                </div>
-              </div>
+              <motion.div
+                style={{ y: heroY, opacity: heroOpacity }}
+                className="relative aspect-[4/5] rounded-[2rem] overflow-hidden ring-1 ring-green-400/20"
+              >
+                <img
+                  src={heroImage}
+                  alt="Ruperto Bravo, fundador de RUBRA lab"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#35362f] via-transparent to-transparent" />
+              </motion.div>
             </div>
           </div>
 
