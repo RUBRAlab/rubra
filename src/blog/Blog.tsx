@@ -4,6 +4,8 @@ import { ArrowRight } from 'lucide-react'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useLanguage } from '../i18n/LanguageContext'
 import { LanguageToggle } from '../i18n/LanguageToggle'
+import { Isotipo, Wordmark } from '../components/Brand'
+import { SiteFooter, FloatingWhatsApp } from '../components/SiteFooter'
 
 // Formatea "2026-06-06" → "6 de junio de 2026" / "June 6, 2026"
 const formatDate = (dateStr: string, language: 'es' | 'en') => {
@@ -52,9 +54,9 @@ export default function Blog() {
       {/* Nav */}
       <nav className="fixed w-full z-50 bg-stone-50/80 backdrop-blur-md border-b border-stone-200 px-6 md:px-12 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-baseline">
-            <span className="font-display text-3xl font-bold tracking-tight text-stone-900">RUBRA</span>
-            <span className="font-display text-3xl font-light text-green-600 ml-1.5">lab</span>
+          <Link to="/" className="flex items-center gap-2.5" aria-label="RUBRA lab">
+            <Isotipo className="w-7 h-7 text-stone-900" />
+            <Wordmark dark size="sm" />
           </Link>
           <div className="flex items-center gap-4">
             <LanguageToggle className="border-stone-300 text-stone-700 hover:bg-stone-100" />
@@ -99,6 +101,9 @@ export default function Blog() {
           </div>
         </div>
       </main>
+
+      <SiteFooter />
+      <FloatingWhatsApp />
     </div>
   )
 }

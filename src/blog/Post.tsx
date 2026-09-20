@@ -4,6 +4,8 @@ import { ArrowLeft } from 'lucide-react'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useLanguage } from '../i18n/LanguageContext'
 import { LanguageToggle } from '../i18n/LanguageToggle'
+import { Isotipo, Wordmark } from '../components/Brand'
+import { SiteFooter, FloatingWhatsApp } from '../components/SiteFooter'
 
 const formatDate = (dateStr: string, language: 'es' | 'en') => {
   const [year, month, day] = dateStr.split('-').map(Number)
@@ -67,9 +69,9 @@ export default function Post() {
       {/* Nav */}
       <nav className="fixed w-full z-50 bg-stone-50/80 backdrop-blur-md border-b border-stone-200 px-6 md:px-12 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-baseline">
-            <span className="font-display text-3xl font-bold tracking-tight text-stone-900">RUBRA</span>
-            <span className="font-display text-3xl font-light text-green-600 ml-1.5">lab</span>
+          <Link to="/" className="flex items-center gap-2.5" aria-label="RUBRA lab">
+            <Isotipo className="w-7 h-7 text-stone-900" />
+            <Wordmark dark size="sm" />
           </Link>
           <div className="flex items-center gap-4">
             <LanguageToggle className="border-stone-300 text-stone-700 hover:bg-stone-100" />
@@ -123,13 +125,16 @@ export default function Post() {
               href="https://calendar.app.google/EkGn6twofhVFeFQu6"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-green-800 text-stone-50 px-8 py-4 rounded font-medium hover:bg-green-700 transition-colors"
+              className="inline-block bg-green-800 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-700 transition-colors"
             >
               {c.ctaButton}
             </a>
           </div>
         </div>
       </main>
+
+      <SiteFooter />
+      <FloatingWhatsApp />
     </div>
   )
 }

@@ -9,6 +9,7 @@ const RESEND_ENDPOINT = 'https://api.resend.com/emails'
 type Payload = {
   name?: string
   email?: string
+  phone?: string
   company?: string
   process?: string
   lang?: 'es' | 'en'
@@ -23,12 +24,16 @@ function escapeHtml(value: string) {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-function renderNotificacion({ name, email, company, process }: Required<Pick<Payload, 'name' | 'email' | 'company' | 'process'>>) {
+function renderNotificacion({ name, email, phone, company, process }: { name: string; email: string; phone: string; company: string; process: string }) {
+  const whatsappLink = phone
+    ? `<p style="margin:0 0 8px"><strong>WhatsApp / Teléfono:</strong> <a href="https://wa.me/${phone.replace(/\D/g, '')}">${escapeHtml(phone)}</a></p>`
+    : ''
   return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#111;max-width:640px;margin:0 auto;padding:24px">
   <h1 style="font-size:18px;margin:0 0 20px;font-weight:600">Nueva consulta desde rubra.ar</h1>
   <p style="margin:0 0 8px"><strong>Nombre:</strong> ${escapeHtml(name)}</p>
   <p style="margin:0 0 8px"><strong>Email:</strong> ${escapeHtml(email)}</p>
-  <p style="margin:0 0 16px"><strong>Empresa:</strong> ${escapeHtml(company)}</p>
+  ${whatsappLink}
+  <p style="margin:0 0 16px"><strong>Empresa:</strong> ${escapeHtml(company || '—')}</p>
   <p style="margin:0 0 16px;white-space:pre-wrap">${escapeHtml(process)}</p>
   <p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #e5e5e5;font-size:12px;color:#888">
     Formulario de contacto de rubra.ar
@@ -71,11 +76,14 @@ export async function POST(request: Request) {
 
   const name = payload.name?.trim()
   const email = payload.email?.trim()
-  const company = payload.company?.trim()
+  // Teléfono y empresa son opcionales: pedirlos obligatorios sumaba fricción
+  // sin agregar información que no se pueda preguntar después.
+  const phone = payload.phone?.trim() ?? ''
+  const company = payload.company?.trim() ?? ''
   const process_ = payload.process?.trim()
   const lang = payload.lang === 'en' ? 'en' : 'es'
 
-  if (!name || !email || !company || !process_) {
+  if (!name || !email || !process_) {
     return Response.json({ error: 'Faltan campos requeridos' }, { status: 400 })
   }
   if (!EMAIL_RE.test(email)) {
@@ -95,9 +103,9 @@ export async function POST(request: Request) {
       from,
       to: [to],
       reply_to: email,
-      subject: `Nueva consulta de ${name} (${company})`,
-      html: renderNotificacion({ name, email, company, process: process_ }),
-      text: `Nombre: ${name}\nEmail: ${email}\nEmpresa: ${company}\n\n${process_}`,
+      subject: company ? `Nueva consulta de ${name} (${company})` : `Nueva consulta de ${name}`,
+      html: renderNotificacion({ name, email, phone, company, process: process_ }),
+      text: `Nombre: ${name}\nEmail: ${email}\nTeléfono: ${phone || '—'}\nEmpresa: ${company || '—'}\n\n${process_}`,
     }),
   })
 

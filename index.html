@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Fuentes: preconnect + link en vez de @import dentro del CSS, que bloquea el render. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@300;500;600;700&display=swap"
+    />
+
     <!-- SEO básico -->
     <title>RUBRA lab | Desarrollo de software y automatización con IA para empresas</title>
     <meta name="description" content="Construimos tiendas online, sistemas de gestión y automatización con IA para empresas de Latinoamérica. Alcance y precio cerrado, en producción. Mirá nuestros casos." />
     <meta name="keywords" content="desarrollo de software, tiendas online, sistemas de gestión, automatización con IA, portales B2B, ecommerce a medida, pymes Argentina" />
-    <meta name="author" content="RUBRA" />
+    <meta name="author" content="RUBRA lab" />
+    <meta name="theme-color" content="#35362f" />
     <link rel="canonical" href="https://www.rubra.ar/" />
 
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
@@ -24,7 +33,7 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="RUBRA lab — software y automatización con IA para empresas" />
     <meta property="og:locale" content="es_AR" />
-    <meta property="og:site_name" content="RUBRA" />
+    <meta property="og:site_name" content="RUBRA lab" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -37,8 +46,10 @@
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      "name": "RUBRA",
+      "name": "RUBRA lab",
       "url": "https://www.rubra.ar",
+      "logo": "https://www.rubra.ar/logo/isotipo.png",
+      "image": "https://www.rubra.ar/og-image-v2.png",
       "email": "hola@rubra.ar",
       "description": "Agencia de desarrollo de software y automatización con IA para empresas de Latinoamérica. Tiendas online, sistemas de gestión y productos a medida.",
       "slogan": "Construimos el software que tu negocio necesita.",
@@ -46,6 +57,10 @@
         "@type": "Person",
         "name": "Ruperto Bravo"
       },
+      "sameAs": [
+        "https://www.linkedin.com/company/rurba-latam",
+        "https://www.instagram.com/rubra.latam"
+      ],
       "areaServed": [
         { "@type": "Country", "name": "Argentina" },
         { "@type": "Place", "name": "Latinoamérica" }
@@ -68,6 +83,47 @@
       }
     }
     </script>
+
+    <!-- faq-schema:start (solo aplica a la home; prerender-meta.mjs lo saca del resto de las rutas) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta un proyecto?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Desde USD 1.000. El alcance y el precio quedan cerrados en la propuesta antes de escribir una línea de código, así que ese número no cambia a mitad de camino." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tardan en entregar?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Depende del alcance: trabajamos por fases entregables, no con una sola entrega al final. El cronograma queda definido junto con el precio en la propuesta." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo usan IA en el desarrollo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "La IA acelera la escritura de código, pero las decisiones de arquitectura, la seguridad y el QA los hace Ruperto directamente. Lo que se entrega está revisado, no es lo primero que generó un modelo." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa después del lanzamiento?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Seguimos disponibles para la siguiente fase. El hosting ronda USD 25/mes y hay soporte opcional desde USD 75/mes si preferís no encargarte vos de mantenerlo." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Soy dueño del código?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sí, 100%. No hay dependencia de nuestra plataforma ni licencias por uso: el repositorio y el proyecto quedan a tu nombre." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Trabajan con empresas fuera de Argentina?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos de forma remota con empresas y founders de toda Latinoamérica." }
+        }
+      ]
+    }
+    </script>
+    <!-- faq-schema:end -->
   </head>
   <body>
     <div id="root"></div>

@@ -96,9 +96,14 @@ const routes = [
   },
 ]
 
+// El bloque FAQPage solo describe la home: si viaja en cada ruta prerenderizada,
+// Google ve un FAQ declarado en páginas que no lo tienen.
+const stripFaqSchema = (html) =>
+  html.replace(/[ \t]*<!-- faq-schema:start[\s\S]*?faq-schema:end -->\n?/, '')
+
 for (const route of routes) {
   const url = `${SITE}${route.path}`
-  const html = template
+  const html = stripFaqSchema(template)
     .replace(/<title>.*?<\/title>/, `<title>${route.title}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${route.description}$2`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
@@ -116,7 +121,7 @@ for (const route of routes) {
 
 // 404.html: Vercel lo sirve con status 404 real para cualquier ruta que no exista en
 // dist ni en los rewrites. Es la misma app, así que React renderiza <NotFound />.
-const notFound = template
+const notFound = stripFaqSchema(template)
   .replace(/<title>.*?<\/title>/, '<title>Página no encontrada | RUBRA lab</title>')
   .replace(/<meta name="robots"[^>]*>/, '')
   .replace('</head>', '<meta name="robots" content="noindex">\n</head>')
