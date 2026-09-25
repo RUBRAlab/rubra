@@ -23,6 +23,11 @@ const indexRoutes = [
     title: 'Casos | RUBRA lab: software para empresas de Latinoamérica',
     description: 'Tiendas online, sistemas de gestión y portales B2B que construimos para empresas e instituciones. Casos reales, en producción.',
   },
+  {
+    path: '/privacidad',
+    title: 'Política de privacidad | RUBRA lab',
+    description: 'Qué datos recolecta rubra.ar, para qué se usan, con quién se comparten y cómo pedir que se eliminen.',
+  },
 ]
 
 const escAttr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')

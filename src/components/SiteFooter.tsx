@@ -111,7 +111,13 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <p className="pt-8 text-sm text-stone-500">{t.footer.tagline(new Date().getFullYear())}</p>
+        <div className="pt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-stone-500">
+          <p>{t.footer.tagline(new Date().getFullYear())}</p>
+          <span aria-hidden="true">·</span>
+          <Link to="/privacidad" className="hover:text-white transition-colors">
+            {t.footer.privacy}
+          </Link>
+        </div>
       </div>
     </footer>
   )
