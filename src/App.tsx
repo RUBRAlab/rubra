@@ -475,14 +475,14 @@ export default function App() {
                     alt={client.name}
                     loading="lazy"
                     decoding="async"
-                    className="max-h-12 md:max-h-14 max-w-[140px] object-contain grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                    className="h-10 md:h-12 max-w-[140px] object-contain grayscale contrast-125 opacity-85 transition-all duration-300 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100"
                   />
                 );
                 // Si el cliente tiene caso publicado, el logo lleva al caso:
                 // mandarlo al sitio del cliente lo saca de rubra.ar.
                 if (client.caso) {
                   return (
-                    <Link key={client.name} to={`/casos/${client.caso}`} className="group flex items-center justify-center" title={client.name}>
+                    <Link key={client.name} to={`/casos/${client.caso}`} className="group w-full flex items-center justify-center rounded-xl bg-white/70 border border-black/5 px-4 py-5 transition-all duration-300 hover:bg-white hover:border-black/10 hover:shadow-sm" title={client.name}>
                       {img}
                     </Link>
                   );
@@ -493,13 +493,13 @@ export default function App() {
                     href={client.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-center"
+                    className="group w-full flex items-center justify-center rounded-xl bg-white/70 border border-black/5 px-4 py-5 transition-all duration-300 hover:bg-white hover:border-black/10 hover:shadow-sm"
                     title={client.name}
                   >
                     {img}
                   </a>
                 ) : (
-                  <div key={client.name} className="group flex items-center justify-center" title={client.name}>
+                  <div key={client.name} className="group w-full flex items-center justify-center rounded-xl bg-white/70 border border-black/5 px-4 py-5 transition-all duration-300 hover:bg-white hover:border-black/10 hover:shadow-sm" title={client.name}>
                     {img}
                   </div>
                 );
