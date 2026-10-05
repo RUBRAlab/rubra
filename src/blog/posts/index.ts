@@ -17,9 +17,11 @@ import { post as casoConstructora } from './constructora-control-de-caja-por-obr
 import { post as precioCerrado } from './precio-cerrado-vs-por-hora'
 import { post as comoElegirAgencia } from './como-elegir-agencia-de-automatizacion-con-ia'
 import { post as cuantoCuesta } from './cuanto-cuesta-un-software-a-medida-en-argentina'
+import { post as tiendaIA } from './tu-tienda-preparada-para-vender-desde-la-ia'
 
 // El orden acá define el orden en el blog (primero = más reciente)
 export const posts = [
+  tiendaIA,
   cuantoCuesta,
   comoElegirAgencia,
   precioCerrado,
