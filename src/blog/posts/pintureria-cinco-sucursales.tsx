@@ -43,14 +43,23 @@ const Content = () => (
         <strong>Las cinco sucursales integradas</strong>, con sus direcciones y contacto,
         para que el cliente elija dónde retirar.
       </li>
+      <li>
+        <strong>Cobro online</strong>: el cliente paga al confirmar el pedido. El stock queda
+        reservado mientras el pago se procesa, y se libera solo si no se completa.
+      </li>
+      <li>
+        <strong>Costo de envío calculado solo</strong>: el sitio cotiza el flete con el peso y
+        las medidas reales de cada producto contra el domicilio del cliente. Nadie lo calcula
+        a mano.
+      </li>
     </ul>
 
     <h2>Cómo se trabajó</h2>
     <p>
       Con el método de siempre: alcance cerrado, precio cerrado, y el proyecto dividido en fases.
-      La Fase 1, todo lo de arriba, se construyó, se puso en producción y se entregó funcionando.
-      La Fase 2, con pagos online y envíos, ya está diseñada y se activa cuando el negocio
-      la necesite.
+      La Fase 1 se construyó, se puso en producción y se entregó funcionando. La Fase 2,
+      con cobro online y cotización de envíos, llegó después: cuando el negocio ya estaba
+      vendiendo y sabía qué necesitaba.
     </p>
     <p>
       Trabajar por fases no es un detalle comercial. Es lo que permite que una empresa incorpore
@@ -60,12 +69,12 @@ const Content = () => (
 
     <h2>El resultado</h2>
     <p>
-      Hoy la tienda está en producción y el equipo administra su catálogo
-      (productos, precios, imágenes) de forma completamente autónoma.
+      Hoy la tienda está en producción, cobra online, cotiza sus propios envíos y el equipo
+      administra el catálogo entero (productos, precios, imágenes) sin depender de nadie.
     </p>
     <p>
-      De vender solo por mostrador y WhatsApp, a tener el catálogo abierto las 24 horas
-      con pedidos que llegan solos. Sin cambiar la forma de trabajar del equipo: la
+      De vender solo por mostrador y WhatsApp, a tener el catálogo abierto las 24 horas,
+      con pedidos que llegan cobrados y con el envío ya cotizado. Sin cambiar la forma de trabajar del equipo: la
       herramienta se adaptó al negocio, no al revés.
     </p>
     <p>
@@ -116,14 +125,23 @@ const ContentEn = () => (
         <strong>All five branches integrated</strong>, with their addresses and contact info,
         so the customer can choose where to pick up.
       </li>
+      <li>
+        <strong>Online payments</strong>: the customer pays when confirming the order. Stock is
+        held while the payment clears, and released only if it never does.
+      </li>
+      <li>
+        <strong>Shipping costs calculated automatically</strong>: the site quotes freight using
+        each product's real weight and dimensions against the customer's address. Nobody works
+        it out by hand.
+      </li>
     </ul>
 
     <h2>How we worked</h2>
     <p>
       With our usual method: fixed scope, fixed price, and the project split into phases.
-      Phase 1, everything above, was built, deployed to production, and delivered working.
-      Phase 2, with online payments and shipping, is already designed and gets activated
-      whenever the business needs it.
+      Phase 1 was built, deployed to production, and delivered working. Phase 2, with online
+      payments and shipping quotes, came later: once the business was already selling and
+      knew what it needed.
     </p>
     <p>
       Working in phases isn't a commercial detail. It's what lets a business bring in
@@ -133,12 +151,12 @@ const ContentEn = () => (
 
     <h2>The result</h2>
     <p>
-      Today the store is live in production and the team manages its catalog (products,
-      prices, images) completely on its own.
+      Today the store is live in production, takes payments, quotes its own shipping, and the
+      team manages the entire catalog (products, prices, images) without depending on anyone.
     </p>
     <p>
       From selling only over the counter and WhatsApp, to having the catalog open 24 hours
-      a day with orders coming in on their own. Without changing how the team works: the tool
+      a day, with orders arriving paid for and already quoted for shipping. Without changing how the team works: the tool
       adapted to the business, not the other way around.
     </p>
     <p>
@@ -152,14 +170,14 @@ export const post: BlogPost = {
   slug: 'pintureria-cinco-sucursales',
   title: 'De vender por mostrador a una tienda online con 5 sucursales',
   description:
-    'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a tener su catálogo online, pedidos automáticos y un panel para administrar todo sin depender de nadie técnico.',
+    'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a vender online, cobrar con tarjeta, cotizar sus envíos y administrar todo su catálogo sin depender de nadie técnico.',
   date: '2026-07-21',
   category: 'Casos',
-  readTime: 4,
+  readTime: 5,
   content: Content,
   title_en: 'From counter sales to an online store with 5 branches',
   description_en:
-    'How a paint store in La Rioja went from serving customers only over the counter and WhatsApp to having its catalog online, automatic orders, and a panel to manage everything without depending on anyone technical.',
+    'How a paint store in La Rioja went from serving customers only over the counter and WhatsApp to selling online, taking card payments, quoting its own shipping, and managing its whole catalog without depending on anyone technical.',
   category_en: 'Case study',
   content_en: ContentEn,
 }
