@@ -10,3 +10,6 @@ coverage/
 
 .claude/launch.json
 dist-ssr/
+
+# Material de trabajo (fuentes de piezas, no se publica)
+documentos/
