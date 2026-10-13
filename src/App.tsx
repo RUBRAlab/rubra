@@ -373,13 +373,16 @@ export default function App() {
           </div>
         </section>
 
-        {/* Clientes: una fila de logos sin tarjetas, como prueba social del hero */}
-        <section className="pt-24 pb-10 px-6 md:px-12 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <p className="text-[0.7rem] font-semibold tracking-widest text-stone-500 uppercase mb-8 text-center">
-              {t.clients.heading}
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-7 md:gap-x-14">
+        {/* Clientes: grilla de logos con peso propio, no una fila tímida */}
+        <section className="pt-24 pb-12 md:pt-32 md:pb-16 px-6 md:px-12 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <Reveal className="text-center mb-10 md:mb-12">
+              <Kicker>{t.clients.kicker}</Kicker>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold tracking-[-0.04em] text-ink leading-[1.05]">
+                {t.clients.heading}
+              </h2>
+            </Reveal>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
               {CLIENTS.map((client) => {
                 const img = (
                   <img
@@ -387,10 +390,11 @@ export default function App() {
                     alt={client.name}
                     loading="lazy"
                     decoding="async"
-                    className="h-7 md:h-8 max-w-[120px] object-contain grayscale opacity-55 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                    className="h-11 md:h-14 max-w-[150px] object-contain grayscale opacity-80 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
                   />
                 );
-                const cls = 'group flex items-center justify-center';
+                const cls =
+                  'group flex items-center justify-center h-28 md:h-32 rounded-2xl bg-white border border-stone-200 px-6 transition-all duration-300 hover:border-stone-300 hover:shadow-lg hover:shadow-black/[0.05] hover:-translate-y-0.5';
                 // Si el cliente tiene caso publicado, el logo lleva al caso:
                 // mandarlo al sitio del cliente lo saca de rubra.ar.
                 if (client.caso) {

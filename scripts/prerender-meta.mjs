@@ -56,7 +56,7 @@ const articleSchema = (route) => ({
   inLanguage: 'es-AR',
   articleSection: route.isCaso ? 'Casos de éxito' : 'Blog',
   mainEntityOfPage: `${SITE}${route.path}`,
-  image: `${SITE}/og-image-v2.png`,
+  image: `${SITE}/og-image-v3.png`,
   author: { '@type': 'Person', name: 'Ruperto Bravo', url: SITE },
   publisher: {
     '@type': 'Organization',

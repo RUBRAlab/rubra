@@ -42,7 +42,8 @@ export const translations = {
       partD: ', funcionando de verdad y sin depender de nadie para usarlo.',
     },
     clients: {
-      heading: 'Confían en nosotros',
+      kicker: 'Confían en nosotros',
+      heading: 'Empresas que ya trabajan con software hecho por RUBRA.',
     },
     pantallas: {
       kicker: 'Trabajo entregado',
@@ -252,7 +253,8 @@ export const translations = {
       partD: ', actually working, without depending on anyone to use it.',
     },
     clients: {
-      heading: 'Trusted by',
+      kicker: 'Trusted by',
+      heading: 'Companies already running on software built by RUBRA.',
     },
     pantallas: {
       kicker: 'Delivered work',
