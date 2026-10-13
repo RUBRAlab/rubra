@@ -51,30 +51,31 @@ export default function Casos() {
       {/* Contenido */}
       <main className="pt-32 pb-24 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
-          <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">{c.kicker}</p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-stone-900 mb-6">
+          <p className="text-xs font-semibold tracking-widest text-green-600 uppercase mb-4">{c.kicker}</p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-[-0.04em] leading-[1.02] text-ink mb-6">
             {c.titleParts[0]}<br />{c.titleParts[1]}
           </h1>
-          <p className="text-lg text-stone-600 leading-relaxed max-w-2xl mb-16">
+          <p className="text-lg text-stone-600 leading-relaxed max-w-2xl mb-14 md:mb-16">
             {c.intro}
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          {/* Mismas tarjetas que la sección Casos de la landing */}
+          <div className="grid md:grid-cols-2 gap-5 md:gap-6">
             {casos.map((caso) => (
               <Link
                 key={caso.slug}
                 to={`/casos/${caso.slug}`}
-                className="group flex flex-col bg-white rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-green-600/40 hover:shadow-lg hover:shadow-green-900/5 transition-all"
+                className="group flex flex-col h-full bg-white rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-xl hover:shadow-black/[0.06] hover:-translate-y-0.5 transition-all duration-300"
               >
                 <CasoVisual slug={caso.slug} alt={language === 'en' ? caso.title_en : caso.title} />
-                <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-4">
+                <p className="text-[0.7rem] font-semibold tracking-widest text-green-600 uppercase mb-3">
                   {c.readTime(caso.readTime)}
                 </p>
-                <h2 className="text-2xl md:text-3xl font-display font-medium text-stone-900 mb-4 leading-tight">
+                <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-ink mb-3 leading-tight">
                   {language === 'en' ? caso.title_en : caso.title}
                 </h2>
                 <p className="text-stone-600 leading-relaxed mb-6 flex-1">{language === 'en' ? caso.description_en : caso.description}</p>
-                <span className="inline-flex items-center gap-2 text-green-700 font-medium">
+                <span className="inline-flex items-center gap-2 text-ink font-medium pt-4 border-t border-stone-200">
                   {c.verCaso}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -82,16 +83,17 @@ export default function Casos() {
             ))}
           </div>
 
-          <div className="mt-20 border-t border-stone-200 pt-10">
-            <p className="text-stone-600 leading-relaxed mb-4">
+          {/* Cierre en tarjeta negra, como la tesis y el contacto de la landing */}
+          <div className="mt-16 md:mt-20 bg-ink rounded-[2.5rem] px-8 py-12 md:px-14 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <p className="font-display text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-white max-w-xl leading-tight">
               {c.ctaQuestion}
             </p>
-            <Link
-              to="/#contacto"
-              className="inline-flex items-center gap-2 text-green-800 font-medium hover:gap-3 transition-all"
+            <a
+              href="/#contacto"
+              className="inline-flex items-center justify-center gap-2 bg-green-400 text-green-950 px-7 py-4 rounded-full font-semibold hover:bg-green-300 transition-colors shrink-0"
             >
               {c.ctaLink} <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
           </div>
         </div>
       </main>

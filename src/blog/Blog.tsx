@@ -54,33 +54,36 @@ export default function Blog() {
 
       {/* Contenido */}
       <main className="pt-32 pb-24 px-6 md:px-12">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-4">{c.kicker}</p>
-          <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-stone-900 mb-16">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-xs font-semibold tracking-widest text-green-600 uppercase mb-4">{c.kicker}</p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-[-0.04em] leading-[1.02] text-ink max-w-3xl mb-14 md:mb-16">
             {c.heading}
           </h1>
 
-          <div className="flex flex-col gap-12">
+          {/* Tarjetas blancas, como las de casos en la landing */}
+          <div className="grid md:grid-cols-2 gap-5 md:gap-6">
             {articulos.map((post) => (
-              <article key={post.slug} className="border-t border-stone-200 pt-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-xs font-semibold tracking-widest text-green-700 uppercase">{language === 'en' ? post.category_en : post.category}</span>
-                  <span className="text-stone-300">·</span>
-                  <span className="text-sm text-stone-400">{c.readTime(post.readTime)}</span>
-                  <span className="text-stone-300">·</span>
-                  <span className="text-sm text-stone-400">{formatDate(post.date, language)}</span>
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className="group flex flex-col h-full bg-white rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-xl hover:shadow-black/[0.06] hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
+                  <span className="text-[0.7rem] font-semibold tracking-widest text-green-600 uppercase">{language === 'en' ? post.category_en : post.category}</span>
+                  <span className="text-stone-300" aria-hidden="true">·</span>
+                  <span className="text-xs text-stone-500">{c.readTime(post.readTime)}</span>
+                  <span className="text-stone-300" aria-hidden="true">·</span>
+                  <span className="text-xs text-stone-500">{formatDate(post.date, language)}</span>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-display font-semibold text-stone-900 mb-3 leading-tight">
+                <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-ink mb-3 leading-tight">
                   {language === 'en' ? post.title_en : post.title}
                 </h2>
-                <p className="text-stone-600 leading-relaxed mb-6">{language === 'en' ? post.description_en : post.description}</p>
-                <Link
-                  to={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-green-800 font-medium hover:gap-3 transition-all"
-                >
-                  {c.readArticle} <ArrowRight className="w-4 h-4" />
-                </Link>
-              </article>
+                <p className="text-stone-600 leading-relaxed mb-6 flex-1">{language === 'en' ? post.description_en : post.description}</p>
+                <span className="inline-flex items-center gap-2 text-ink font-medium pt-4 border-t border-stone-200">
+                  {c.readArticle}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>

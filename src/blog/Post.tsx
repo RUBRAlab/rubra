@@ -87,7 +87,7 @@ export default function Post() {
           </div>
 
           {/* Título */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold tracking-tight text-stone-900 leading-tight mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold tracking-[-0.04em] text-ink leading-[1.05] mb-6">
             {title}
           </h1>
           <p className="text-lg text-stone-500 leading-relaxed mb-12 border-b border-stone-200 pb-12">
@@ -107,16 +107,16 @@ export default function Post() {
           </div>
 
           {/* CTA al final */}
-          <div className="mt-16 pt-10 border-t border-stone-200">
-            <p className="text-sm font-semibold tracking-widest text-green-700 uppercase mb-3">{c.resonated}</p>
-            <h3 className="text-2xl font-display font-semibold text-stone-900 mb-4">
+          <div className="mt-16 bg-ink rounded-[2.5rem] px-8 py-12 md:px-12 md:py-14">
+            <p className="text-xs font-semibold tracking-widest text-green-400 uppercase mb-3">{c.resonated}</p>
+            <h3 className="font-display text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-white mb-6 leading-tight">
               {c.ctaTitle}
             </h3>
             <a
               href="https://calendar.app.google/EkGn6twofhVFeFQu6"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-green-800 text-stone-50 px-8 py-4 rounded-full font-medium hover:bg-green-700 transition-colors"
+              className="inline-flex items-center gap-2 bg-green-400 text-green-950 px-7 py-4 rounded-full font-semibold hover:bg-green-300 transition-colors"
             >
               {c.ctaButton}
             </a>
