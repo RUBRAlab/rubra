@@ -25,6 +25,7 @@ export const translations = {
       { valor: 'USD 1.000', etiqueta: 'Desde', destacado: true },
     ],
     hero: {
+      badge: 'Software y automatización con IA · Argentina',
       titleParts: ['Nos encargamos de la ', 'tecnología', ' para que vos puedas enfocarte en tu ', 'negocio.'],
       subtitle: 'Creamos las soluciones que necesitás para vender más, organizar mejor tu empresa y automatizar tareas. Hablamos claro, cumplimos lo acordado y entregamos soluciones listas para usar.',
       ctaSchedule: 'Agendar reunión',
@@ -232,6 +233,7 @@ export const translations = {
       { valor: 'USD 1,000', etiqueta: 'Starting at', destacado: true },
     ],
     hero: {
+      badge: 'Software & AI automation · Argentina',
       titleParts: ['We handle the ', 'technology', ' so you can focus on your ', 'business.'],
       subtitle: 'We build the solutions you need to sell more, run your company better and automate tasks. We talk straight, deliver what we agree on, and ship solutions ready to use.',
       ctaSchedule: 'Book a meeting',

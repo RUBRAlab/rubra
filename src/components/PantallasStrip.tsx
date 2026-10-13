@@ -59,11 +59,11 @@ const FILA_B: Pantalla[] = [
 
 /** Marco de navegador: sin esto la captura se lee como una imagen cualquiera. */
 const Ventana = ({ p }: { p: Pantalla }) => (
-  <figure className="shrink-0 w-[300px] md:w-[420px] rounded-xl overflow-hidden bg-[#2b2c26] border border-stone-100/12 shadow-2xl shadow-black/40">
-    <div className="flex items-center gap-1.5 px-3 h-7 bg-stone-100/[0.07] border-b border-stone-100/10">
-      <span className="w-2 h-2 rounded-full bg-stone-100/25" />
-      <span className="w-2 h-2 rounded-full bg-stone-100/25" />
-      <span className="w-2 h-2 rounded-full bg-stone-100/25" />
+  <figure className="shrink-0 w-[300px] md:w-[420px] rounded-xl overflow-hidden bg-white border border-stone-200 shadow-xl shadow-black/[0.06]">
+    <div className="flex items-center gap-1.5 px-3 h-7 bg-stone-50 border-b border-stone-200">
+      <span className="w-2 h-2 rounded-full bg-stone-300" />
+      <span className="w-2 h-2 rounded-full bg-stone-300" />
+      <span className="w-2 h-2 rounded-full bg-stone-300" />
     </div>
     <img
       src={p.src}
@@ -79,7 +79,7 @@ const Ventana = ({ p }: { p: Pantalla }) => (
 
 /** Marco de teléfono para las pantallas de apps móviles. */
 const Telefono = ({ p }: { p: Pantalla }) => (
-  <figure className="shrink-0 w-[132px] md:w-[172px] rounded-[1.75rem] overflow-hidden bg-[#2b2c26] border-[5px] border-stone-100/15 shadow-2xl shadow-black/40">
+  <figure className="shrink-0 w-[132px] md:w-[172px] rounded-[1.75rem] overflow-hidden bg-ink-2 border-[5px] border-ink-3 shadow-xl shadow-black/10">
     <img
       src={p.src}
       alt={p.alt}
@@ -118,15 +118,15 @@ export const PantallasStrip = ({
   titulo: string
   cta: string
 }) => (
-  <section className="bg-[#35362f] pb-16 md:pb-24 pt-4 overflow-hidden relative z-10" aria-label={titulo}>
+  <section className="pb-20 md:pb-28 pt-4 overflow-hidden relative z-10" aria-label={titulo}>
     <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 md:mb-10 flex flex-wrap items-end justify-between gap-4">
       <div>
-        <p className="text-sm font-semibold tracking-widest text-green-400 uppercase mb-2">{kicker}</p>
-        <h2 className="font-display text-xl md:text-2xl font-medium text-stone-300 max-w-xl leading-snug">{titulo}</h2>
+        <p className="text-xs font-semibold tracking-widest text-green-600 uppercase mb-2">{kicker}</p>
+        <h2 className="font-display text-xl md:text-2xl font-medium tracking-tight text-stone-600 max-w-xl leading-snug">{titulo}</h2>
       </div>
       <Link
         to="/casos"
-        className="text-sm font-medium text-stone-300 hover:text-green-400 transition-colors underline underline-offset-4 decoration-stone-100/30"
+        className="text-sm font-medium text-stone-600 hover:text-ink transition-colors underline underline-offset-4 decoration-stone-300"
       >
         {cta}
       </Link>

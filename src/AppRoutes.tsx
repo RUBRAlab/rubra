@@ -6,8 +6,10 @@ import Casos from './casos/Casos.tsx'
 import Privacidad from './Privacidad.tsx'
 import NotFound from './NotFound.tsx'
 import { LanguageProvider } from './i18n/LanguageContext.tsx'
+import { useLenis } from './hooks/useLenis'
 
 export function AppRoutes() {
+  useLenis()
   return (
     <LanguageProvider>
       <Routes>
