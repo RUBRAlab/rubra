@@ -172,7 +172,7 @@ export default function App() {
     'inline-flex items-center justify-center gap-2 bg-white text-ink px-7 py-4 rounded-full font-medium border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-colors';
 
   return (
-    <div className="min-h-screen bg-canvas overflow-x-hidden selection:bg-ink selection:text-white relative">
+    <div className="min-h-screen bg-canvas overflow-x-clip selection:bg-ink selection:text-white relative">
       {/* Navigation */}
       <nav
         className={`fixed w-full z-50 transition-all duration-300 ease-in-out px-6 md:px-12 ${
