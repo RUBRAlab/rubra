@@ -18,6 +18,7 @@ import {
   useTransform,
 } from 'motion/react';
 import { track } from '@vercel/analytics';
+import { conversion } from './lib/gads';
 import heroImage from './assets/images/ruperto.webp';
 import logoBlueSky from './assets/images/clients/bluesky.webp';
 import logoConcil from './assets/images/clients/concil.webp';
@@ -506,7 +507,7 @@ export default function App() {
               href={buildWhatsappLink(t.whatsapp.message)}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => { track('whatsapp_click', { origin: 'mobile_nav' }); setMobileMenuOpen(false); }}
+              onClick={() => { conversion('whatsapp'); track('whatsapp_click', { origin: 'mobile_nav' }); setMobileMenuOpen(false); }}
               className="border border-stone-200 bg-white text-ink px-6 py-4 rounded-full text-center text-lg font-medium hover:bg-stone-50 transition-colors flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-5 h-5" />
@@ -549,7 +550,7 @@ export default function App() {
                 href={CALENDAR_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => track('schedule_click', { origin: 'hero' })}
+                onClick={() => { conversion('agendar'); track('schedule_click', { origin: 'hero' }) }}
                 className={`${primaryBtn} shadow-xl shadow-black/15`}
               >
                 {t.hero.ctaSchedule}
@@ -559,7 +560,7 @@ export default function App() {
                 href={buildWhatsappLink(t.whatsapp.message)}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => track('whatsapp_click', { origin: 'hero' })}
+                onClick={() => { conversion('whatsapp'); track('whatsapp_click', { origin: 'hero' }) }}
                 className={ghostBtn}
               >
                 <MessageCircle className="w-5 h-5" />
@@ -919,7 +920,7 @@ export default function App() {
                         href={CALENDAR_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => track('schedule_click', { origin: 'contact_section' })}
+                        onClick={() => { conversion('agendar'); track('schedule_click', { origin: 'contact_section' }) }}
                         className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-green-400 transition-colors"
                       >
                         {t.contact.scheduleMeeting}
@@ -950,6 +951,7 @@ export default function App() {
                           }),
                         });
                         if (!res.ok) throw new Error('request failed');
+                        conversion('formulario');
                         track('contact_form_submit');
                         setFormStatus('sent');
                         form.reset();
@@ -1008,7 +1010,7 @@ export default function App() {
                           href={buildWhatsappLink(t.whatsapp.message)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={() => track('whatsapp_click', { origin: 'contact_form' })}
+                          onClick={() => { conversion('whatsapp'); track('whatsapp_click', { origin: 'contact_form' }) }}
                           className="text-white hover:text-green-400 underline underline-offset-4 transition-colors"
                         >
                           {t.contact.whatsappDirect}

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { track } from '@vercel/analytics'
+import { conversion } from '../lib/gads'
 import { ArrowRight, Mail, MapPin, MessageCircle, Linkedin, Instagram } from 'lucide-react'
 import { Isotipo, Wordmark } from './Brand'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -66,7 +67,7 @@ export function SiteFooter() {
                   href={buildWhatsappLink(t.whatsapp.message)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => track('whatsapp_click', { origin: 'footer' })}
+                  onClick={() => { conversion('whatsapp'); track('whatsapp_click', { origin: 'footer' }) }}
                   className="text-sm hover:text-white transition-colors inline-flex items-center gap-2.5"
                 >
                   <MessageCircle className="w-4 h-4 shrink-0 text-green-400" />
@@ -78,7 +79,7 @@ export function SiteFooter() {
                   href={CALENDAR_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => track('schedule_click', { origin: 'footer' })}
+                  onClick={() => { conversion('agendar'); track('schedule_click', { origin: 'footer' }) }}
                   className="text-sm hover:text-white transition-colors inline-flex items-center gap-2.5"
                 >
                   <ArrowRight className="w-4 h-4 shrink-0 text-green-400" />
@@ -136,7 +137,7 @@ export function WhatsAppFloatingButton({ label, message }: { label: string; mess
       href={buildWhatsappLink(message)}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => track('whatsapp_click', { origin: 'floating' })}
+      onClick={() => { conversion('whatsapp'); track('whatsapp_click', { origin: 'floating' }) }}
       aria-label={label}
       className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white px-4 py-3.5 rounded-full shadow-lg shadow-black/20 hover:brightness-105 transition-all"
     >

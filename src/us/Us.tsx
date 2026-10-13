@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { track } from '@vercel/analytics'
+import { conversion } from '../lib/gads'
 import {
   ArrowRight,
   MessageCircle,

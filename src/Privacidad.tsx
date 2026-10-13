@@ -29,7 +29,7 @@ export const COPY = {
         h: 'Qué datos recolectamos',
         p: [
           'Si completás el formulario de contacto: tu nombre, tu email y la descripción de lo que necesitás. El teléfono y la empresa son opcionales, y el formulario funciona sin ellos.',
-          'Si navegás el sitio sin escribirnos: datos de uso agregados a través de Vercel Analytics, como qué páginas se visitan y qué botones se tocan. Vercel Analytics no usa cookies ni construye un perfil tuyo entre sitios.',
+          'Si navegás el sitio sin escribirnos: datos de uso agregados a través de Vercel Analytics, como qué páginas se visitan y qué botones se tocan. Vercel Analytics no usa cookies ni construye un perfil tuyo entre sitios. Además usamos la etiqueta de Google Ads, que sí guarda cookies, solo para saber si una consulta vino de un anuncio nuestro.',
           'No pedimos ni guardamos datos de tarjetas, documentos ni información sensible. Este sitio no vende nada ni procesa pagos.',
         ],
       },
@@ -95,7 +95,7 @@ export const COPY = {
         h: 'What we collect',
         p: [
           'If you fill in the contact form: your name, your email and a description of what you need. Phone and company are optional, and the form works without them.',
-          'If you only browse: aggregate usage data through Vercel Analytics, such as which pages are visited and which buttons are clicked. Vercel Analytics uses no cookies and builds no cross-site profile of you.',
+          'If you only browse: aggregate usage data through Vercel Analytics, such as which pages are visited and which buttons are clicked. Vercel Analytics uses no cookies and builds no cross-site profile of you. We also use the Google Ads tag, which does set cookies, only to know whether an inquiry came from one of our ads.',
           'We do not ask for or store card details, identity documents or sensitive information. This site sells nothing and processes no payments.',
         ],
       },
