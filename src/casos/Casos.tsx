@@ -3,8 +3,7 @@ import { casos } from '../blog/posts'
 import { ArrowRight } from 'lucide-react'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useLanguage } from '../i18n/LanguageContext'
-import { LanguageToggle } from '../i18n/LanguageToggle'
-import { Isotipo, Wordmark } from '../components/Brand'
+import { PageNav } from '../components/PageNav'
 import { SiteFooter, FloatingWhatsApp } from '../components/SiteFooter'
 import { CasoVisual } from '../components/CasoPreview'
 
@@ -46,26 +45,8 @@ export default function Casos() {
   })
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      {/* Nav */}
-      <nav className="fixed w-full z-50 bg-stone-50/80 backdrop-blur-md border-b border-stone-200 px-6 md:px-12 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5" aria-label="RUBRA lab">
-            <Isotipo className="w-7 h-7 text-stone-900" />
-            <Wordmark dark size="sm" />
-          </Link>
-          <div className="flex items-center gap-3 sm:gap-4">
-            <LanguageToggle className="border-stone-300 text-stone-700 hover:bg-stone-100" />
-            <Link
-              to="/#contacto"
-              className="bg-green-800 text-stone-50 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium hover:bg-green-700 transition-colors flex items-center gap-2 group whitespace-nowrap"
-            >
-              {c.cta}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-canvas">
+      <PageNav />
 
       {/* Contenido */}
       <main className="pt-32 pb-24 px-6 md:px-12">

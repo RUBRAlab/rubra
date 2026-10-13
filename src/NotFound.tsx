@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { usePageMeta } from './hooks/usePageMeta'
 import { useLanguage } from './i18n/LanguageContext'
-import { LanguageToggle } from './i18n/LanguageToggle'
-import { Isotipo, Wordmark } from './components/Brand'
+import { PageNav } from './components/PageNav'
 import { SiteFooter, FloatingWhatsApp } from './components/SiteFooter'
 
 const COPY = {
@@ -29,16 +28,8 @@ export default function NotFound() {
   usePageMeta({ title: c.title, description: c.body, path: '/' })
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      <nav className="fixed w-full z-50 bg-stone-50/80 backdrop-blur-md border-b border-stone-200 px-6 md:px-12 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5" aria-label="RUBRA lab">
-            <Isotipo className="w-7 h-7 text-stone-900" />
-            <Wordmark dark size="sm" />
-          </Link>
-          <LanguageToggle className="border-stone-300 text-stone-700 hover:bg-stone-100" />
-        </div>
-      </nav>
+    <div className="min-h-screen bg-canvas">
+      <PageNav />
       <main className="pt-40 pb-24 px-6 md:px-12">
         <div className="max-w-2xl mx-auto">
           <p className="text-xs font-semibold tracking-widest text-green-700 uppercase mb-4">404</p>
