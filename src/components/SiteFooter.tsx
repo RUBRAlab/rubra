@@ -16,7 +16,7 @@ export function SiteFooter() {
   const t = translations[language]
 
   return (
-    <footer className="bg-[#35362f] text-stone-400 pt-16 pb-10 px-6 md:px-12 border-t border-stone-100/10 relative z-10 block">
+    <footer className="bg-ink text-stone-400 pt-16 pb-10 px-6 md:px-12 border-t border-white/10 relative z-10 block">
       <div className="max-w-7xl mx-auto">
         <div className="grid gap-12 md:grid-cols-12 pb-12 border-b border-stone-100/10">
           <div className="md:col-span-5">
