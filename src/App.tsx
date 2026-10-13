@@ -290,7 +290,8 @@ export default function App() {
               <span className="hidden sm:inline"> · {t.hero.badgeSuffix}</span>
             </span>
             <h1 className="font-display text-[2.75rem] leading-[1.02] sm:text-6xl lg:text-7xl font-semibold tracking-[-0.04em] text-ink mb-7">
-              {t.hero.titleParts[0]}<span className="text-green-600">{t.hero.titleParts[1]}</span>{t.hero.titleParts[2]}<span className="text-green-600">{t.hero.titleParts[3]}</span>
+              {t.hero.titleLine1}<br />
+              <span className="text-green-600">{t.hero.titleLine2}</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto mb-10 leading-relaxed">
               {t.hero.subtitle}

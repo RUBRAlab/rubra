@@ -27,8 +27,9 @@ export const translations = {
     hero: {
       badge: 'Software y automatización con IA',
       badgeSuffix: 'Argentina',
-      titleParts: ['Nos encargamos de la ', 'tecnología', ' para que vos puedas enfocarte en tu ', 'negocio.'],
-      subtitle: 'Creamos las soluciones que necesitás para vender más, organizar mejor tu empresa y automatizar tareas. Hablamos claro, cumplimos lo acordado y entregamos soluciones listas para usar.',
+      titleLine1: 'El software que te falta.',
+      titleLine2: 'Funcionando en semanas.',
+      subtitle: 'Tiendas online, sistemas de gestión y automatización con IA para pymes. Alcance y precio cerrados antes de empezar, y la solución en producción en 2 a 6 semanas.',
       ctaSchedule: 'Agendar reunión',
       ctaContact: 'Escribinos por WhatsApp',
     },
@@ -236,8 +237,9 @@ export const translations = {
     hero: {
       badge: 'Software & AI automation',
       badgeSuffix: 'Argentina',
-      titleParts: ['We handle the ', 'technology', ' so you can focus on your ', 'business.'],
-      subtitle: 'We build the solutions you need to sell more, run your company better and automate tasks. We talk straight, deliver what we agree on, and ship solutions ready to use.',
+      titleLine1: 'The software you are missing.',
+      titleLine2: 'Live in weeks.',
+      subtitle: 'Online stores, management systems and AI automation for small and mid-sized businesses. Scope and price locked before we start, and the solution in production in 2 to 6 weeks.',
       ctaSchedule: 'Book a meeting',
       ctaContact: 'Message us on WhatsApp',
     },
