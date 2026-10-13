@@ -12,7 +12,7 @@ import { CALENDAR_URL, EMAIL, INSTAGRAM_URL, LINKEDIN_URL, buildWhatsappLink } f
  * volver arriba.
  */
 export function SiteFooter() {
-  const { language } = useLanguage()
+  const { language, lp } = useLanguage()
   const t = translations[language]
 
   return (
@@ -20,7 +20,7 @@ export function SiteFooter() {
       <div className="max-w-7xl mx-auto">
         <div className="grid gap-12 md:grid-cols-12 pb-12 border-b border-stone-100/10">
           <div className="md:col-span-5">
-            <Link to="/" className="flex items-center gap-2.5 mb-4" aria-label="RUBRA lab">
+            <Link to={lp('/')} className="flex items-center gap-2.5 mb-4" aria-label="RUBRA lab">
               <Isotipo className="w-7 h-7 text-stone-200" />
               <Wordmark />
             </Link>
@@ -39,11 +39,11 @@ export function SiteFooter() {
                   {/* Los anchors de la home van como <a>: react-router no hace
                       scroll al hash por sí solo, y el footer vive en todas las páginas. */}
                   {link.href.includes('#') ? (
-                    <a href={link.href} className="text-sm hover:text-white transition-colors">
+                    <a href={lp(link.href)} className="text-sm hover:text-white transition-colors">
                       {link.label}
                     </a>
                   ) : (
-                    <Link to={link.href} className="text-sm hover:text-white transition-colors">
+                    <Link to={lp(link.href)} className="text-sm hover:text-white transition-colors">
                       {link.label}
                     </Link>
                   )}
@@ -114,7 +114,7 @@ export function SiteFooter() {
         <div className="pt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-stone-500">
           <p>{t.footer.tagline(new Date().getFullYear())}</p>
           <span aria-hidden="true">·</span>
-          <Link to="/privacidad" className="hover:text-white transition-colors">
+          <Link to={lp('/privacidad')} className="hover:text-white transition-colors">
             {t.footer.privacy}
           </Link>
         </div>

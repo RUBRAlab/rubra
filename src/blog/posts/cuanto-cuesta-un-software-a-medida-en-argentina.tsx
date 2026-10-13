@@ -286,7 +286,7 @@ const ContentEn = () => (
     </ol>
     <p>
       We go deeper in{' '}
-      <a href="/blog/precio-cerrado-vs-por-hora">fixed price vs. hourly</a>, which is the
+      <a href="/en/blog/precio-cerrado-vs-por-hora">fixed price vs. hourly</a>, which is the
       decision with the biggest impact on what you end up paying.
     </p>
 
@@ -297,7 +297,7 @@ const ContentEn = () => (
       and it still gets locked in the proposal. The fastest way to find out is to tell us what
       you need: the proposal with scope, timeline and price takes 3 to 5 business days and costs
       nothing. You can look at{' '}
-      <a href="/casos">real projects already running</a> to place yours.
+      <a href="/en/cases">real projects already running</a> to place yours.
     </p>
   </article>
 )

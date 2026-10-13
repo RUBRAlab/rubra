@@ -2,6 +2,7 @@
 // y le fija por default el idioma del sitio: español en países hispanohablantes,
 // inglés en el resto. Es solo un default inicial — si el visitante ya eligió un
 // idioma con el botón ES/EN, esa elección (guardada en localStorage) manda siempre.
+// El cliente usa la cookie para mandar a /en a quien entra por una URL en español.
 
 export const config = {
   matcher: '/((?!api/|assets/|.*\\.[\\w]+$).*)',
@@ -14,13 +15,17 @@ const PAISES_HISPANOHABLANTES = new Set([
 
 const COOKIE_NAME = 'rubra-lang-geo'
 
+// A los crawlers no se les fija idioma: Googlebot rastrea desde EE.UU. y con la
+// cookie el cliente lo mandaría a /en, sin dejarlo ver nunca la versión en español.
+const BOT_UA = /bot|crawl|spider|slurp|facebookexternalhit|whatsapp|linkedin|preview/i
+
 export default async function middleware(request: Request) {
   const cookies = request.headers.get('cookie') ?? ''
   const yaTieneCookie = new RegExp(`(?:^|;\\s*)${COOKIE_NAME}=`).test(cookies)
 
   const response = await fetch(request)
 
-  if (yaTieneCookie) return response
+  if (yaTieneCookie || BOT_UA.test(request.headers.get('user-agent') ?? '')) return response
 
   const pais = request.headers.get('x-vercel-ip-country') ?? ''
   const lang = pais && !PAISES_HISPANOHABLANTES.has(pais) ? 'en' : 'es'

@@ -8,27 +8,19 @@ import { pathToFileURL } from 'url'
 const SITE = 'https://www.rubra.ar'
 const dist = path.resolve('dist')
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf-8')
-const { render, postRoutes } = await import(
+const { render, postRoutes, indexRoutes, home, faq, localizePath } = await import(
   pathToFileURL(path.resolve('dist-ssr/entry-server.js')).href
 )
 
-const indexRoutes = [
-  {
-    path: '/blog',
-    title: 'Blog | RUBRA lab: automatización y procesos para empresas',
-    description: 'Artículos sobre automatización de procesos, cuellos de botella y gestión del cambio para empresas de Latinoamérica.',
-  },
-  {
-    path: '/casos',
-    title: 'Casos | RUBRA lab: software para empresas de Latinoamérica',
-    description: 'Tiendas online, sistemas de gestión y portales B2B que construimos para empresas e instituciones. Casos reales, en producción.',
-  },
-  {
-    path: '/privacidad',
-    title: 'Política de privacidad | RUBRA lab',
-    description: 'Qué datos recolecta rubra.ar, para qué se usan, con quién se comparten y cómo pedir que se eliminen.',
-  },
-]
+// Cada ruta sale dos veces: en español en la raíz y en inglés bajo /en, enlazadas
+// entre sí con hreflang para que Google muestre la versión que corresponde.
+const LANGS = ['es', 'en']
+const OG_LOCALE = { es: 'es_AR', en: 'en_US' }
+const OG_IMAGE_ALT = {
+  es: 'RUBRA lab — software y automatización con IA para empresas',
+  en: 'RUBRA lab, custom software and AI automation for businesses',
+}
+const urlOf = (routePath, lang) => `${SITE}${localizePath(routePath, lang)}`
 
 const escAttr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 const escText = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -46,16 +38,26 @@ const injectApp = (html, routePath) => {
   return html.replace('<div id="root"></div>', () => `<div id="root">${app}</div>`)
 }
 
-const articleSchema = (route) => ({
+const faqSchema = (items) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((i) => ({
+    '@type': 'Question',
+    name: i.pregunta,
+    acceptedAnswer: { '@type': 'Answer', text: i.respuesta },
+  })),
+})
+
+const articleSchema = (route, lang) => ({
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: route.headline,
-  description: route.description,
+  headline: route[lang].headline,
+  description: route[lang].description,
   datePublished: route.date,
   dateModified: route.date,
-  inLanguage: 'es-AR',
-  articleSection: route.isCaso ? 'Casos de éxito' : 'Blog',
-  mainEntityOfPage: `${SITE}${route.path}`,
+  inLanguage: lang === 'es' ? 'es-AR' : 'en',
+  articleSection: route.isCaso ? (lang === 'es' ? 'Casos de éxito' : 'Case studies') : 'Blog',
+  mainEntityOfPage: urlOf(route.path, lang),
   image: `${SITE}/og-image-v3.png`,
   author: { '@type': 'Person', name: 'Ruperto Bravo', url: SITE },
   publisher: {
@@ -66,53 +68,77 @@ const articleSchema = (route) => ({
   },
 })
 
-const breadcrumbSchema = (route) => ({
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'RUBRA lab', item: `${SITE}/` },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: route.isCaso ? 'Casos' : 'Blog',
-      item: `${SITE}${route.isCaso ? '/casos' : '/blog'}`,
-    },
-    { '@type': 'ListItem', position: 3, name: route.headline, item: `${SITE}${route.path}` },
-  ],
-})
-
-const writeRoute = (route, extraHead = '') => {
-  const url = `${SITE}${route.path}`
-  const title = escText(route.title)
-  const description = escAttr(route.description)
-  const attr = (re, value) => (html) => html.replace(re, (_, a, b) => `${a}${value}${b}`)
-  let html = stripFaqSchema(template).replace(/<title>.*?<\/title>/, () => `<title>${title}</title>`)
-  for (const apply of [
-    attr(/(<meta name="description" content=")[^"]*(")/, description),
-    attr(/(<link rel="canonical" href=")[^"]*(")/, url),
-    attr(/(<meta property="og:url" content=")[^"]*(")/, url),
-    attr(/(<meta property="og:title" content=")[^"]*(")/, escAttr(route.title)),
-    attr(/(<meta property="og:description" content=")[^"]*(")/, description),
-    attr(/(<meta name="twitter:title" content=")[^"]*(")/, escAttr(route.title)),
-    attr(/(<meta name="twitter:description" content=")[^"]*(")/, description),
-  ]) html = apply(html)
-  if (extraHead) html = html.replace('</head>', () => `${extraHead}\n  </head>`)
-  html = injectApp(html, route.path)
-
-  const outDir = path.join(dist, ...route.path.split('/').filter(Boolean))
-  fs.mkdirSync(outDir, { recursive: true })
-  fs.writeFileSync(path.join(outDir, 'index.html'), html)
-  console.log(`prerender: ${route.path} (${(html.length / 1024).toFixed(0)} KB)`)
+const breadcrumbSchema = (route, lang) => {
+  const section = route.isCaso ? '/casos' : '/blog'
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'RUBRA lab', item: urlOf('/', lang) },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: route.isCaso ? (lang === 'es' ? 'Casos' : 'Case studies') : 'Blog',
+        item: urlOf(section, lang),
+      },
+      { '@type': 'ListItem', position: 3, name: route[lang].headline, item: urlOf(route.path, lang) },
+    ],
+  }
 }
 
-for (const route of indexRoutes) writeRoute(route)
-for (const route of postRoutes) {
-  writeRoute(route, `    ${jsonLd(articleSchema(route))}\n    ${jsonLd(breadcrumbSchema(route))}`)
+const hreflang = (routePath) =>
+  [
+    `<link rel="alternate" hreflang="es" href="${urlOf(routePath, 'es')}" />`,
+    `<link rel="alternate" hreflang="en" href="${urlOf(routePath, 'en')}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${urlOf(routePath, 'es')}" />`,
+  ]
+    .map((l) => `    ${l}`)
+    .join('\n')
+
+/**
+ * `routePath` va en español ('/casos/x'); la versión en inglés se escribe en su
+ * ruta traducida ('/en/cases/x'). El FAQ del template es el de la home en español:
+ * solo queda ahí, el resto de las páginas lo pierde y la home en inglés lleva el suyo.
+ */
+const writeRoute = (routePath, lang, { title, description }, extraHead = []) => {
+  const localized = localizePath(routePath, lang)
+  const url = urlOf(routePath, lang)
+  const keepFaq = routePath === '/' && lang === 'es'
+  const attr = (re, value) => (html) => html.replace(re, (_, a, b) => `${a}${value}${b}`)
+
+  let html = keepFaq ? template : stripFaqSchema(template)
+  html = html.replace(/<title>.*?<\/title>/, () => `<title>${escText(title)}</title>`)
+  for (const apply of [
+    attr(/(<html lang=")[^"]*(")/, lang),
+    attr(/(<meta name="description" content=")[^"]*(")/, escAttr(description)),
+    attr(/(<link rel="canonical" href=")[^"]*(")/, url),
+    attr(/(<meta property="og:url" content=")[^"]*(")/, url),
+    attr(/(<meta property="og:title" content=")[^"]*(")/, escAttr(title)),
+    attr(/(<meta property="og:description" content=")[^"]*(")/, escAttr(description)),
+    attr(/(<meta property="og:image:alt" content=")[^"]*(")/, escAttr(OG_IMAGE_ALT[lang])),
+    attr(/(<meta property="og:locale" content=")[^"]*(")/, OG_LOCALE[lang]),
+    attr(/(<meta name="twitter:title" content=")[^"]*(")/, escAttr(title)),
+    attr(/(<meta name="twitter:description" content=")[^"]*(")/, escAttr(description)),
+  ]) html = apply(html)
+
+  const other = lang === 'es' ? 'en' : 'es'
+  const head = [
+    `    <meta property="og:locale:alternate" content="${OG_LOCALE[other]}" />`,
+    hreflang(routePath),
+    ...extraHead.map((h) => `    ${h}`),
+  ].join('\n')
+  html = html.replace('</head>', () => `${head}\n  </head>`)
+  html = injectApp(html, localized)
+
+  const outDir = path.join(dist, ...localized.split('/').filter(Boolean))
+  fs.mkdirSync(outDir, { recursive: true })
+  fs.writeFileSync(path.join(outDir, 'index.html'), html)
+  console.log(`prerender: ${localized} (${(html.length / 1024).toFixed(0)} KB)`)
 }
 
 // 404.html: Vercel lo sirve con status 404 real para cualquier ruta que no exista en
 // dist ni en los rewrites. Es la misma app, así que React renderiza <NotFound />.
-// Se arma desde el template vacío, antes de inyectarle la home a index.html.
+// Se arma desde el template vacío (está en memoria: escribir dist/index.html no lo pisa).
 const notFound = stripFaqSchema(template)
   .replace(/<title>.*?<\/title>/, '<title>Página no encontrada | RUBRA lab</title>')
   .replace(/<meta name="robots"[^>]*>/, '')
@@ -120,24 +146,35 @@ const notFound = stripFaqSchema(template)
 fs.writeFileSync(path.join(dist, '404.html'), notFound)
 console.log('prerender: 404 -> 404.html')
 
-// La home va última: index.html es también el template del resto.
-const home = injectApp(template, '/')
-fs.writeFileSync(path.join(dist, 'index.html'), home)
-console.log(`prerender: / (${(home.length / 1024).toFixed(0)} KB)`)
+for (const lang of LANGS) {
+  writeRoute('/', lang, home[lang], lang === 'en' ? [jsonLd(faqSchema(faq.en))] : [])
+  for (const route of indexRoutes) writeRoute(route.path, lang, route[lang])
+  for (const route of postRoutes) {
+    writeRoute(route.path, lang, route[lang], [
+      jsonLd(articleSchema(route, lang)),
+      jsonLd(breadcrumbSchema(route, lang)),
+    ])
+  }
+}
 
 // Sitemap generado desde las rutas reales, para que un post nuevo no quede afuera.
+// Cada URL declara su par en el otro idioma (xhtml:link), como pide Google.
 const today = new Date().toISOString().slice(0, 10)
-const entries = [
-  { loc: '/', lastmod: today, changefreq: 'monthly', priority: '1.0' },
-  ...indexRoutes.map((r) => ({ loc: r.path, lastmod: today, changefreq: 'weekly', priority: '0.9' })),
-  ...postRoutes.map((r) => ({ loc: r.path, lastmod: r.date, changefreq: 'monthly', priority: '0.7' })),
+const pages = [
+  { path: '/', lastmod: today, changefreq: 'monthly', priority: '1.0' },
+  ...indexRoutes.map((r) => ({ path: r.path, lastmod: today, changefreq: 'weekly', priority: '0.9' })),
+  ...postRoutes.map((r) => ({ path: r.path, lastmod: r.date, changefreq: 'monthly', priority: '0.7' })),
 ]
+const entries = pages.flatMap((p) => LANGS.map((lang) => ({ ...p, lang })))
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries
   .map(
     (e) => `  <url>
-    <loc>${SITE}${e.loc}</loc>
+    <loc>${urlOf(e.path, e.lang)}</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="${urlOf(e.path, 'es')}" />
+    <xhtml:link rel="alternate" hreflang="en" href="${urlOf(e.path, 'en')}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${urlOf(e.path, 'es')}" />
     <lastmod>${e.lastmod}</lastmod>
     <changefreq>${e.changefreq}</changefreq>
     <priority>${e.priority}</priority>

@@ -17,7 +17,7 @@ const formatDate = (dateStr: string, language: 'es' | 'en') => {
   return `${day} de ${months[month - 1]} de ${year}`
 }
 
-const COPY = {
+export const COPY = {
   es: {
     metaTitle: 'Blog | RUBRA lab: automatización y procesos para empresas',
     metaDescription: 'Artículos sobre automatización de procesos, cuellos de botella y gestión del cambio para empresas de Latinoamérica.',
@@ -39,7 +39,7 @@ const COPY = {
 } as const
 
 export default function Blog() {
-  const { language } = useLanguage()
+  const { language, lp } = useLanguage()
   const c = COPY[language]
 
   usePageMeta({
@@ -65,7 +65,7 @@ export default function Blog() {
             {articulos.map((post) => (
               <Link
                 key={post.slug}
-                to={`/blog/${post.slug}`}
+                to={lp(`/blog/${post.slug}`)}
                 className="group flex flex-col h-full bg-white rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-xl hover:shadow-black/[0.06] hover:-translate-y-0.5 transition-all duration-300"
               >
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">

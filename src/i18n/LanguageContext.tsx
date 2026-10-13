@@ -1,10 +1,14 @@
-import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, type ReactNode } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { languageFromPath, localizePath, spanishPath, type Language } from './paths';
 
-export type Language = 'es' | 'en';
+export type { Language };
 
 interface LanguageContextValue {
   language: Language;
   toggleLanguage: () => void;
+  /** Ruta en español → ruta en el idioma actual ('/casos' → '/en/cases'). */
+  lp: (path: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
@@ -19,27 +23,54 @@ function getCookie(name: string): string | null {
   return match ? decodeURIComponent(match[1]) : null;
 }
 
-function getInitialLanguage(): Language {
-  if (typeof window === 'undefined') return 'es';
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === 'es' || stored === 'en') return stored;
+// Sin fallback a navigator.language: el renderer de Googlebot reporta en-US y
+// terminaría redirigido a /en sin ver nunca la versión en español.
+function getPreferredLanguage(): Language | null {
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === 'es' || stored === 'en') return stored;
+  } catch {
+    // localStorage bloqueado: seguimos con la cookie de geo.
+  }
   const geo = getCookie(GEO_COOKIE_NAME);
-  if (geo === 'es' || geo === 'en') return geo;
-  return navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'es';
+  return geo === 'es' || geo === 'en' ? geo : null;
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const language = languageFromPath(location.pathname);
+
+  const switchTo = (target: Language, replace = false) => {
+    const path = localizePath(spanishPath(location.pathname), target);
+    navigate(path + location.search + location.hash, { replace });
+  };
+
+  // Solo al entrar: un visitante de afuera que llega a una URL en español va a la
+  // versión en inglés. Nunca al revés: un link a /en compartido se respeta.
+  useEffect(() => {
+    if (language === 'es' && getPreferredLanguage() === 'en') switchTo('en', true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, language);
     document.documentElement.lang = language;
   }, [language]);
 
-  const toggleLanguage = () => setLanguage((prev) => (prev === 'es' ? 'en' : 'es'));
+  const toggleLanguage = () => {
+    const target = language === 'es' ? 'en' : 'es';
+    try {
+      window.localStorage.setItem(STORAGE_KEY, target);
+    } catch {
+      // Sin storage el cambio igual funciona, solo no se recuerda.
+    }
+    switchTo(target);
+  };
+
+  const lp = (path: string) => localizePath(path, language);
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, lp }}>
       {children}
     </LanguageContext.Provider>
   );

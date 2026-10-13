@@ -184,7 +184,7 @@ const ContentEn = () => (
     <p>
       Automating is a business decision before it's a technical one: first you define how you want your
       company to work, and then you build the system that makes it possible. That's exactly what we do.
-      You can see <a href="/casos">how we solved it for other businesses</a>.
+      You can see <a href="/en/cases">how we solved it for other businesses</a>.
     </p>
   </article>
 )

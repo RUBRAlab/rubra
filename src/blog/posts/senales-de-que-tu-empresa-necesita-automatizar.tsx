@@ -129,7 +129,7 @@ const ContentEn = () => (
       up unused.
     </p>
     <p>
-      You can check out <a href="/casos">some of the systems we've already built</a>, or{' '}
+      You can check out <a href="/en/cases">some of the systems we've already built</a>, or{' '}
       <a href="mailto:hola@rubra.ar">write to us</a> and let's talk.
     </p>
   </article>

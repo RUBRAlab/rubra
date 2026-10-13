@@ -19,6 +19,12 @@ export function AppRoutes() {
         <Route path="/casos" element={<Casos />} />
         <Route path="/casos/:slug" element={<Post />} />
         <Route path="/privacidad" element={<Privacidad />} />
+        <Route path="/en" element={<App />} />
+        <Route path="/en/blog" element={<Blog />} />
+        <Route path="/en/blog/:slug" element={<Post />} />
+        <Route path="/en/cases" element={<Casos />} />
+        <Route path="/en/cases/:slug" element={<Post />} />
+        <Route path="/en/privacy" element={<Privacidad />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </LanguageProvider>

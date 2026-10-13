@@ -23,7 +23,9 @@
   ],
   "rewrites": [
     { "source": "/blog/:slug", "destination": "/index.html" },
-    { "source": "/casos/:slug", "destination": "/index.html" }
+    { "source": "/casos/:slug", "destination": "/index.html" },
+    { "source": "/en/blog/:slug", "destination": "/en/index.html" },
+    { "source": "/en/cases/:slug", "destination": "/en/index.html" }
   ],
   "headers": [
     {

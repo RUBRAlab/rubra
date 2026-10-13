@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../i18n/LanguageContext'
 
 import genialCatalogo from '../assets/images/pantallas/genial-catalogo.webp'
 import genialCotizacion from '../assets/images/pantallas/genial-cotizacion.webp'
@@ -117,28 +118,31 @@ export const PantallasStrip = ({
   kicker: string
   titulo: string
   cta: string
-}) => (
-  <section className="pb-20 md:pb-28 pt-4 overflow-hidden relative z-10" aria-label={titulo}>
-    <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 md:mb-10 flex flex-wrap items-end justify-between gap-4">
-      <div>
-        <p className="text-xs font-semibold tracking-widest text-green-600 uppercase mb-2">{kicker}</p>
-        <h2 className="font-display text-xl md:text-2xl font-medium tracking-tight text-stone-600 max-w-xl leading-snug">{titulo}</h2>
+}) => {
+  const { lp } = useLanguage()
+  return (
+    <section className="pb-20 md:pb-28 pt-4 overflow-hidden relative z-10" aria-label={titulo}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 md:mb-10 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold tracking-widest text-green-600 uppercase mb-2">{kicker}</p>
+          <h2 className="font-display text-xl md:text-2xl font-medium tracking-tight text-stone-600 max-w-xl leading-snug">{titulo}</h2>
+        </div>
+        <Link
+          to={lp('/casos')}
+          className="text-sm font-medium text-stone-600 hover:text-ink transition-colors underline underline-offset-4 decoration-stone-300"
+        >
+          {cta}
+        </Link>
       </div>
-      <Link
-        to="/casos"
-        className="text-sm font-medium text-stone-600 hover:text-ink transition-colors underline underline-offset-4 decoration-stone-300"
-      >
-        {cta}
-      </Link>
-    </div>
 
-    <div className="marquee-mask flex flex-col gap-5 md:gap-7">
-      <div className="marquee">
-        <Fila pantallas={FILA_A} />
+      <div className="marquee-mask flex flex-col gap-5 md:gap-7">
+        <div className="marquee">
+          <Fila pantallas={FILA_A} />
+        </div>
+        <div className="marquee">
+          <Fila pantallas={FILA_B} reversa />
+        </div>
       </div>
-      <div className="marquee">
-        <Fila pantallas={FILA_B} reversa />
-      </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}

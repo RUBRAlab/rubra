@@ -23,7 +23,7 @@ const COPY = {
 } as const
 
 export default function NotFound() {
-  const { language } = useLanguage()
+  const { language, lp } = useLanguage()
   const c = COPY[language]
   usePageMeta({ title: c.title, description: c.body, path: '/' })
 
@@ -36,10 +36,10 @@ export default function NotFound() {
           <h1 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-6">{c.heading}</h1>
           <p className="text-lg text-stone-600 mb-10">{c.body}</p>
           <div className="flex flex-wrap gap-4">
-            <Link to="/" className="inline-flex items-center gap-2 bg-stone-900 text-stone-50 px-5 py-3 rounded-full text-sm font-medium hover:bg-stone-800 transition-colors">
+            <Link to={lp('/')} className="inline-flex items-center gap-2 bg-stone-900 text-stone-50 px-5 py-3 rounded-full text-sm font-medium hover:bg-stone-800 transition-colors">
               <ArrowLeft className="w-4 h-4" /> {c.home}
             </Link>
-            <Link to="/casos" className="inline-flex items-center px-5 py-3 rounded-full text-sm font-medium border border-stone-300 text-stone-700 hover:bg-stone-100 transition-colors">
+            <Link to={lp('/casos')} className="inline-flex items-center px-5 py-3 rounded-full text-sm font-medium border border-stone-300 text-stone-700 hover:bg-stone-100 transition-colors">
               {c.casos}
             </Link>
           </div>

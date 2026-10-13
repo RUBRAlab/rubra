@@ -194,7 +194,7 @@ const ContentEn = () => (
     </p>
     <p>
       That's the difference between a system that gets used and one that ends up abandoned next to the
-      usual spreadsheet. You can see <a href="/casos">how we work on real projects</a>.
+      usual spreadsheet. You can see <a href="/en/cases">how we work on real projects</a>.
     </p>
   </article>
 )

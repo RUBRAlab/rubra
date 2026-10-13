@@ -283,7 +283,7 @@ const ContentEn = () => (
     <p>
       <strong>It's a good fit</strong> when you have a concrete problem that can be described:
       a process done by hand today, wholesale sales handled over WhatsApp, dues reconciled in a
-      spreadsheet. You can see real examples in <a href="/casos">our case studies</a>.
+      spreadsheet. You can see real examples in <a href="/en/cases">our case studies</a>.
     </p>
     <p>
       <strong>It's not a good fit</strong> if you need a platform for thousands of users from

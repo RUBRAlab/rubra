@@ -7,7 +7,7 @@ import { PageNav } from '../components/PageNav'
 import { SiteFooter, FloatingWhatsApp } from '../components/SiteFooter'
 import { CasoVisual } from '../components/CasoPreview'
 
-const COPY = {
+export const COPY = {
   es: {
     metaTitle: 'Casos | RUBRA lab: software para empresas de Latinoamérica',
     metaDescription: 'Tiendas online, sistemas de gestión y portales B2B que construimos para empresas e instituciones. Casos reales, en producción.',
@@ -35,7 +35,7 @@ const COPY = {
 } as const
 
 export default function Casos() {
-  const { language } = useLanguage()
+  const { language, lp } = useLanguage()
   const c = COPY[language]
 
   usePageMeta({
@@ -64,7 +64,7 @@ export default function Casos() {
             {casos.map((caso) => (
               <Link
                 key={caso.slug}
-                to={`/casos/${caso.slug}`}
+                to={lp(`/casos/${caso.slug}`)}
                 className="group flex flex-col h-full bg-white rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-xl hover:shadow-black/[0.06] hover:-translate-y-0.5 transition-all duration-300"
               >
                 <CasoVisual slug={caso.slug} alt={language === 'en' ? caso.title_en : caso.title} />
@@ -89,7 +89,7 @@ export default function Casos() {
               {c.ctaQuestion}
             </p>
             <a
-              href="/#contacto"
+              href={lp('/#contacto')}
               className="inline-flex items-center justify-center gap-2 bg-green-400 text-green-950 px-7 py-4 rounded-full font-semibold hover:bg-green-300 transition-colors shrink-0"
             >
               {c.ctaLink} <ArrowRight className="w-4 h-4" />

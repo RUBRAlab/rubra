@@ -10,7 +10,7 @@ import { EMAIL } from './config'
 // a WhatsApp y Google Calendar. Si cambia alguna de esas tres cosas, cambiar esto tambien.
 const ACTUALIZADO = '2026-09-25'
 
-const COPY = {
+export const COPY = {
   es: {
     metaTitle: 'Política de privacidad | RUBRA lab',
     metaDescription:
@@ -168,7 +168,7 @@ function parrafo(texto: string, clave: number) {
 }
 
 export default function Privacidad() {
-  const { language } = useLanguage()
+  const { language, lp } = useLanguage()
   const c = COPY[language]
 
   usePageMeta({ title: c.metaTitle, description: c.metaDescription, path: '/privacidad' })
@@ -177,7 +177,7 @@ export default function Privacidad() {
     <div className="min-h-screen bg-canvas">
       <PageNav
         accion={
-          <Link to="/" className="px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-white text-ink border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-colors whitespace-nowrap">
+          <Link to={lp('/')} className="px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-white text-ink border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-colors whitespace-nowrap">
             {c.volver}
           </Link>
         }

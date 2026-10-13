@@ -350,28 +350,31 @@ const Tesis = ({ t }: { t: (typeof translations)['es']['band'] }) => {
 
 type Testimonio = (typeof translations)['es']['testimonios']['items'][number];
 
-const TestimonioCard = ({ testimonio, verCaso }: { testimonio: Testimonio; verCaso: string; key?: Key }) => (
-  <blockquote className="w-[320px] md:w-[400px] shrink-0 flex flex-col bg-ink-2 rounded-3xl p-7 border border-white/[0.06]">
-    <span className="font-display text-3xl leading-none text-green-400 mb-4" aria-hidden="true">“</span>
-    <p className="text-base md:text-lg text-white leading-relaxed mb-7 font-medium tracking-tight">
-      {testimonio.frase}
-    </p>
-    <footer className="mt-auto flex items-center gap-3">
-      <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0">
-        <img src={LOGO_BY_NAME[testimonio.logo]} alt="" loading="lazy" decoding="async" className="h-5 max-w-[30px] object-contain" />
-      </span>
-      <div className="min-w-0">
-        <p className="text-sm font-semibold text-white truncate">{testimonio.cliente}</p>
-        {testimonio.caso && (
-          <Link to={`/casos/${testimonio.caso}`} className="text-xs text-stone-400 hover:text-green-400 transition-colors inline-flex items-center gap-1">
-            {verCaso}
-            <ArrowRight className="w-3 h-3" />
-          </Link>
-        )}
-      </div>
-    </footer>
-  </blockquote>
-);
+const TestimonioCard = ({ testimonio, verCaso }: { testimonio: Testimonio; verCaso: string; key?: Key }) => {
+  const { lp } = useLanguage();
+  return (
+    <blockquote className="w-[320px] md:w-[400px] shrink-0 flex flex-col bg-ink-2 rounded-3xl p-7 border border-white/[0.06]">
+      <span className="font-display text-3xl leading-none text-green-400 mb-4" aria-hidden="true">“</span>
+      <p className="text-base md:text-lg text-white leading-relaxed mb-7 font-medium tracking-tight">
+        {testimonio.frase}
+      </p>
+      <footer className="mt-auto flex items-center gap-3">
+        <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0">
+          <img src={LOGO_BY_NAME[testimonio.logo]} alt="" loading="lazy" decoding="async" className="h-5 max-w-[30px] object-contain" />
+        </span>
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-white truncate">{testimonio.cliente}</p>
+          {testimonio.caso && (
+            <Link to={lp(`/casos/${testimonio.caso}`)} className="text-xs text-stone-400 hover:text-green-400 transition-colors inline-flex items-center gap-1">
+              {verCaso}
+              <ArrowRight className="w-3 h-3" />
+            </Link>
+          )}
+        </div>
+      </footer>
+    </blockquote>
+  );
+};
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -379,7 +382,7 @@ export default function App() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [servicioActivo, setServicioActivo] = useState(0);
-  const { language, toggleLanguage } = useLanguage();
+  const { language, toggleLanguage, lp } = useLanguage();
   const t = translations[language];
 
   usePageMeta({
@@ -436,7 +439,7 @@ export default function App() {
                 {item.label}
               </a>
             ))}
-            <Link to="/blog" className="text-sm font-medium text-stone-600 hover:text-ink transition-colors">
+            <Link to={lp('/blog')} className="text-sm font-medium text-stone-600 hover:text-ink transition-colors">
               {t.nav.blog}
             </Link>
             <button
@@ -484,7 +487,7 @@ export default function App() {
               </a>
             ))}
             <Link
-              to="/blog"
+              to={lp('/blog')}
               onClick={() => setMobileMenuOpen(false)}
               className="text-2xl font-display font-medium tracking-tight text-ink border-b border-stone-200 pb-4"
             >
@@ -619,7 +622,7 @@ export default function App() {
                 // Si el cliente tiene caso publicado, el logo lleva al caso:
                 // mandarlo al sitio del cliente lo saca de rubra.ar.
                 const inner = client.caso ? (
-                  <Link to={`/casos/${client.caso}`} className={cls} title={client.name}>{img}</Link>
+                  <Link to={lp(`/casos/${client.caso}`)} className={cls} title={client.name}>{img}</Link>
                 ) : client.url ? (
                   <a href={client.url} target="_blank" rel="noopener noreferrer" className={cls} title={client.name}>{img}</a>
                 ) : (
@@ -729,7 +732,7 @@ export default function App() {
                   {t.casos.titleParts[0]}<br />{t.casos.titleParts[1]}
                 </h2>
               </div>
-              <Link to="/casos" className={ghostBtn}>
+              <Link to={lp('/casos')} className={ghostBtn}>
                 {t.casos.verTodos} <ArrowRight className="w-4 h-4" />
               </Link>
             </Reveal>
@@ -738,7 +741,7 @@ export default function App() {
               {t.casos.items.map((caso, i) => (
                 <Reveal key={caso.slug} delay={(i % 2) * 0.08}>
                   <Link
-                    to={`/casos/${caso.slug}`}
+                    to={lp(`/casos/${caso.slug}`)}
                     className="group flex flex-col h-full bg-white rounded-[2rem] p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-xl hover:shadow-black/[0.06] hover:-translate-y-0.5 transition-all duration-300"
                   >
                     <CasoVisual slug={caso.slug} alt={caso.titulo} />

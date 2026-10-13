@@ -3,6 +3,7 @@ import { posts, basePath } from './posts'
 import { ArrowLeft } from 'lucide-react'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useLanguage } from '../i18n/LanguageContext'
+import { spanishPath } from '../i18n/paths'
 import { PageNav } from '../components/PageNav'
 import { SiteFooter, FloatingWhatsApp } from '../components/SiteFooter'
 
@@ -40,13 +41,13 @@ const COPY = {
 export default function Post() {
   const { slug } = useParams<{ slug: string }>()
   const location = useLocation()
-  const { language } = useLanguage()
+  const { language, lp } = useLanguage()
   const c = COPY[language]
   const post = posts.find(p => p.slug === slug)
   const base = post ? basePath(post.category) : '/blog'
   // Un caso vive en /casos y un artículo en /blog: si se entra por la ruta
   // equivocada, redirigimos a la canónica en vez de duplicar contenido.
-  const rutaCorrecta = location.pathname.startsWith(base)
+  const rutaCorrecta = spanishPath(location.pathname).startsWith(base)
 
   const title = post ? (language === 'en' ? post.title_en : post.title) : null
   const description = post ? (language === 'en' ? post.description_en : post.description) : null
@@ -58,8 +59,8 @@ export default function Post() {
     path: post ? `${base}/${post.slug}` : '/blog',
   })
 
-  if (!post) return <Navigate to="/blog" replace />
-  if (!rutaCorrecta) return <Navigate to={`${base}/${post.slug}`} replace />
+  if (!post) return <Navigate to={lp('/blog')} replace />
+  if (!rutaCorrecta) return <Navigate to={lp(`${base}/${post.slug}`)} replace />
 
   const Content = language === 'en' ? post.content_en : post.content
 
@@ -67,7 +68,7 @@ export default function Post() {
     <div className="min-h-screen bg-canvas">
       <PageNav
         accion={
-          <Link to={base} className="px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-white text-ink border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-colors flex items-center gap-2 whitespace-nowrap">
+          <Link to={lp(base)} className="px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium bg-white text-ink border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-colors flex items-center gap-2 whitespace-nowrap">
             <ArrowLeft className="w-4 h-4" /> {c.back(base)}
           </Link>
         }
