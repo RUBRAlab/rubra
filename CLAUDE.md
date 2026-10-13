@@ -23,9 +23,17 @@ enlaza (se entra directo por crm.rubra.ar).
   compilado a `dist-ssr/`) y escribe un `index.html` por ruta con el contenido real en `#root`, metas,
   schema `Article` y el `sitemap.xml`. Las rutas salen de `posts/index.ts`: un post nuevo entra solo.
   Es para crawlers de IA, que no ejecutan JS. El cliente monta con `createRoot`, no hidrata.
+- `src/hooks/useLenis.ts` — scroll suave (Lenis) para todo el sitio, montado en `AppRoutes`.
 - `index.html`, `public/`, `metadata.json`.
 
 ## Convenciones
+
+- **Sistema visual (desde 2026-10-13, referencia go-marz.com):** tokens en `src/index.css`
+  (`bg-canvas`, `bg-ink`, `ink-2`, `ink-3`, `.glow`), Geist para títulos e Inter para texto. La
+  landing es clara arriba y oscura abajo a partir del `Horizonte`. No reintroducir el cemento
+  `#35362f` ni Playfair. `overflow-x-clip` en el raíz (hidden rompe el sticky de servicios).
+- **OG image:** `public/og-image-v3.png`; al cambiar el mensaje, generar un archivo con nombre
+  nuevo (WhatsApp cachea por URL) y actualizar `index.html` y `scripts/prerender-meta.mjs`.
 
 - El formulario de contacto postea a `api/contacto.ts` (Vercel Function, Resend): manda el
   mail a `hola@rubra.ar` con `reply_to` del visitante y una autorespuesta al mismo. Reemplazó
