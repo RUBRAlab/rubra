@@ -327,7 +327,7 @@ export const translations = {
       verCaso: 'View case study',
       items: [
         { cliente: 'Peregrina', logo: 'Peregrina', caso: null, frase: 'We sped up processes that used to take us hours. The difference showed from day one.' },
-        { cliente: 'Julia H', logo: 'Julia H', caso: null, frase: 'What impressed me was how well they listened — Rubra quickly understood what I needed.' },
+        { cliente: 'Julia H', logo: 'Julia H', caso: null, frase: 'What impressed me was how well they listened, Rubra quickly understood what I needed.' },
         { cliente: 'Deportivo Pradere', logo: 'Deportivo Pradere', caso: 'club-deportivo-cuotas', frase: 'More than a software vendor, we found a technology partner that understands our business.' },
         { cliente: 'Desquiciado Wines', logo: 'Desquiciado', caso: 'portal-b2b-bodega', frase: 'Fast, professional, with a huge capacity to simplify complex processes.' },
       ],
