@@ -286,6 +286,8 @@ export default function App() {
             <span className="inline-flex items-center gap-2 rounded-full border border-green-600/20 bg-green-500/10 px-3.5 py-1.5 text-[0.7rem] md:text-xs font-semibold uppercase tracking-widest text-green-700 mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
               {t.hero.badge}
+              {/* El país se esconde en mobile: a 375px el badge no entra en una línea. */}
+              <span className="hidden sm:inline"> · {t.hero.badgeSuffix}</span>
             </span>
             <h1 className="font-display text-[2.75rem] leading-[1.02] sm:text-6xl lg:text-7xl font-semibold tracking-[-0.04em] text-ink mb-7">
               {t.hero.titleParts[0]}<span className="text-green-600">{t.hero.titleParts[1]}</span>{t.hero.titleParts[2]}<span className="text-green-600">{t.hero.titleParts[3]}</span>
@@ -317,10 +319,10 @@ export default function App() {
             </div>
 
             {/* Stats: los números que sostienen la promesa del título */}
-            <div className="mt-12 md:mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+            <div className="mt-12 md:mt-14 grid grid-cols-3 gap-3 sm:flex sm:flex-wrap items-start sm:items-center justify-center sm:gap-x-10 sm:gap-y-6">
               {t.heroStats.map((stat) => (
-                <div key={stat.etiqueta} className="flex flex-col items-center">
-                  <p className={`font-display text-2xl md:text-3xl font-semibold tracking-tight tabular-nums whitespace-nowrap ${stat.destacado ? 'text-green-600' : 'text-ink'}`}>
+                <div key={stat.etiqueta} className="flex flex-col items-center text-center">
+                  <p className={`font-display text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight tabular-nums whitespace-nowrap ${stat.destacado ? 'text-green-600' : 'text-ink'}`}>
                     {stat.valor}
                   </p>
                   <p className="text-[0.65rem] md:text-xs font-medium uppercase tracking-widest text-stone-500 mt-1">
@@ -354,7 +356,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
-                className="absolute -bottom-8 right-4 md:-right-8 w-[120px] md:w-[190px] shadow-2xl shadow-black/30 rounded-[1.75rem]"
+                className="hidden sm:block absolute -bottom-8 right-4 md:-right-8 w-[140px] md:w-[190px] shadow-2xl shadow-black/30 rounded-[1.75rem]"
               >
                 <Telefono>
                   <img
