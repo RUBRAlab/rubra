@@ -7,7 +7,7 @@ enlaza (se entra directo por crm.rubra.ar).
 ## Stack (NO es Next.js ni Supabase)
 
 - **Vite 6** + **React 19** + **TypeScript** (SPA, no SSR)
-- **react-router-dom v7** (rutas: `/` landing, `/blog`, `/blog/:slug`)
+- **react-router-dom v7** (rutas: `/` landing, `/blog`, `/blog/:slug`, `/casos`, `/casos/:slug`, `/privacidad`)
 - **Tailwind CSS v4** (vía `@tailwindcss/vite`) + `@tailwindcss/typography`
 - **motion** (animaciones) + **lucide-react** (íconos)
 - `@google/genai` (Gemini) — usa `GEMINI_API_KEY` en `.env.local`
@@ -27,6 +27,12 @@ enlaza (se entra directo por crm.rubra.ar).
 - `index.html`, `public/`, `metadata.json`.
 
 ## Convenciones
+
+- **Inglés en `/en` (desde 2026-10-13):** el idioma sale de la URL (`/en`, `/en/blog`, `/en/cases`,
+  `/en/privacy`), no del navegador. El prerender genera cada ruta en los dos idiomas con `hreflang`
+  y el sitemap bilingüe. En el código las rutas se escriben en español y se pasan por `lp()` de
+  `useLanguage()` (mapeo en `src/i18n/paths.ts`). En el `content_en` de un post, los links internos
+  van a mano a `/en/...`. La cookie de geo del middleware solo redirige humanos, nunca bots.
 
 - **Sistema visual (desde 2026-10-13, referencia go-marz.com):** tokens en `src/index.css`
   (`bg-canvas`, `bg-ink`, `ink-2`, `ink-3`, `.glow`), Geist para títulos e Inter para texto. La
