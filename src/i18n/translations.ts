@@ -27,6 +27,7 @@ export const translations = {
     hero: {
       badge: 'Software y automatización con IA',
       badgeSuffix: 'Argentina',
+      trust: 'Más de 12 empresas ya trabajan con software hecho por RUBRA',
       titleLine1: 'El software que te falta.',
       titleLine2: 'Funcionando en semanas.',
       subtitle: 'Tiendas online, sistemas de gestión y automatización con IA para pymes. Alcance y precio cerrados antes de empezar, y la solución en producción en 2 a 6 semanas.',
@@ -238,6 +239,7 @@ export const translations = {
     hero: {
       badge: 'Software & AI automation',
       badgeSuffix: 'Argentina',
+      trust: 'More than 12 companies already run on software built by RUBRA',
       titleLine1: 'The software you are missing.',
       titleLine2: 'Live in weeks.',
       subtitle: 'Online stores, management systems and AI automation for small and mid-sized businesses. Scope and price locked before we start, and the solution in production in 2 to 6 weeks.',

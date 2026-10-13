@@ -1,10 +1,22 @@
 /**
  * Landing de RUBRA lab. Todo en un archivo a propósito: nav, hero, secciones,
  * formulario y footer se leen de corrido y no hay que saltar entre archivos.
+ *
+ * La página tiene dos mitades: la de arriba sobre lienzo claro (hero, clientes,
+ * pantallas, servicios, casos) y, después del horizonte, una zona oscura de
+ * punta a punta (tesis, método, testimonios, FAQ, contacto, footer).
  */
 import { useEffect, useRef, useState, type Key, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { AnimatePresence, motion, useInView } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from 'motion/react';
 import { track } from '@vercel/analytics';
 import heroImage from './assets/images/ruperto.webp';
 import logoBlueSky from './assets/images/clients/bluesky.webp';
@@ -24,7 +36,9 @@ import { Telefono, Ventana } from './components/Mockup';
 import svcTienda from './assets/images/pantallas/genial-catalogo.webp';
 import svcGestion from './assets/images/pantallas/flowpyme-dashboard.webp';
 import svcAutomatizacion from './assets/images/pantallas/flowpyme-importacion.webp';
-import heroPhone from './assets/images/pantallas/desq-pedido.webp';
+import phonePedido from './assets/images/pantallas/desq-pedido.webp';
+import phoneCatalogo from './assets/images/pantallas/desq-catalogo.webp';
+import phoneClubar from './assets/images/pantallas/clubar-landing.webp';
 import { usePageMeta } from './hooks/usePageMeta';
 import { useLanguage } from './i18n/LanguageContext';
 import { translations } from './i18n/translations';
@@ -40,7 +54,10 @@ import {
   MessageCircle,
   Store,
   LayoutDashboard,
-  Bot
+  Bot,
+  Sparkles,
+  Clock,
+  BadgeDollarSign,
 } from 'lucide-react';
 
 const CLIENTS = [
@@ -67,6 +84,11 @@ const SERVICE_ICONS = [Store, LayoutDashboard, Bot];
 // Mismo orden que SERVICE_ICONS y que t.servicios.items.
 const SERVICE_SHOTS = [svcTienda, svcGestion, svcAutomatizacion];
 
+// Mismo orden que t.heroStats.
+const STAT_ICONS = [Sparkles, Clock, BadgeDollarSign];
+
+const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+
 /** Entrada al scroll: aparece una sola vez, desde abajo y con fade. */
 const Reveal = ({
   children,
@@ -79,10 +101,10 @@ const Reveal = ({
   key?: Key;
 }) => (
   <motion.div
-    initial={{ opacity: 0, y: 24 }}
+    initial={{ opacity: 0, y: 28 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.25 }}
-    transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.7, delay, ease: EASE_OUT }}
     className={className}
   >
     {children}
@@ -95,6 +117,99 @@ const Kicker = ({ children, tono = 'claro' }: { children: ReactNode; tono?: 'cla
     {children}
   </p>
 );
+
+/**
+ * Mockup del hero. Arranca inclinado hacia atrás y se endereza a medida que
+ * se scrollea, como una pantalla que se levanta. Alrededor flotan los stats.
+ */
+const HeroMockup = ({
+  stats,
+}: {
+  stats: readonly { valor: string; etiqueta: string; destacado?: boolean }[];
+}) => {
+  const reduced = useReducedMotion();
+  const { scrollY } = useScroll();
+  const progress = useSpring(useTransform(scrollY, [0, 520], [0, 1]), { stiffness: 120, damping: 24, mass: 0.4 });
+  const rotateX = useTransform(progress, [0, 1], [reduced ? 0 : 24, 0]);
+  const scale = useTransform(progress, [0, 1], [reduced ? 1 : 1.06, 1]);
+  const fade = useTransform(progress, [0, 1], [reduced ? 0 : 0.9, 0]);
+  const glowScale = useTransform(progress, [0, 1], [1.25, 0.95]);
+  // Las pills se mueven más rápido que la página: eso es lo que las despega del fondo.
+  const pillY = useTransform(scrollY, [0, 600], [0, -70]);
+
+  return (
+    <div className="relative max-w-5xl mx-auto mt-14 md:mt-16" style={{ perspective: 1400 }}>
+      <motion.div
+        style={{ scale: glowScale }}
+        className="glow absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[110%] pointer-events-none"
+        aria-hidden="true"
+      />
+      <motion.div
+        initial={{ opacity: 0, y: 56 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: EASE_OUT, delay: 0.1 }}
+        style={{ rotateX, scale, transformOrigin: '50% 100%' }}
+        className="relative"
+      >
+        <Ventana tono="oscuro" dominio="app.flowpyme.com.ar" className="shadow-2xl shadow-black/25 ring-1 ring-black/5">
+          <img
+            src={svcGestion}
+            alt="Dashboard de flujo de fondos — Flowpyme"
+            width={1200}
+            height={750}
+            className="w-full aspect-[16/10] md:aspect-[16/9] object-cover object-top"
+          />
+        </Ventana>
+        {/* Velo que se levanta: mientras está inclinado, el borde de abajo se funde con el fondo. */}
+        <motion.div
+          style={{ opacity: fade }}
+          className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-canvas via-canvas/70 to-transparent pointer-events-none rounded-b-2xl"
+          aria-hidden="true"
+        />
+      </motion.div>
+
+      {/* Stats flotando alrededor del mockup (solo desktop; en mobile van en fila) */}
+      <motion.div style={{ y: pillY }} className="hidden md:block absolute inset-0 pointer-events-none" aria-hidden="true">
+        {stats.map((stat, i) => {
+          const Icon = STAT_ICONS[i];
+          const pos = [
+            'left-0 top-[12%] -translate-x-1/3',
+            'right-0 top-[38%] translate-x-1/3',
+            'left-[6%] bottom-[10%] -translate-x-1/4',
+          ][i];
+          const dark = i === 2;
+          return (
+            <motion.div
+              key={stat.etiqueta}
+              initial={{ opacity: 0, scale: 0.8, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.7 + i * 0.15 }}
+              className={`absolute ${pos}`}
+            >
+              <motion.div
+                animate={reduced ? undefined : { y: [0, -9, 0] }}
+                transition={{ duration: 4.5 + i, repeat: Infinity, ease: 'easeInOut' }}
+                className={`flex items-center gap-3 rounded-full pl-2 pr-5 py-2 shadow-xl ${
+                  dark ? 'bg-ink text-white shadow-black/25' : 'bg-white text-ink shadow-black/10 border border-stone-200'
+                }`}
+              >
+                <span className={`w-9 h-9 rounded-full flex items-center justify-center ${dark ? 'bg-green-400 text-green-950' : 'bg-green-500/10 text-green-700'}`}>
+                  <Icon className="w-4 h-4" strokeWidth={2} />
+                </span>
+                <span className="flex flex-col leading-none">
+                  <span className="font-display text-lg font-semibold tracking-tight tabular-nums">{stat.valor}</span>
+                  <span className={`text-[0.6rem] font-semibold uppercase tracking-widest mt-1 ${dark ? 'text-stone-400' : 'text-stone-500'}`}>
+                    {stat.etiqueta}
+                  </span>
+                </span>
+              </motion.div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </div>
+  );
+};
 
 /**
  * Bloque de texto de un servicio. Avisa cuando queda centrado en el viewport
@@ -133,6 +248,115 @@ const ServicioTexto = ({
   );
 };
 
+/**
+ * Horizonte: la curva negra con borde verde que sube desde abajo y abre la
+ * zona oscura. Se mueve con el scroll para que parezca que asoma.
+ */
+const Horizonte = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], [reduced ? 0 : 160, reduced ? 0 : -40]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.2, 1, 0.6]);
+
+  return (
+    <div ref={ref} className="relative h-[220px] md:h-[360px] overflow-hidden bg-canvas" aria-hidden="true">
+      <motion.div style={{ y }} className="absolute left-1/2 top-[38%] -translate-x-1/2 w-[220vw] md:w-[180vw]">
+        <motion.div
+          style={{ opacity: glowOpacity }}
+          className="absolute inset-x-[10%] -top-10 h-40 rounded-[50%] bg-green-500/60 blur-3xl"
+        />
+        <div className="relative w-full aspect-[2/1] rounded-[50%] bg-ink shadow-[0_-24px_90px_6px_rgba(34,197,94,0.45)]" />
+      </motion.div>
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-ink" />
+    </div>
+  );
+};
+
+/**
+ * Tesis del sitio sobre fondo negro, con tres teléfonos que se abren en
+ * abanico a medida que entran en pantalla.
+ */
+const Tesis = ({ t }: { t: (typeof translations)['es']['band'] }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
+  const spread = useSpring(scrollYProgress, { stiffness: 90, damping: 22 });
+  const xL = useTransform(spread, [0, 1], [0, -170]);
+  const xR = useTransform(spread, [0, 1], [0, 170]);
+  const rL = useTransform(spread, [0, 1], [0, -12]);
+  const rR = useTransform(spread, [0, 1], [0, 12]);
+  const yS = useTransform(spread, [0, 1], [0, 28]);
+  const titleY = useTransform(scrollYProgress, [0, 1], [reduced ? 0 : 60, 0]);
+  const phones = [phoneCatalogo, phonePedido, phoneClubar];
+
+  return (
+    <section className="bg-ink px-6 md:px-12 pt-8 md:pt-16 pb-24 md:pb-32 relative overflow-hidden">
+      <div className="glow absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] opacity-60 pointer-events-none" aria-hidden="true" />
+      <motion.div style={{ y: titleY }} className="relative max-w-5xl mx-auto text-center">
+        <p className="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] leading-[1.08] text-white">
+          {t.partA}<span className="text-green-400">{t.partAEm}</span>{t.partB}<br className="hidden md:block" />
+          {t.partC}<span className="text-green-400">{t.partCEm}</span>{t.partD}
+        </p>
+      </motion.div>
+
+      <div ref={ref} className="relative mx-auto mt-14 md:mt-20 h-[420px] md:h-[560px] w-full max-w-3xl" style={{ perspective: 1200 }}>
+        {phones.map((src, i) => {
+          const x = i === 0 ? xL : i === 2 ? xR : 0;
+          const rotate = i === 0 ? rL : i === 2 ? rR : 0;
+          const y = i === 1 ? 0 : yS;
+          return (
+            <motion.div
+              key={src}
+              style={{ x, rotate, y, zIndex: i === 1 ? 2 : 1, transformOrigin: '50% 100%' }}
+              className="absolute left-1/2 top-0 -translate-x-1/2 w-[190px] md:w-[250px] shadow-2xl shadow-black/60 rounded-[1.75rem]"
+            >
+              <Telefono>
+                <img
+                  src={src}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  width={540}
+                  height={1170}
+                  className="w-full aspect-[9/19.5] object-cover object-top"
+                />
+              </Telefono>
+            </motion.div>
+          );
+        })}
+        {/* Fundido hacia el negro para que los teléfonos no terminen a filo */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent pointer-events-none" aria-hidden="true" />
+      </div>
+    </section>
+  );
+};
+
+type Testimonio = (typeof translations)['es']['testimonios']['items'][number];
+
+const TestimonioCard = ({ testimonio, verCaso }: { testimonio: Testimonio; verCaso: string; key?: Key }) => (
+  <blockquote className="w-[320px] md:w-[400px] shrink-0 flex flex-col bg-ink-2 rounded-3xl p-7 border border-white/[0.06]">
+    <span className="font-display text-3xl leading-none text-green-400 mb-4" aria-hidden="true">“</span>
+    <p className="text-base md:text-lg text-white leading-relaxed mb-7 font-medium tracking-tight">
+      {testimonio.frase}
+    </p>
+    <footer className="mt-auto flex items-center gap-3">
+      <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0">
+        <img src={LOGO_BY_NAME[testimonio.logo]} alt="" loading="lazy" decoding="async" className="h-5 max-w-[30px] object-contain" />
+      </span>
+      <div className="min-w-0">
+        <p className="text-sm font-semibold text-white truncate">{testimonio.cliente}</p>
+        {testimonio.caso && (
+          <Link to={`/casos/${testimonio.caso}`} className="text-xs text-stone-400 hover:text-green-400 transition-colors inline-flex items-center gap-1">
+            {verCaso}
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+        )}
+      </div>
+    </footer>
+  </blockquote>
+);
+
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -170,6 +394,11 @@ export default function App() {
     'inline-flex items-center justify-center gap-2 bg-ink text-white px-7 py-4 rounded-full font-medium hover:bg-ink-2 transition-colors group';
   const ghostBtn =
     'inline-flex items-center justify-center gap-2 bg-white text-ink px-7 py-4 rounded-full font-medium border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-colors';
+
+  // Dos filas de testimonios: la segunda arranca desde otro punto para que no
+  // se vean las mismas tarjetas alineadas.
+  const filaA = [...t.testimonios.items, ...t.testimonios.items];
+  const filaB = [...filaA.slice(2), ...filaA.slice(0, 2)];
 
   return (
     <div className="min-h-screen bg-canvas overflow-x-clip selection:bg-ink selection:text-white relative">
@@ -279,7 +508,7 @@ export default function App() {
 
       <main className="relative z-10 block">
         {/* Hero */}
-        <section className="relative pt-36 pb-10 md:pt-44 md:pb-16 px-6 md:px-12 overflow-hidden">
+        <section className="relative pt-36 pb-10 md:pt-44 md:pb-16 px-6 md:px-12">
           {/* El contenido del primer pantallazo no se anima desde opacity:0:
               si el JS tarda, el visitante se queda mirando un hero vacío. */}
           <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -319,14 +548,26 @@ export default function App() {
               </a>
             </div>
 
-            {/* Stats: los números que sostienen la promesa del título */}
-            <div className="mt-12 md:mt-14 grid grid-cols-3 gap-3 sm:flex sm:flex-wrap items-start sm:items-center justify-center sm:gap-x-10 sm:gap-y-6">
+            {/* Prueba social bajo los CTAs: logos apilados + una línea */}
+            <div className="mt-10 flex flex-col items-center gap-3">
+              <div className="flex -space-x-2.5">
+                {CLIENTS.slice(0, 6).map((client) => (
+                  <span key={client.name} className="w-10 h-10 rounded-full bg-white border-2 border-canvas shadow-sm flex items-center justify-center overflow-hidden" title={client.name}>
+                    <img src={client.logo} alt="" className="h-5 max-w-[30px] object-contain grayscale" />
+                  </span>
+                ))}
+              </div>
+              <p className="text-xs font-medium uppercase tracking-widest text-stone-500">{t.hero.trust}</p>
+            </div>
+
+            {/* Stats en fila: solo mobile. En desktop flotan alrededor del mockup. */}
+            <div className="mt-10 grid grid-cols-3 gap-3 md:hidden">
               {t.heroStats.map((stat) => (
                 <div key={stat.etiqueta} className="flex flex-col items-center text-center">
-                  <p className={`font-display text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight tabular-nums whitespace-nowrap ${stat.destacado ? 'text-green-600' : 'text-ink'}`}>
+                  <p className={`font-display text-xl font-semibold tracking-tight tabular-nums whitespace-nowrap ${stat.destacado ? 'text-green-600' : 'text-ink'}`}>
                     {stat.valor}
                   </p>
-                  <p className="text-[0.65rem] md:text-xs font-medium uppercase tracking-widest text-stone-500 mt-1">
+                  <p className="text-[0.6rem] font-medium uppercase tracking-widest text-stone-500 mt-1">
                     {stat.etiqueta}
                   </p>
                 </div>
@@ -334,46 +575,10 @@ export default function App() {
             </div>
           </div>
 
-          {/* Mockup del hero: una pantalla real de escritorio con una de celular
-              encima, sobre un halo verde. Es lo único del hero que se anima. */}
-          <div className="relative max-w-5xl mx-auto mt-16 md:mt-20">
-            <div className="glow absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[110%] pointer-events-none" aria-hidden="true" />
-            <motion.div
-              initial={{ opacity: 0, y: 48, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-              className="relative"
-            >
-              <Ventana tono="oscuro" dominio="app.flowpyme.com.ar" className="shadow-2xl shadow-black/25 ring-1 ring-black/5">
-                <img
-                  src={svcGestion}
-                  alt="Dashboard de flujo de fondos — Flowpyme"
-                  width={1200}
-                  height={750}
-                  className="w-full aspect-[16/10] md:aspect-[16/9] object-cover object-top"
-                />
-              </Ventana>
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
-                className="hidden sm:block absolute -bottom-8 right-4 md:-right-8 w-[140px] md:w-[190px] shadow-2xl shadow-black/30 rounded-[1.75rem]"
-              >
-                <Telefono>
-                  <img
-                    src={heroPhone}
-                    alt="App de pedidos B2B — Desquiciado"
-                    width={540}
-                    height={1170}
-                    className="w-full aspect-[9/19.5] object-cover object-top"
-                  />
-                </Telefono>
-              </motion.div>
-            </motion.div>
-          </div>
+          <HeroMockup stats={t.heroStats} />
         </section>
 
-        {/* Clientes: grilla de logos con peso propio, no una fila tímida */}
+        {/* Clientes: grilla de logos con peso propio */}
         <section className="pt-24 pb-12 md:pt-32 md:pb-16 px-6 md:px-12 relative z-10">
           <div className="max-w-7xl mx-auto">
             <Reveal className="text-center mb-10 md:mb-12">
@@ -383,7 +588,7 @@ export default function App() {
               </h2>
             </Reveal>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
-              {CLIENTS.map((client) => {
+              {CLIENTS.map((client, i) => {
                 const img = (
                   <img
                     src={client.logo}
@@ -397,21 +602,17 @@ export default function App() {
                   'group flex items-center justify-center h-28 md:h-32 rounded-2xl bg-white border border-stone-200 px-6 transition-all duration-300 hover:border-stone-300 hover:shadow-lg hover:shadow-black/[0.05] hover:-translate-y-0.5';
                 // Si el cliente tiene caso publicado, el logo lleva al caso:
                 // mandarlo al sitio del cliente lo saca de rubra.ar.
-                if (client.caso) {
-                  return (
-                    <Link key={client.name} to={`/casos/${client.caso}`} className={cls} title={client.name}>
-                      {img}
-                    </Link>
-                  );
-                }
-                return client.url ? (
-                  <a key={client.name} href={client.url} target="_blank" rel="noopener noreferrer" className={cls} title={client.name}>
-                    {img}
-                  </a>
+                const inner = client.caso ? (
+                  <Link to={`/casos/${client.caso}`} className={cls} title={client.name}>{img}</Link>
+                ) : client.url ? (
+                  <a href={client.url} target="_blank" rel="noopener noreferrer" className={cls} title={client.name}>{img}</a>
                 ) : (
-                  <div key={client.name} className={cls} title={client.name}>
-                    {img}
-                  </div>
+                  <div className={cls} title={client.name}>{img}</div>
+                );
+                return (
+                  <Reveal key={client.name} delay={(i % 6) * 0.06}>
+                    {inner}
+                  </Reveal>
                 );
               })}
             </div>
@@ -420,19 +621,6 @@ export default function App() {
 
         {/* Franja de pantallas: hace visible el "+29 proyectos" del hero */}
         <PantallasStrip kicker={t.pantallas.kicker} titulo={t.pantallas.titulo} cta={t.pantallas.cta} />
-
-        {/* Band: la tesis del sitio, en una tarjeta negra */}
-        <section className="px-6 md:px-12 pb-24 relative z-10">
-          <Reveal className="max-w-7xl mx-auto">
-            <div className="bg-ink rounded-[2.5rem] px-8 py-16 md:px-16 md:py-24 text-center relative overflow-hidden">
-              <div className="glow absolute -top-1/2 left-1/2 -translate-x-1/2 w-[70%] h-full opacity-60 pointer-events-none" aria-hidden="true" />
-              <p className="relative font-display text-3xl md:text-4xl lg:text-5xl font-semibold tracking-[-0.03em] leading-[1.12] text-white max-w-4xl mx-auto">
-                {t.band.partA}<span className="text-green-400">{t.band.partAEm}</span>{t.band.partB}<br className="hidden md:block" />
-                {t.band.partC}<span className="text-green-400">{t.band.partCEm}</span>{t.band.partD}
-              </p>
-            </div>
-          </Reveal>
-        </section>
 
         {/* Servicios: el mockup queda clavado mientras pasan los tres textos */}
         <section className="py-16 md:py-24 px-6 md:px-12 relative z-10" id="servicios">
@@ -466,7 +654,7 @@ export default function App() {
                           initial={{ opacity: 0, scale: 1.03 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{ duration: 0.5, ease: EASE_OUT }}
                           className="absolute inset-0 w-full h-full object-cover object-top"
                         />
                       </AnimatePresence>
@@ -561,87 +749,33 @@ export default function App() {
           </div>
         </section>
 
-        {/* Testimonios: grilla oscura */}
-        <section className="px-6 md:px-12 pb-16 md:pb-24 relative z-10">
-          <Reveal className="max-w-7xl mx-auto">
-            <div className="bg-ink rounded-[2.5rem] px-6 py-14 md:px-14 md:py-20">
-              <div className="mb-12 md:mb-14 text-center max-w-2xl mx-auto">
-                <Kicker tono="oscuro">{t.testimonios.kicker}</Kicker>
-                <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-[-0.04em] text-white leading-[1.02]">
-                  {t.testimonios.titleA}<span className="text-green-400">{t.testimonios.titleEm}</span>
-                </h2>
-              </div>
+        {/* ——— Zona oscura ——— */}
+        <Horizonte />
 
-              <div className="grid md:grid-cols-2 gap-4 md:gap-5">
-                {t.testimonios.items.map((testimonio, i) => (
-                  <motion.blockquote
-                    key={testimonio.cliente}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
-                    className="flex flex-col bg-ink-2 rounded-3xl p-7 md:p-8 border border-white/[0.06]"
-                  >
-                    <span className="font-display text-4xl leading-none text-green-400 mb-5" aria-hidden="true">“</span>
-                    <p className="text-lg md:text-xl text-white leading-relaxed mb-8 font-medium tracking-tight">
-                      {testimonio.frase}
-                    </p>
-                    <footer className="mt-auto flex items-center gap-4">
-                      <span className="w-11 h-11 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0">
-                        <img
-                          src={LOGO_BY_NAME[testimonio.logo]}
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                          className="h-6 max-w-[34px] object-contain"
-                        />
-                      </span>
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold text-white truncate">
-                          {testimonio.cliente}
-                        </p>
-                        {testimonio.caso && (
-                          <Link
-                            to={`/casos/${testimonio.caso}`}
-                            className="text-sm text-stone-400 hover:text-green-400 transition-colors inline-flex items-center gap-1.5"
-                          >
-                            {t.testimonios.verCaso}
-                            <ArrowRight className="w-3.5 h-3.5" />
-                          </Link>
-                        )}
-                      </div>
-                    </footer>
-                  </motion.blockquote>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </section>
+        <Tesis t={t.band} />
 
         {/* Método */}
-        <section className="py-16 md:py-24 px-6 md:px-12 relative z-10" id="metodo">
+        <section className="bg-ink py-16 md:py-24 px-6 md:px-12 relative z-10" id="metodo">
           <div className="max-w-7xl mx-auto">
-            <Reveal className="mb-12 md:mb-16 max-w-3xl">
-              <Kicker>{t.metodo.kicker}</Kicker>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-ink leading-[1.02]">
-                {t.metodo.titleParts[0]} {t.metodo.titleParts[1]}<br /><span className="text-green-600">{t.metodo.titleParts[2]}</span>
+            <Reveal className="mb-14 md:mb-20 text-center max-w-3xl mx-auto">
+              <Kicker tono="oscuro">{t.metodo.kicker}</Kicker>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-white leading-[1.02]">
+                {t.metodo.titleParts[0]} {t.metodo.titleParts[1]}<br /><span className="text-green-400">{t.metodo.titleParts[2]}</span>
               </h2>
             </Reveal>
 
             <div className="grid md:grid-cols-3 gap-5 md:gap-6">
               {t.metodo.steps.map((step, i) => (
-                <Reveal key={step.title} delay={i * 0.1} className="h-full">
-                  <div className={`h-full rounded-[2rem] p-8 md:p-9 border flex flex-col ${i === 2 ? 'bg-ink border-ink text-white' : 'bg-white border-stone-200'}`}>
-                    <div className="flex items-center justify-between mb-10">
-                      <span className={`font-display text-5xl font-semibold tracking-[-0.04em] ${i === 2 ? 'text-green-400' : 'text-ink'}`}>
-                        0{i + 1}
-                      </span>
-                      <span className={`text-[0.65rem] font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full ${i === 2 ? 'bg-white/10 text-green-400' : 'bg-green-500/10 text-green-700'}`}>
-                        {step.tag}
-                      </span>
-                    </div>
-                    <h3 className={`font-display text-2xl md:text-3xl font-semibold tracking-tight mb-3 ${i === 2 ? 'text-white' : 'text-ink'}`}>{step.title}</h3>
-                    <p className={`leading-relaxed ${i === 2 ? 'text-stone-300' : 'text-stone-600'}`}>{step.body}</p>
+                <Reveal key={step.title} delay={i * 0.12} className="h-full">
+                  <div className={`relative h-full rounded-[2rem] p-8 md:p-9 pt-12 md:pt-14 border flex flex-col bg-ink-2 ${i === 2 ? 'border-green-400/40 shadow-[0_0_80px_-20px_rgba(34,197,94,0.5)]' : 'border-white/[0.06]'}`}>
+                    <span className="absolute -top-5 left-8 md:left-9 w-10 h-10 rounded-full bg-green-400 text-green-950 font-display font-semibold flex items-center justify-center shadow-lg shadow-green-500/30">
+                      {i + 1}
+                    </span>
+                    <span className="self-start text-[0.65rem] font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full bg-white/[0.06] text-green-400 mb-6">
+                      {step.tag}
+                    </span>
+                    <h3 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-white mb-3">{step.title}</h3>
+                    <p className="text-stone-400 leading-relaxed">{step.body}</p>
                   </div>
                 </Reveal>
               ))}
@@ -649,13 +783,47 @@ export default function App() {
           </div>
         </section>
 
+        {/* Testimonios: dos marquesinas en sentidos opuestos */}
+        <section className="bg-ink py-16 md:py-24 relative z-10 overflow-hidden">
+          <Reveal className="px-6 md:px-12 mb-12 md:mb-14 text-center max-w-2xl mx-auto">
+            <Kicker tono="oscuro">{t.testimonios.kicker}</Kicker>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-[-0.04em] text-white leading-[1.02]">
+              {t.testimonios.titleA}<span className="text-green-400">{t.testimonios.titleEm}</span>
+            </h2>
+          </Reveal>
+          <div className="marquee-mask flex flex-col gap-4 md:gap-5">
+            <div className="marquee">
+              <div className="flex gap-4 md:gap-5 w-max" data-marquee="directa">
+                {[0, 1].map((copia) =>
+                  filaA.map((item, i) => (
+                    <div key={`${copia}-${i}`} aria-hidden={copia === 1}>
+                      <TestimonioCard testimonio={item} verCaso={t.testimonios.verCaso} />
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+            <div className="marquee">
+              <div className="flex gap-4 md:gap-5 w-max" data-marquee="reversa">
+                {[0, 1].map((copia) =>
+                  filaB.map((item, i) => (
+                    <div key={`${copia}-${i}`} aria-hidden>
+                      <TestimonioCard testimonio={item} verCaso={t.testimonios.verCaso} />
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
-        <section className="py-16 md:py-24 px-6 md:px-12 relative z-10" id="faq">
+        <section className="bg-ink py-16 md:py-24 px-6 md:px-12 relative z-10" id="faq">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
             <Reveal className="lg:col-span-5">
-              <Kicker>{t.faq.kicker}</Kicker>
-              <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-[-0.04em] text-ink leading-[1.02]">
-                {t.faq.titleA}<br /><span className="text-green-600">{t.faq.titleEm}</span>
+              <Kicker tono="oscuro">{t.faq.kicker}</Kicker>
+              <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-[-0.04em] text-white leading-[1.02]">
+                {t.faq.titleA}<br /><span className="text-green-400">{t.faq.titleEm}</span>
               </h2>
             </Reveal>
 
@@ -664,33 +832,33 @@ export default function App() {
                 const isOpen = openFaqIndex === i;
                 const panelId = `faq-panel-${i}`;
                 return (
-                  <div
-                    key={faq.pregunta}
-                    className={`border rounded-2xl bg-white overflow-hidden transition-colors ${isOpen ? 'border-stone-300' : 'border-stone-200'}`}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaqIndex(isOpen ? null : i)}
-                      className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
-                      aria-expanded={isOpen}
-                      aria-controls={panelId}
-                    >
-                      <span className="text-base md:text-lg font-display font-medium tracking-tight text-ink">{faq.pregunta}</span>
-                      <span className={`w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center shrink-0 transition-all duration-300 ${isOpen ? 'bg-ink border-ink text-white rotate-180' : 'text-ink'}`}>
-                        <ChevronDown className="w-4 h-4" />
-                      </span>
-                    </button>
-                    {/* grid 0fr→1fr: anima la altura sin medirla en JS */}
-                    <div
-                      id={panelId}
-                      className="grid transition-[grid-template-rows] duration-300 ease-out"
-                      style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="px-6 pb-5 text-stone-600 leading-relaxed">{faq.respuesta}</p>
+                  <Reveal key={faq.pregunta} delay={i * 0.05}>
+                    <div className={`border rounded-2xl bg-ink-2 overflow-hidden transition-colors ${isOpen ? 'border-white/20' : 'border-white/[0.06]'}`}>
+                      <button
+                        type="button"
+                        onClick={() => setOpenFaqIndex(isOpen ? null : i)}
+                        className="w-full flex items-center gap-4 px-6 py-5 text-left"
+                        aria-expanded={isOpen}
+                        aria-controls={panelId}
+                      >
+                        <span className="font-display text-sm font-semibold text-green-400 tabular-nums w-7 shrink-0">0{i + 1}</span>
+                        <span className="flex-1 text-base md:text-lg font-display font-medium tracking-tight text-white">{faq.pregunta}</span>
+                        <span className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${isOpen ? 'bg-green-400 border-green-400 text-green-950 rotate-180' : 'border-white/15 text-white'}`}>
+                          <ChevronDown className="w-4 h-4" />
+                        </span>
+                      </button>
+                      {/* grid 0fr→1fr: anima la altura sin medirla en JS */}
+                      <div
+                        id={panelId}
+                        className="grid transition-[grid-template-rows] duration-300 ease-out"
+                        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                      >
+                        <div className="overflow-hidden">
+                          <p className="pl-[4.25rem] pr-6 pb-5 text-stone-400 leading-relaxed">{faq.respuesta}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Reveal>
                 );
               })}
             </div>
@@ -698,9 +866,9 @@ export default function App() {
         </section>
 
         {/* Contacto */}
-        <section className="px-6 md:px-12 pb-20 md:pb-28 pt-6 relative z-10" id="contacto">
+        <section className="bg-ink px-6 md:px-12 pb-20 md:pb-28 pt-6 relative z-10" id="contacto">
           <Reveal className="max-w-7xl mx-auto">
-            <div className="bg-ink rounded-[2.5rem] px-6 py-14 md:px-14 md:py-20 relative overflow-hidden">
+            <div className="bg-ink-2 border border-white/[0.06] rounded-[2.5rem] px-6 py-14 md:px-14 md:py-20 relative overflow-hidden">
               <div className="glow absolute -bottom-1/3 -right-1/4 w-[60%] h-[90%] opacity-50 pointer-events-none" aria-hidden="true" />
 
               <div className="relative grid lg:grid-cols-12 gap-12 lg:gap-16">
@@ -714,7 +882,7 @@ export default function App() {
                   </p>
 
                   {/* Diagnóstico gratuito, con Ruperto: la persona que atiende la reunión */}
-                  <div className="bg-ink-2 border border-white/[0.06] rounded-3xl p-6 flex gap-5 items-start">
+                  <div className="bg-ink border border-white/[0.06] rounded-3xl p-6 flex gap-5 items-start">
                     <img
                       src={heroImage}
                       alt="Ruperto Bravo, fundador de RUBRA lab"
