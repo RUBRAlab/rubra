@@ -89,6 +89,19 @@ const STAT_ICONS = [Sparkles, Clock, BadgeDollarSign];
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
+/** true desde md (768px). Arranca en false para que el prerender no asuma desktop. */
+const useIsDesktop = () => {
+  const [desktop, setDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => setDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  return desktop;
+};
+
 /** Entrada al scroll: aparece una sola vez, desde abajo y con fade. */
 const Reveal = ({
   children,
@@ -261,7 +274,7 @@ const Horizonte = () => {
 
   return (
     <div ref={ref} className="relative h-[220px] md:h-[360px] overflow-hidden bg-canvas" aria-hidden="true">
-      <motion.div style={{ y }} className="absolute left-1/2 top-[38%] -translate-x-1/2 w-[220vw] md:w-[180vw]">
+      <motion.div style={{ y }} className="absolute left-1/2 top-[38%] -translate-x-1/2 w-[150vw] md:w-[180vw]">
         <motion.div
           style={{ opacity: glowOpacity }}
           className="absolute inset-x-[10%] -top-10 h-40 rounded-[50%] bg-green-500/60 blur-3xl"
@@ -281,17 +294,20 @@ const Tesis = ({ t }: { t: (typeof translations)['es']['band'] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
+  const desktop = useIsDesktop();
   const spread = useSpring(scrollYProgress, { stiffness: 90, damping: 22 });
-  const xL = useTransform(spread, [0, 1], [0, -170]);
-  const xR = useTransform(spread, [0, 1], [0, 170]);
-  const rL = useTransform(spread, [0, 1], [0, -12]);
-  const rR = useTransform(spread, [0, 1], [0, 12]);
+  // En mobile el abanico se cierra: con ±170px los teléfonos de los costados quedan afuera.
+  const dx = desktop ? 170 : 100;
+  const xL = useTransform(spread, [0, 1], [0, -dx]);
+  const xR = useTransform(spread, [0, 1], [0, dx]);
+  const rL = useTransform(spread, [0, 1], [0, desktop ? -12 : -9]);
+  const rR = useTransform(spread, [0, 1], [0, desktop ? 12 : 9]);
   const yS = useTransform(spread, [0, 1], [0, 28]);
   const titleY = useTransform(scrollYProgress, [0, 1], [reduced ? 0 : 60, 0]);
   const phones = [phoneCatalogo, phonePedido, phoneClubar];
 
   return (
-    <section className="bg-ink px-6 md:px-12 pt-8 md:pt-16 pb-24 md:pb-32 relative overflow-hidden">
+    <section className="bg-ink px-6 md:px-12 pt-8 md:pt-16 pb-10 md:pb-32 relative overflow-hidden">
       <div className="glow absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] opacity-60 pointer-events-none" aria-hidden="true" />
       <motion.div style={{ y: titleY }} className="relative max-w-5xl mx-auto text-center">
         <p className="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] leading-[1.08] text-white">
@@ -300,7 +316,7 @@ const Tesis = ({ t }: { t: (typeof translations)['es']['band'] }) => {
         </p>
       </motion.div>
 
-      <div ref={ref} className="relative mx-auto mt-14 md:mt-20 h-[420px] md:h-[560px] w-full max-w-3xl" style={{ perspective: 1200 }}>
+      <div ref={ref} className="relative mx-auto mt-12 md:mt-20 h-[360px] md:h-[560px] w-full max-w-3xl" style={{ perspective: 1200 }}>
         {phones.map((src, i) => {
           const x = i === 0 ? xL : i === 2 ? xR : 0;
           const rotate = i === 0 ? rL : i === 2 ? rR : 0;
@@ -309,7 +325,7 @@ const Tesis = ({ t }: { t: (typeof translations)['es']['band'] }) => {
             <motion.div
               key={src}
               style={{ x, rotate, y, zIndex: i === 1 ? 2 : 1, transformOrigin: '50% 100%' }}
-              className="absolute left-1/2 top-0 -translate-x-1/2 w-[190px] md:w-[250px] shadow-2xl shadow-black/60 rounded-[1.75rem]"
+              className="absolute left-1/2 top-0 -translate-x-1/2 w-[170px] md:w-[250px] shadow-2xl shadow-black/60 rounded-[1.75rem]"
             >
               <Telefono>
                 <img
