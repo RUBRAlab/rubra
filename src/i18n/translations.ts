@@ -357,7 +357,7 @@ export const translations = {
         },
         {
           pregunta: 'How do you use AI in development?',
-          respuesta: 'AI speeds up writing code, but architecture decisions, security and QA are handled directly by Ruperto. What gets delivered has been reviewed — it’s not the first thing a model generated.',
+          respuesta: 'AI speeds up writing code, but architecture decisions, security and QA are handled directly by Ruperto. What gets delivered has been reviewed, it’s not the first thing a model generated.',
         },
         {
           pregunta: 'What happens after launch?',
