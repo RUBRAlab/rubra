@@ -11,6 +11,9 @@ export const config = {
 const PAISES_HISPANOHABLANTES = new Set([
   'AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'SV', 'GQ',
   'GT', 'HN', 'MX', 'NI', 'PA', 'PY', 'PE', 'PR', 'ES', 'UY', 'VE',
+  // EE.UU. va en español: el primer mercado exterior son dueños hispanos (2026-10-13).
+  // Un visitante anglo pasa a inglés con el botón ES/EN.
+  'US',
 ])
 
 const COOKIE_NAME = 'rubra-lang-geo'

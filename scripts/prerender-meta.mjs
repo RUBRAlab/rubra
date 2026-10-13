@@ -8,7 +8,7 @@ import { pathToFileURL } from 'url'
 const SITE = 'https://www.rubra.ar'
 const dist = path.resolve('dist')
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf-8')
-const { render, postRoutes, indexRoutes, home, faq, localizePath } = await import(
+const { render, postRoutes, indexRoutes, spanishOnlyRoutes, home, faq, localizePath } = await import(
   pathToFileURL(path.resolve('dist-ssr/entry-server.js')).href
 )
 
@@ -100,7 +100,7 @@ const hreflang = (routePath) =>
  * ruta traducida ('/en/cases/x'). El FAQ del template es el de la home en español:
  * solo queda ahí, el resto de las páginas lo pierde y la home en inglés lleva el suyo.
  */
-const writeRoute = (routePath, lang, { title, description }, extraHead = []) => {
+const writeRoute = (routePath, lang, { title, description }, extraHead = [], { spanishOnly = false } = {}) => {
   const localized = localizePath(routePath, lang)
   const url = urlOf(routePath, lang)
   const keepFaq = routePath === '/' && lang === 'es'
@@ -116,15 +116,16 @@ const writeRoute = (routePath, lang, { title, description }, extraHead = []) => 
     attr(/(<meta property="og:title" content=")[^"]*(")/, escAttr(title)),
     attr(/(<meta property="og:description" content=")[^"]*(")/, escAttr(description)),
     attr(/(<meta property="og:image:alt" content=")[^"]*(")/, escAttr(OG_IMAGE_ALT[lang])),
-    attr(/(<meta property="og:locale" content=")[^"]*(")/, OG_LOCALE[lang]),
+    attr(/(<meta property="og:locale" content=")[^"]*(")/, spanishOnly ? 'es_US' : OG_LOCALE[lang]),
     attr(/(<meta name="twitter:title" content=")[^"]*(")/, escAttr(title)),
     attr(/(<meta name="twitter:description" content=")[^"]*(")/, escAttr(description)),
   ]) html = apply(html)
 
   const other = lang === 'es' ? 'en' : 'es'
+  // Una página sin par en el otro idioma no declara alternativas: un hreflang que
+  // apunta a una URL inexistente invalida el par entero para Google.
   const head = [
-    `    <meta property="og:locale:alternate" content="${OG_LOCALE[other]}" />`,
-    hreflang(routePath),
+    ...(spanishOnly ? [] : [`    <meta property="og:locale:alternate" content="${OG_LOCALE[other]}" />`, hreflang(routePath)]),
     ...extraHead.map((h) => `    ${h}`),
   ].join('\n')
   html = html.replace('</head>', () => `${head}\n  </head>`)
@@ -156,6 +157,7 @@ for (const lang of LANGS) {
     ])
   }
 }
+for (const route of spanishOnlyRoutes) writeRoute(route.path, 'es', route.es, [], { spanishOnly: true })
 
 // Sitemap generado desde las rutas reales, para que un post nuevo no quede afuera.
 // Cada URL declara su par en el otro idioma (xhtml:link), como pide Google.
@@ -165,16 +167,23 @@ const pages = [
   ...indexRoutes.map((r) => ({ path: r.path, lastmod: today, changefreq: 'weekly', priority: '0.9' })),
   ...postRoutes.map((r) => ({ path: r.path, lastmod: r.date, changefreq: 'monthly', priority: '0.7' })),
 ]
-const entries = pages.flatMap((p) => LANGS.map((lang) => ({ ...p, lang })))
+const entries = [
+  ...pages.flatMap((p) => LANGS.map((lang) => ({ ...p, lang }))),
+  ...spanishOnlyRoutes.map((r) => ({ path: r.path, lastmod: today, changefreq: 'monthly', priority: '0.9', lang: 'es', spanishOnly: true })),
+]
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries
   .map(
     (e) => `  <url>
-    <loc>${urlOf(e.path, e.lang)}</loc>
+    <loc>${urlOf(e.path, e.lang)}</loc>${
+      e.spanishOnly
+        ? ''
+        : `
     <xhtml:link rel="alternate" hreflang="es" href="${urlOf(e.path, 'es')}" />
     <xhtml:link rel="alternate" hreflang="en" href="${urlOf(e.path, 'en')}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${urlOf(e.path, 'es')}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${urlOf(e.path, 'es')}" />`
+    }
     <lastmod>${e.lastmod}</lastmod>
     <changefreq>${e.changefreq}</changefreq>
     <priority>${e.priority}</priority>

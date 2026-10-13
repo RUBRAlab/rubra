@@ -17,6 +17,12 @@ const splitSuffix = (path: string) => {
   return i === -1 ? [path, ''] : [path.slice(0, i), path.slice(i)]
 }
 
+// Páginas que existen en un solo idioma: no tienen par en /en, así que ni el toggle
+// ni la redirección por geo las tocan. /us es la landing en español neutro para
+// dueños hispanos en EE.UU. (mercado aprobado el 2026-10-13).
+const SPANISH_ONLY = new Set(['/us'])
+export const isSpanishOnly = (pathname: string) => SPANISH_ONLY.has(pathname)
+
 export const languageFromPath = (pathname: string): Language =>
   pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'es'
 

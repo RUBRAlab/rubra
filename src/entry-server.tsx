@@ -7,6 +7,7 @@ import { localizePath } from './i18n/paths'
 import { COPY as blogCopy } from './blog/Blog.tsx'
 import { COPY as casosCopy } from './casos/Casos.tsx'
 import { COPY as privacidadCopy } from './Privacidad.tsx'
+import { META as usMeta } from './us/Us.tsx'
 
 export function render(url: string) {
   return renderToString(
@@ -40,6 +41,9 @@ export const indexRoutes = [
   { path: '/casos', ...meta(casosCopy) },
   { path: '/privacidad', ...meta(privacidadCopy) },
 ]
+
+// Páginas en un solo idioma (sin par en /en ni hreflang).
+export const spanishOnlyRoutes = [{ path: '/us', es: usMeta }]
 
 export const postRoutes = posts.map((p) => ({
   path: `${basePath(p.category)}/${p.slug}`,

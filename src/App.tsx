@@ -103,7 +103,7 @@ const useIsDesktop = () => {
 };
 
 /** Entrada al scroll: aparece una sola vez, desde abajo y con fade. */
-const Reveal = ({
+export const Reveal = ({
   children,
   delay = 0,
   className = '',
@@ -125,7 +125,7 @@ const Reveal = ({
 );
 
 /** Etiqueta chica sobre los títulos de sección. */
-const Kicker = ({ children, tono = 'claro' }: { children: ReactNode; tono?: 'claro' | 'oscuro' }) => (
+export const Kicker = ({ children, tono = 'claro' }: { children: ReactNode; tono?: 'claro' | 'oscuro' }) => (
   <p className={`text-xs font-semibold tracking-widest uppercase mb-4 ${tono === 'oscuro' ? 'text-green-400' : 'text-green-600'}`}>
     {children}
   </p>
@@ -135,7 +135,7 @@ const Kicker = ({ children, tono = 'claro' }: { children: ReactNode; tono?: 'cla
  * Mockup del hero. Arranca inclinado hacia atrás y se endereza a medida que
  * se scrollea, como una pantalla que se levanta. Alrededor flotan los stats.
  */
-const HeroMockup = ({
+export const HeroMockup = ({
   stats,
 }: {
   stats: readonly { valor: string; etiqueta: string; destacado?: boolean }[];
@@ -265,7 +265,7 @@ const ServicioTexto = ({
  * Horizonte: la curva negra con borde verde que sube desde abajo y abre la
  * zona oscura. Se mueve con el scroll para que parezca que asoma.
  */
-const Horizonte = () => {
+export const Horizonte = () => {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
@@ -350,7 +350,7 @@ const Tesis = ({ t }: { t: (typeof translations)['es']['band'] }) => {
 
 type Testimonio = (typeof translations)['es']['testimonios']['items'][number];
 
-const TestimonioCard = ({ testimonio, verCaso }: { testimonio: Testimonio; verCaso: string; key?: Key }) => {
+export const TestimonioCard = ({ testimonio, verCaso }: { testimonio: Testimonio; verCaso: string; key?: Key }) => {
   const { lp } = useLanguage();
   return (
     <blockquote className="w-[320px] md:w-[400px] shrink-0 flex flex-col bg-ink-2 rounded-3xl p-7 border border-white/[0.06]">

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { languageFromPath, localizePath, spanishPath, type Language } from './paths';
+import { isSpanishOnly, languageFromPath, localizePath, spanishPath, type Language } from './paths';
 
 export type { Language };
 
@@ -49,7 +49,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // Solo al entrar: un visitante de afuera que llega a una URL en español va a la
   // versión en inglés. Nunca al revés: un link a /en compartido se respeta.
   useEffect(() => {
-    if (language === 'es' && getPreferredLanguage() === 'en') switchTo('en', true);
+    if (language === 'es' && !isSpanishOnly(location.pathname) && getPreferredLanguage() === 'en') switchTo('en', true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
