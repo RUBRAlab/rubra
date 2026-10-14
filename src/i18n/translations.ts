@@ -80,9 +80,10 @@ export const translations = {
       founder: {
         name: 'Ruperto Bravo',
         role: 'Fundador · Dirección y producto',
-        body: 'Define el alcance, aprueba cada entrega y es tu único interlocutor de principio a fin.',
+        body: 'Define el alcance, aprueba cada entrega y está detrás de cada decisión importante, de principio a fin.',
       },
       areas: [
+        { title: 'Atención al cliente', body: 'Responde tus consultas por WhatsApp al instante y le pasa a Ruperto lo que necesita una decisión.' },
         { title: 'Producto', body: 'Releva lo que necesitás y lo convierte en un alcance cerrado, con precio fijo.' },
         { title: 'Ingeniería', body: 'Tiendas online, sistemas de gestión e integraciones, en código propio y listo para producción.' },
         { title: 'Automatización', body: 'Conecta tus herramientas (CRM, WhatsApp, mail) y automatiza lo repetitivo.' },
@@ -314,9 +315,10 @@ export const translations = {
       founder: {
         name: 'Ruperto Bravo',
         role: 'Founder · Direction and product',
-        body: 'Defines the scope, approves every delivery, and is your single point of contact from start to finish.',
+        body: 'Defines the scope, approves every delivery, and stands behind every important decision, from start to finish.',
       },
       areas: [
+        { title: 'Customer support', body: 'Answers your questions on WhatsApp right away and hands anything that needs a decision to Ruperto.' },
         { title: 'Product', body: 'Gathers what you need and turns it into a closed scope with a fixed price.' },
         { title: 'Engineering', body: 'Online stores, management systems and integrations, in custom code ready for production.' },
         { title: 'Automation', body: 'Connects your tools (CRM, WhatsApp, email) and automates the repetitive work.' },

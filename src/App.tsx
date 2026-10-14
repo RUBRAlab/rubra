@@ -67,6 +67,7 @@ import {
   ShieldCheck,
   Megaphone,
   FolderKanban,
+  Headset,
 } from 'lucide-react';
 
 const CLIENTS = [
@@ -96,7 +97,7 @@ const SERVICE_SHOTS = [svcTienda, svcGestion, svcAutomatizacion];
 // Mismo orden que t.heroStats.
 const STAT_ICONS = [Sparkles, Clock, BadgeDollarSign];
 
-const EQUIPO_ICONS = [ClipboardList, Code2, Workflow, Server, PenTool, ShieldCheck, Megaphone, FolderKanban];
+const EQUIPO_ICONS = [Headset, ClipboardList, Code2, Workflow, Server, PenTool, ShieldCheck, Megaphone, FolderKanban];
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
@@ -837,11 +838,11 @@ export default function App() {
               </div>
             </Reveal>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
               {t.equipo.areas.map((area, i) => {
                 const Icon = EQUIPO_ICONS[i];
                 return (
-                  <Reveal key={area.title} delay={(i % 4) * 0.06} className="h-full">
+                  <Reveal key={area.title} delay={(i % 3) * 0.06} className="h-full">
                     <div className="h-full rounded-[1.5rem] border border-white/[0.06] bg-ink-2 p-6 md:p-7">
                       <div className="w-10 h-10 rounded-xl bg-white/[0.06] text-green-400 flex items-center justify-center mb-5">
                         <Icon className="w-5 h-5" strokeWidth={1.5} />
