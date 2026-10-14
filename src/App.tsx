@@ -59,6 +59,14 @@ import {
   Sparkles,
   Clock,
   BadgeDollarSign,
+  ClipboardList,
+  Code2,
+  Workflow,
+  Server,
+  PenTool,
+  ShieldCheck,
+  Megaphone,
+  FolderKanban,
 } from 'lucide-react';
 
 const CLIENTS = [
@@ -87,6 +95,8 @@ const SERVICE_SHOTS = [svcTienda, svcGestion, svcAutomatizacion];
 
 // Mismo orden que t.heroStats.
 const STAT_ICONS = [Sparkles, Clock, BadgeDollarSign];
+
+const EQUIPO_ICONS = [ClipboardList, Code2, Workflow, Server, PenTool, ShieldCheck, Megaphone, FolderKanban];
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
@@ -800,6 +810,53 @@ export default function App() {
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Equipo: el fundador y las áreas que cubre cada especialista con IA */}
+        <section className="bg-ink py-16 md:py-24 px-6 md:px-12 relative z-10" id="equipo">
+          <div className="max-w-7xl mx-auto">
+            <Reveal className="mb-12 md:mb-16 text-center max-w-3xl mx-auto">
+              <Kicker tono="oscuro">{t.equipo.kicker}</Kicker>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-white leading-[1.02]">
+                {t.equipo.titleParts[0]}<br /><span className="text-green-400">{t.equipo.titleParts[1]} {t.equipo.titleParts[2]}</span>
+              </h2>
+              <p className="mt-6 text-stone-400 leading-relaxed text-lg">{t.equipo.intro}</p>
+            </Reveal>
+
+            <Reveal className="mb-5 md:mb-6">
+              <div className="rounded-[2rem] border border-green-400/40 bg-ink-2 p-7 md:p-9 flex flex-col md:flex-row md:items-center gap-5 md:gap-8 shadow-[0_0_80px_-20px_rgba(34,197,94,0.5)]">
+                <span className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full bg-green-400 text-green-950 font-display text-2xl font-semibold flex items-center justify-center" aria-hidden="true">
+                  R
+                </span>
+                <div>
+                  <h3 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-white">{t.equipo.founder.name}</h3>
+                  <p className="text-green-400 text-sm font-medium mt-1">{t.equipo.founder.role}</p>
+                  <p className="text-stone-400 leading-relaxed mt-3 max-w-2xl">{t.equipo.founder.body}</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+              {t.equipo.areas.map((area, i) => {
+                const Icon = EQUIPO_ICONS[i];
+                return (
+                  <Reveal key={area.title} delay={(i % 4) * 0.06} className="h-full">
+                    <div className="h-full rounded-[1.5rem] border border-white/[0.06] bg-ink-2 p-6 md:p-7">
+                      <div className="w-10 h-10 rounded-xl bg-white/[0.06] text-green-400 flex items-center justify-center mb-5">
+                        <Icon className="w-5 h-5" strokeWidth={1.5} />
+                      </div>
+                      <h3 className="font-display text-xl font-semibold tracking-tight text-white mb-2">{area.title}</h3>
+                      <p className="text-stone-400 leading-relaxed text-sm md:text-base">{area.body}</p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            <Reveal className="mt-8 md:mt-10">
+              <p className="text-center text-stone-500 text-sm">{t.equipo.note}</p>
+            </Reveal>
           </div>
         </section>
 
