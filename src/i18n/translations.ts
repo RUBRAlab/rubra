@@ -231,7 +231,7 @@ export const translations = {
       location: 'Argentina · Remoto para toda Latinoamérica',
       scheduleMeeting: 'Agendar una reunión',
       privacy: 'Política de privacidad',
-      tagline: (year: number) => `© ${year} RUBRA lab · Software y automatización con IA para empresas.`,
+      tagline: (year: number) => `© ${year} RUBRA lab · Facundo Ruperto Bravo · Software y automatización con IA para empresas.`,
     },
   },
   en: {
@@ -466,7 +466,7 @@ export const translations = {
       location: 'Argentina · Remote across Latin America',
       scheduleMeeting: 'Book a meeting',
       privacy: 'Privacy policy',
-      tagline: (year: number) => `© ${year} RUBRA lab · Software and AI automation for businesses.`,
+      tagline: (year: number) => `© ${year} RUBRA lab · Facundo Ruperto Bravo · Software and AI automation for businesses.`,
     },
   },
 } as const;
