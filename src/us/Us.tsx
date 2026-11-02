@@ -108,7 +108,7 @@ const SERVICIOS = [
 ]
 
 const CASOS = translations.es.casos.items.filter((c) =>
-  ['club-deportivo-cuotas', 'portal-b2b-bodega', 'pintureria-cinco-sucursales', 'concil-producto-propio'].includes(c.slug),
+  ['club-deportivo-cuotas', 'portal-b2b-bodega', 'palomar-marin-ingenieria', 'concil-producto-propio'].includes(c.slug),
 )
 
 const PASOS = [

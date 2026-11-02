@@ -25,7 +25,6 @@ import logoConcil from './assets/images/clients/concil.webp';
 import logoDeportivoPradere from './assets/images/clients/deportivo-pradere.webp';
 import logoHayZonda from './assets/images/clients/hayzonda.webp';
 import logoJuliaH from './assets/images/clients/juliah.webp';
-import logoLaEspanola from './assets/images/clients/la-espanola.webp';
 import logoMG from './assets/images/clients/mg-estrategia.webp';
 import logoPalomarMarin from './assets/images/clients/palomar-marin.webp';
 import logoPeregrina from './assets/images/clients/peregrina.webp';
@@ -76,7 +75,6 @@ const CLIENTS = [
   { name: 'Deportivo Pradere', logo: logoDeportivoPradere, url: 'https://www.deportivopradere.com.ar', caso: 'club-deportivo-cuotas' },
   { name: 'Hay Zonda', logo: logoHayZonda, url: 'https://www.hayzonda.ar', caso: null },
   { name: 'Julia H', logo: logoJuliaH, url: 'https://www.juliah.com.ar', caso: null },
-  { name: 'Pinturerías La Española', logo: logoLaEspanola, url: 'https://www.pintureriaslaespanola.com.ar', caso: 'pintureria-cinco-sucursales' },
   { name: 'MG Estrategia Pyme', logo: logoMG, url: 'https://www.mgestrategiapyme.com.ar', caso: null },
   { name: 'Palomar Marín', logo: logoPalomarMarin, url: 'https://www.palomarmarin.com.ar', caso: 'palomar-marin-ingenieria' },
   { name: 'Peregrina', logo: logoPeregrina, url: 'https://www.peregrina.com.ar', caso: null },

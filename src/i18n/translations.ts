@@ -102,11 +102,11 @@ export const translations = {
       verTodos: 'Ver todos los casos',
       items: [
         {
-          slug: 'pintureria-cinco-sucursales',
-          rubro: 'Retail · 5 sucursales',
-          titulo: 'De vender por mostrador a una tienda online',
-          resumen: 'Una pinturería de La Rioja con su catálogo abierto las 24 horas y un panel donde su equipo carga productos y precios sin depender de nadie.',
-          entregable: 'Tienda online + panel de administración',
+          slug: 'palomar-marin-ingenieria',
+          rubro: 'Ingeniería · Mendoza',
+          titulo: 'Un estudio de ingeniería que ahora tiene dónde mostrar su obra',
+          resumen: 'Un estudio de ingeniería de Mendoza con sitio propio para mostrar sus obras y recibir consultas.',
+          entregable: 'Sitio institucional + formulario de contacto',
         },
         {
           slug: 'club-deportivo-cuotas',
@@ -337,11 +337,11 @@ export const translations = {
       verTodos: 'View all case studies',
       items: [
         {
-          slug: 'pintureria-cinco-sucursales',
-          rubro: 'Retail · 5 stores',
-          titulo: 'From counter sales to an online store',
-          resumen: 'A paint store in La Rioja with its catalog open 24/7 and a panel where its team manages products and prices without depending on anyone.',
-          entregable: 'Online store + admin panel',
+          slug: 'palomar-marin-ingenieria',
+          rubro: 'Engineering · Mendoza',
+          titulo: 'An engineering firm that finally has somewhere to show its work',
+          resumen: 'An engineering firm in Mendoza with its own site to show its projects and receive inquiries.',
+          entregable: 'Corporate website + contact form',
         },
         {
           slug: 'club-deportivo-cuotas',

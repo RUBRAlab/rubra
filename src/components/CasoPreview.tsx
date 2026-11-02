@@ -1,5 +1,4 @@
 import { Ventana } from './Mockup'
-import shotPintureria from '../assets/images/casos/pintureria.webp'
 import shotConcil from '../assets/images/casos/concil.webp'
 import shotPalomar from '../assets/images/casos/palomar.webp'
 import shotPradere from '../assets/images/casos/pradere.webp'
@@ -13,7 +12,6 @@ import shotDesquiciado from '../assets/images/casos/desquiciado.webp'
  * tiene URL pública, así que va con el diagrama esquemático.
  */
 const SHOT_BY_SLUG: Record<string, string> = {
-  'pintureria-cinco-sucursales': shotPintureria,
   'concil-producto-propio': shotConcil,
   'palomar-marin-ingenieria': shotPalomar,
   'club-deportivo-cuotas': shotPradere,
@@ -158,7 +156,6 @@ export const variantForSlug = (slug: string) => VARIANT_BY_SLUG[slug] ?? 'saas'
  * público: los sistemas internos van sin URL y el diagrama va sin marco.
  */
 const DOMINIO_BY_SLUG: Record<string, string> = {
-  'pintureria-cinco-sucursales': 'pintureriaslaespanola.com.ar',
   'concil-producto-propio': 'concil.ar',
   'palomar-marin-ingenieria': 'palomarmarin.com.ar',
   'club-deportivo-cuotas': 'deportivopradere.com.ar/admin',

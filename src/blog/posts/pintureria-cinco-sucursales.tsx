@@ -57,9 +57,8 @@ const Content = () => (
     <h2>Cómo se trabajó</h2>
     <p>
       Con el método de siempre: alcance cerrado, precio cerrado, y el proyecto dividido en fases.
-      La Fase 1 se construyó, se puso en producción y se entregó funcionando. La Fase 2,
-      con cobro online y cotización de envíos, llegó después: cuando el negocio ya estaba
-      vendiendo y sabía qué necesitaba.
+      La Fase 1 se construyó y se entregó funcionando. La Fase 2, con cobro online y
+      cotización de envíos, se sumó después sobre esa base.
     </p>
     <p>
       Trabajar por fases no es un detalle comercial. Es lo que permite que una empresa incorpore
@@ -67,15 +66,11 @@ const Content = () => (
       la siguiente si tiene sentido.
     </p>
 
-    <h2>El resultado</h2>
+    <h2>Cómo terminó</h2>
     <p>
-      Hoy la tienda está en producción, cobra online, cotiza sus propios envíos y el equipo
-      administra el catálogo entero (productos, precios, imágenes) sin depender de nadie.
-    </p>
-    <p>
-      De vender solo por mostrador y WhatsApp, a tener el catálogo abierto las 24 horas,
-      con pedidos que llegan cobrados y con el envío ya cotizado. Sin cambiar la forma de trabajar del equipo: la
-      herramienta se adaptó al negocio, no al revés.
+      Las dos fases se entregaron completas. Después, el cliente decidió seguir con otro
+      proveedor y la tienda no llegó a operar con ventas reales. Por eso este caso muestra
+      qué construimos, no resultados de venta.
     </p>
     <p>
       ¿Tu negocio necesita algo así? <a href="mailto:hola@rubra.ar">Escribinos</a>.
@@ -139,9 +134,8 @@ const ContentEn = () => (
     <h2>How we worked</h2>
     <p>
       With our usual method: fixed scope, fixed price, and the project split into phases.
-      Phase 1 was built, deployed to production, and delivered working. Phase 2, with online
-      payments and shipping quotes, came later: once the business was already selling and
-      knew what it needed.
+      Phase 1 was built and delivered working. Phase 2, with online payments and shipping
+      quotes, was added later on top of it.
     </p>
     <p>
       Working in phases isn't a commercial detail. It's what lets a business bring in
@@ -149,15 +143,11 @@ const ContentEn = () => (
       works, and the next one only gets paid for if it makes sense.
     </p>
 
-    <h2>The result</h2>
+    <h2>How it ended</h2>
     <p>
-      Today the store is live in production, takes payments, quotes its own shipping, and the
-      team manages the entire catalog (products, prices, images) without depending on anyone.
-    </p>
-    <p>
-      From selling only over the counter and WhatsApp, to having the catalog open 24 hours
-      a day, with orders arriving paid for and already quoted for shipping. Without changing how the team works: the tool
-      adapted to the business, not the other way around.
+      Both phases were delivered in full. The client later chose to continue with another
+      provider, and the store never operated with real sales. So this case shows what we
+      built, not sales results.
     </p>
     <p>
       Does your business need something like this?{' '}
@@ -168,16 +158,16 @@ const ContentEn = () => (
 
 export const post: BlogPost = {
   slug: 'pintureria-cinco-sucursales',
-  title: 'De vender por mostrador a una tienda online con 5 sucursales',
+  title: 'La tienda online que construimos para una pinturería con 5 sucursales',
   description:
-    'Cómo una pinturería de La Rioja pasó de atender solo por mostrador y WhatsApp a vender online, cobrar con tarjeta, cotizar sus envíos y administrar todo su catálogo sin depender de nadie técnico.',
+    'Qué construimos para una pinturería de La Rioja: tienda online, cobro con tarjeta, cotización de envíos y un catálogo administrable por su equipo. Se entregó completa, pero no llegó a operar con ventas reales.',
   date: '2026-07-21',
   category: 'Casos',
   readTime: 5,
   content: Content,
-  title_en: 'From counter sales to an online store with 5 branches',
+  title_en: 'The online store we built for a paint retailer with 5 branches',
   description_en:
-    'How a paint store in La Rioja went from serving customers only over the counter and WhatsApp to selling online, taking card payments, quoting its own shipping, and managing its whole catalog without depending on anyone technical.',
+    'What we built for a paint retailer in La Rioja: an online store, card payments, shipping quotes, and a catalog its team can manage. It was delivered in full but never operated with real sales.',
   category_en: 'Case study',
   content_en: ContentEn,
 }

@@ -19,7 +19,6 @@ import desqPedido from '../assets/images/pantallas/desq-pedido.webp'
 import desqSeguimiento from '../assets/images/pantallas/desq-seguimiento.webp'
 import clubarLanding from '../assets/images/pantallas/clubar-landing.webp'
 
-import shotPintureria from '../assets/images/casos/pintureria.webp'
 import shotConcil from '../assets/images/casos/concil.webp'
 import shotPalomar from '../assets/images/casos/palomar.webp'
 
@@ -36,7 +35,6 @@ const FILA_A: Pantalla[] = [
   { src: genialCatalogo, alt: 'Catálogo de insumos con filtros — GENIAL Wine', tipo: 'desktop' },
   { src: flowDashboard, alt: 'Dashboard de flujo de fondos — Flowpyme', tipo: 'desktop' },
   { src: desqDashboard, alt: 'App de pedidos B2B — Desquiciado', tipo: 'phone' },
-  { src: shotPintureria, alt: 'Tienda online de una pinturería con cinco sucursales', tipo: 'desktop' },
   { src: genialCotizacion, alt: 'Armado de cotización — GENIAL Wine', tipo: 'desktop' },
   { src: clubarLanding, alt: 'Landing de ClubAr', tipo: 'phone' },
   { src: crmDashboard, alt: 'Dashboard de cobranza — CRM propio de RUBRA', tipo: 'desktop' },
