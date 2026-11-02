@@ -1,21 +1,20 @@
 # RUBRA — Sitio web (www.rubra.ar)
 
-Landing + blog de RUBRA (agencia de automatización IA para PyMEs). Contacto: hola@rubra.ar.
+Landing + blog de RUBRA lab (desarrollo de software y automatización con IA para empresas de LATAM). Contacto: hola@rubra.ar.
 El CRM interno es un proyecto aparte (`../rubra-crm`, dominio crm.rubra.ar); este sitio no lo
 enlaza (se entra directo por crm.rubra.ar).
 
 ## Stack (NO es Next.js ni Supabase)
 
 - **Vite 6** + **React 19** + **TypeScript** (SPA, no SSR)
-- **react-router-dom v7** (rutas: `/` landing, `/blog`, `/blog/:slug`, `/casos`, `/casos/:slug`, `/privacidad`)
+- **react-router-dom v7** (rutas: `/`, `/blog`, `/blog/:slug`, `/casos`, `/casos/:slug`, `/privacidad`, `/us` y sus versiones `/en`)
 - **Tailwind CSS v4** (vía `@tailwindcss/vite`) + `@tailwindcss/typography`
 - **motion** (animaciones) + **lucide-react** (íconos)
-- `@google/genai` (Gemini) — usa `GEMINI_API_KEY` en `.env.local`
 - Deploy: **Vercel** (repo `RUBRAlab/rubra`)
 
 ## Estructura
 
-- `src/App.tsx` — landing completa en un solo archivo (nav, secciones, formulario, footer).
+- `src/App.tsx` — landing (nav, secciones, formulario); footer y botón flotante en `src/components/SiteFooter.tsx`.
 - `src/blog/` — `Blog.tsx` (índice), `Post.tsx` (detalle), `posts/` (cada post es un `.tsx` que
   exporta un `FC`; ver `posts/index.ts` y `types.ts`).
 - `src/hooks/usePageMeta.ts` — setea `<title>`/meta por página.
@@ -46,8 +45,7 @@ enlaza (se entra directo por crm.rubra.ar).
   al `mailto:` viejo (2026-09-16): no generaba lead, no funcionaba en celulares sin cliente de
   mail, y no había forma de saber si alguien lo había intentado. Requiere `RESEND_API_KEY`
   (reusa las mismas env vars que `api/notificar.ts`: `NOTIFY_FROM`, `NOTIFY_TO`).
-- Botón flotante de WhatsApp (`WhatsAppFloatingButton` en `App.tsx`) con el número real de
-  RUBRA (`WHATSAPP_NUMBER`, ver `whatsapp_setup` en memoria de rubra-crm). Es un `wa.me`, no
+- Botón flotante de WhatsApp (`WhatsAppFloatingButton` en `src/components/SiteFooter.tsx`), con `WHATSAPP_NUMBER` de `src/config.ts` (ver `whatsapp_setup` en memoria de rubra-crm). Es un `wa.me`, no
   depende de si el número está operando por la app normal o por Cloud API.
 - Eventos de `@vercel/analytics` (`track()`) en los 3 CTA de agendar reunión, el WhatsApp
   flotante y el envío del formulario — antes no había forma de saber si alguien intentaba
