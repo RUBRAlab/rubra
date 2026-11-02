@@ -398,7 +398,7 @@ export default function Us() {
             <Reveal className="mb-12 md:mb-16 max-w-3xl">
               <Kicker>Lo que ya construimos</Kicker>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-ink leading-[1.02]">
-                Casos reales,<br />en producción.
+                Casos reales,<br />problemas concretos.
               </h2>
               <p className="text-lg text-stone-600 leading-relaxed mt-6">
                 Empresas de Argentina, con nombre y sitio que puedes visitar.

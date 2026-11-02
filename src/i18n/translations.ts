@@ -49,7 +49,7 @@ export const translations = {
     },
     pantallas: {
       kicker: 'Trabajo entregado',
-      titulo: 'Pantallas reales de sistemas y sitios que están funcionando hoy en empresas argentinas.',
+      titulo: 'Pantallas reales de sistemas y sitios que construimos.',
       cta: 'Ver los casos completos',
     },
     metodo: {
@@ -97,7 +97,7 @@ export const translations = {
     },
     casos: {
       kicker: 'Lo que construimos',
-      titleParts: ['Casos reales,', 'en producción.'],
+      titleParts: ['Casos reales,', 'problemas concretos.'],
       verCaso: 'Ver el caso',
       verTodos: 'Ver todos los casos',
       items: [
@@ -284,7 +284,7 @@ export const translations = {
     },
     pantallas: {
       kicker: 'Delivered work',
-      titulo: 'Real screens from systems and sites running today at Argentine companies.',
+      titulo: 'Real screens from systems and sites we built.',
       cta: 'See the full case studies',
     },
     metodo: {
@@ -332,7 +332,7 @@ export const translations = {
     },
     casos: {
       kicker: 'What we build',
-      titleParts: ['Real case studies,', 'in production.'],
+      titleParts: ['Real case studies,', 'concrete problems.'],
       verCaso: 'View case study',
       verTodos: 'View all case studies',
       items: [

@@ -146,7 +146,7 @@ const Content = () => (
       partes, y sigue quedando cerrado en la propuesta. La forma más rápida de saberlo es
       contarnos qué necesitás: la propuesta con alcance, plazo y precio se define en 3 a 5 días
       hábiles y no tiene costo. Podés ver{' '}
-      <a href="/casos">proyectos reales que ya están funcionando</a> para ubicar el tuyo.
+      <a href="/casos">proyectos reales que ya construimos</a> para ubicar el tuyo.
     </p>
   </article>
 )
@@ -297,7 +297,7 @@ const ContentEn = () => (
       and it still gets locked in the proposal. The fastest way to find out is to tell us what
       you need: the proposal with scope, timeline and price takes 3 to 5 business days and costs
       nothing. You can look at{' '}
-      <a href="/en/cases">real projects already running</a> to place yours.
+      <a href="/en/cases">real projects we’ve already built</a> to place yours.
     </p>
   </article>
 )

@@ -13,7 +13,7 @@ RUBRA lab es fundada y operada por Ruperto Bravo. Contacto: hola@rubra.ar.
 - Portales B2B mayoristas (listas de precios por cliente, pedidos, logística)
 - Automatización de procesos con IA (agentes, integraciones, tareas repetitivas)
 
-## Casos de éxito (proyectos reales en producción)
+## Casos de éxito (proyectos reales)
 
 - [Constructora multiobra](https://www.rubra.ar/casos/constructora-control-de-caja-por-obra): control de caja por obra en tiempo real, billeteras bimonetarias y flujo de aprobación comprador-tesorero
 - [Marca de cosmética natural](https://www.rubra.ar/casos/marca-cosmetica-natural-mendoza): marca y sitio para una cosmética natural artesanal de Mendoza
